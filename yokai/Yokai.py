@@ -1,5 +1,5 @@
 '''
-Yokai types: Formless, Bipedal, Quadruped
+Yokai types: Formless, Ethereal, Bipedal, Quadruped
 Formless Yokai:
     Ghost -> Phantom -> Apparition ->
 '''
@@ -18,13 +18,13 @@ class Yokai(object):
         print("Yokai Generated")
 
     def display_stats(self):
-        print("Name: " + str(self.name))
-        print("Race: " + str(self.race))
-        print("Age: " + str(self.age))
-        print("Size: " + str(self.size))
-        print("Health: " + str(self.health))
-        print("Hunger: " + str(self.hunger))
-        print("Speed: " + str(self.speed))
+        print("Name: " + str(self.name), end="\r")
+        print("Race: " + str(self.race), end="\r")
+        print("Age: " + str(self.age), end="\r")
+        print("Size: " + str(self.size), end="\r")
+        print("Health: " + str(self.health), end="\r")
+        print("Hunger: " + str(self.hunger), end="\r")
+        print("Speed: " + str(self.speed), end="\r")
 
     def move(self): pass
 
