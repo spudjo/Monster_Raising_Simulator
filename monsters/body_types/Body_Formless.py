@@ -1,11 +1,9 @@
-# stats for Formless body types
+# Class for Formless body types
+# Slimes, etc
 
-
-class Body_Formless():
+class Body_Formless:
 
     def __init__(self):
-
-
 
     # --------------------------------------------------
     #   Info

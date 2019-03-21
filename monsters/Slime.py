@@ -1,8 +1,9 @@
 import pyganim
-from yokai.body_parts.Energy import Energy
-from yokai.body_types.Body_Formless import Body_Formless as Formless
+from monsters.body_parts.Energy import Energy
+from monsters.body_types.Body_Formless import Body_Formless as Formless
 
-class Slime():
+
+class Slime:
 
     def __init__(self, name, World):
         self.name = name
@@ -24,10 +25,9 @@ class Slime():
         self.y = World.world_y / 2
 
         self.body_idle = pyganim.PygAnimation([('assets/slime/blue/0.png', 250),
-                                          ('assets/slime/blue/1.png', 250),
-                                          ('assets/slime/blue/2.png', 250),
-                                          ('assets/slime/blue/3.png', 250)])
-        self.body_idle.play()
+                                               ('assets/slime/blue/1.png', 250),
+                                               ('assets/slime/blue/2.png', 250),
+                                               ('assets/slime/blue/3.png', 250)])
 
 # ----------------------------------------------------------------------------------------------------------------------
 
@@ -51,32 +51,13 @@ class Slime():
         print("X-Coordinate: " + str(self.y))
         print("")
 
-    '''
-    def display_calorie_stats(self):
-        print("Daily Calorie Requirement: " + str(self.calorie_requirement))
-        print("")
-
-
-# ----------------------------------------------------------------------------------------------------------------------
-#   Calories Functions
-
-    def calculate_calorie_requirement(self):
-        return self.weight * 14
-
-# ----------------------------------------------------------------------------------------------------------------------
-#   Update Functions
-
-
-
-    def update_calorie_tracker(self):
-        pass
-    '''
 
 # changes that will occur every update based on world refresh_rate
 # affects energy expenditure and hunger gain
     def update(self):
         self.body.update()
         self.energy.update()
+        #self.stomach.update()
 
 
     # TODO: Activity levels affecting hunger levels
@@ -87,6 +68,5 @@ class Slime():
     #
     # TODO:
     #       Muscle Mass / Fat, atrophy
-    #       Battle Stats
     #       Pathfinding for movement
 

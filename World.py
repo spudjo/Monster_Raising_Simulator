@@ -1,11 +1,11 @@
 # 妖怪牧場
 import pygame, sys
-from yokai.Slime import Slime
-from Berry import Berry
+from monsters.Slime import Slime
+from food.Berry import Berry
 from Activity_Level import Activity_Level
 
 
-class World():
+class World:
 
     def __init__(self):
         pygame.init()  # initiate pygame
@@ -20,8 +20,9 @@ class World():
 
 
 World = World()
-slime = Slime("Monokai", World)
-#slime.energy.activity_level = Activity_Level['Heavy']
+slime = Slime('Monokai', World)
+slime.body_idle.play()
+
 update_counter = 0
 day_tracker = 0
 
@@ -32,15 +33,30 @@ while True:  # main game loop
             sys.exit()
 
         if event.type == pygame.KEYDOWN:
+
             if event.key == pygame.K_f:
                 if len(World.food_container) < 5:
                     berry = Berry(World.surface)
                     World.food_container.append(World.food_container)
 
+            if event.key == pygame.K_a:
+                if slime.energy.activity_level.name == "Sleep":
+                    slime.energy.activity_level = Activity_Level['Rest']
+                    slime.body_idle.pause()
+                elif slime.energy.activity_level.name == "Rest":
+                    slime.energy.activity_level = Activity_Level['Idle']
+                elif slime.energy.activity_level.name == "Idle":
+                    slime.energy.activity_level = Activity_Level['Light']
+                    slime.body_idle.play()
+                elif slime.energy.activity_level.name == "Light":
+                    slime.energy.activity_level = Activity_Level['Moderate']
+                elif slime.energy.activity_level.name == "Moderate":
+                    slime.energy.activity_level = Activity_Level['Heavy']
+                elif slime.energy.activity_level.name == "Heavy":
+                    slime.energy.activity_level = Activity_Level['Sleep']
+
     update_counter += 1
-
     if update_counter == World.FPS:
-
         slime.update()
         slime.display_stats()
         update_counter = 0

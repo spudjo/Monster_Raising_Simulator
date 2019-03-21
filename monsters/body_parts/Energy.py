@@ -1,9 +1,9 @@
-# Yokai energy system, based on Endurance stat (not yet implemented)
+# Energy system, influenced by Endurance stat (not yet implemented)
 
 from Activity_Level import Activity_Level
 
 
-class Energy(object):
+class Energy:
 
     def __init__(self):
 
