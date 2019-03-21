@@ -1,11 +1,12 @@
 import random
 import Activity_Level
 import pygame
+import pyganim
 import os
 
 class Slime():
 
-    def __init__(self, name, x, y, World):
+    def __init__(self, name, World):
         self.activity_level = Activity_Level.Activity_Level(0)
 
         self.name = name
@@ -33,15 +34,20 @@ class Slime():
 
         # --------------------------------------------------
 
+        # eating food will add the object to stomach contents, increasing weight and daily calorie intake
+        self.stomach_contents = []
         self.calorie_levels = 1
         self.calorie_requirement = self.calculate_calorie_requirement()
 
         # --------------------------------------------------
 
-        self.x = x
-        self.y = y
-        body = pygame.image.load("assets/slime/blue/0.png")
-        World.surface.blit(body, (self.x, self.y))
+        self.x = World.world_x / 2
+        self.y = World.world_y / 2
+        self.body = pyganim.PygAnimation([('assets/slime/blue/0.png', 0.25),
+                                          ('assets/slime/blue/1.png', 0.25),
+                                          ('assets/slime/blue/2.png', 0.25),
+                                          ('assets/slime/blue/3.png', 0.25)])
+        self.body.play()
 
 # ----------------------------------------------------------------------------------------------------------------------
 
@@ -52,7 +58,7 @@ class Slime():
     def display_stats(self):
         print("Name: " + str(self.name))
         print("Race: " + str(self.race))
-        print("Age: " + str(self.age))
+        print("Age: " + str(round(self.age, 2)))
         print("Sex: " + str(self.sex))
         print("Weight: " + str(self.weight) + " lbs")
         print("Health: " + str(self.health_cur))
@@ -96,7 +102,6 @@ class Slime():
 
     def calculate_calorie_requirement(self):
         return self.weight * 14
-
 
 # ----------------------------------------------------------------------------------------------------------------------
 #   Update Functions

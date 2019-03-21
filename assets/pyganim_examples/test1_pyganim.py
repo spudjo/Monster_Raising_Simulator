@@ -23,10 +23,10 @@ windowSurface = pygame.display.set_mode((320, 240), 0, 32)
 pygame.display.set_caption('Pyganim Test 1')
 
 # create the animation objects   ('filename of image',    duration_in_seconds)
-boltAnim = pyganim.PygAnimation([('testimages/bolt_strike_0001.png', 0.1),
-                                 ('testimages/bolt_strike_0002.png', 0.1),
-                                 ('testimages/bolt_strike_0003.png', 0.1),
-                                 ('testimages/bolt_strike_0004.png', 0.1),
+boltAnim = pyganim.PygAnimation([('../slime/blue/0.png', 0.1),
+                                 ('../slime/blue/1.png', 0.1),
+                                 ('../slime/blue/2.png', 0.1),
+                                 ('../slime/blue/3.png', 0.1),
                                  ('testimages/bolt_strike_0005.png', 0.1),
                                  ('testimages/bolt_strike_0006.png', 0.1),
                                  ('testimages/bolt_strike_0007.png', 0.1),

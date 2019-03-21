@@ -21,7 +21,7 @@ class World():
 
 
 World = World()
-slime = Slime("Monokai", World.world_x / 2, World.world_y / 2, World)
+slime = Slime("Monokai", World)
 update_counter = 0
 day_tracker = 0
 
@@ -46,6 +46,6 @@ while True:  # main game loop
         slime.display_stats()
         update_counter = 0
 
-
+    slime.body.blit(World.surface, (slime.x, slime.y))
     pygame.display.update()
     pygame.time.Clock().tick(World.FPS)
