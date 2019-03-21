@@ -1,0 +1,1 @@
+# Yokai food / digestion / excretion system, based on Endurance stat (not yet implemented)

@@ -1,9 +1,8 @@
 # 妖怪牧場
 import pygame, sys
-from Slime import Slime
+from yokai.Slime import Slime
 from Berry import Berry
 from Activity_Level import Activity_Level
-import time
 
 
 class World():
@@ -22,6 +21,7 @@ class World():
 
 World = World()
 slime = Slime("Monokai", World)
+slime.energy.activity_level = Activity_Level['Heavy']
 update_counter = 0
 day_tracker = 0
 
@@ -41,7 +41,6 @@ while True:  # main game loop
 
     if update_counter == World.FPS:
 
-        #slime.activity_level = Activity_Level.Sleep
         slime.update()
         slime.display_stats()
         update_counter = 0
