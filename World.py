@@ -21,7 +21,7 @@ class World():
 
 World = World()
 slime = Slime("Monokai", World)
-slime.energy.activity_level = Activity_Level['Heavy']
+#slime.energy.activity_level = Activity_Level['Heavy']
 update_counter = 0
 day_tracker = 0
 
@@ -45,6 +45,6 @@ while True:  # main game loop
         slime.display_stats()
         update_counter = 0
 
-    slime.body.blit(World.surface, (slime.x, slime.y))
+    slime.body_idle.blit(World.surface, (slime.x, slime.y))
     pygame.display.update()
     pygame.time.Clock().tick(World.FPS)
