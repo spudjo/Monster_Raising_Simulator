@@ -2,29 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="869c3710-3762-4ba5-bcab-530a7d1d85f9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/monsters/body_types/Body_Divine.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/monsters/body_types/Body_Natural.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/monsters/elements/Dark.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/monsters/elements/Earth.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/monsters/elements/Fire.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/monsters/elements/Light.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/monsters/elements/Metal.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/monsters/elements/Space.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/monsters/elements/Time.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/monsters/elements/Water.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/monsters/elements/Wind.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/monsters/elements/Wood.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Berry.py" beforeDir="false" afterPath="$PROJECT_DIR$/food/Berry.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Animation_Test.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/World.py" beforeDir="false" afterPath="$PROJECT_DIR$/World.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yokai/Slime.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/yokai/body_parts/Energy.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/yokai/body_parts/Sex.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/yokai/body_parts/Stomach.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/yokai/body_types/Body_Elemental.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/yokai/body_types/Body_Ethereal.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/yokai/body_types/Body_Formless.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/yokai/world_parts/Location.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/World_Test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/monsters/Slime.py" beforeDir="false" afterPath="$PROJECT_DIR$/monsters/Slime.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/monsters/body_parts/Energy.py" beforeDir="false" afterPath="$PROJECT_DIR$/monsters/body_parts/Energy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/monsters/body_parts/Stomach.py" beforeDir="false" afterPath="$PROJECT_DIR$/monsters/body_parts/Stomach.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/monsters/body_types/Body_Formless.py" beforeDir="false" afterPath="$PROJECT_DIR$/monsters/body_types/Body_Formless.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/monsters/world_parts/Location.py" beforeDir="false" afterPath="$PROJECT_DIR$/monsters/world_parts/Location.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -35,28 +21,34 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/monsters/body_parts/Stomach.py">
+        <entry file="file://$PROJECT_DIR$/monsters/world_parts/Location.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+            <state relative-caret-position="264">
+              <caret line="18" column="38" lean-forward="true" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/monsters/Slime.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="31" column="29" lean-forward="true" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/monsters/body_types/Body_Elemental.py">
+        <entry file="file://$PROJECT_DIR$/World.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="21" selection-start-column="21" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/monsters/body_types/Body_Ethereal.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="20" selection-start-column="20" selection-end-column="20" />
+            <state relative-caret-position="1037">
+              <caret line="65" column="24" lean-forward="true" selection-start-line="65" selection-start-column="24" selection-end-line="65" selection-end-column="26" />
+              <folding>
+                <element signature="e#7#25#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -64,31 +56,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/monsters/body_types/Body_Formless.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-column="31" />
+            <state relative-caret-position="-147">
+              <caret line="38" column="31" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/monsters/body_types/Body_Divine.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="3" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/monsters/body_parts/Sex.py">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/monsters/body_parts/Energy.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+            <state relative-caret-position="481">
+              <caret line="64" column="90" selection-start-line="64" selection-start-column="90" selection-end-line="64" selection-end-column="90" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/monsters/body_parts/Stomach.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="372">
+              <caret line="31" column="12" selection-start-line="31" selection-start-column="12" selection-end-line="31" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -107,6 +94,8 @@
       <find>enum</find>
       <find>boltAnim</find>
       <find>energy_expenditure</find>
+      <find>x_new</find>
+      <find>y_new</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -143,10 +132,6 @@
         <option value="$PROJECT_DIR$/yokai/body_types/Body_Elemental.py" />
         <option value="$PROJECT_DIR$/yokai/body_types/Body_Formless.py" />
         <option value="$PROJECT_DIR$/yokai/Slime.py" />
-        <option value="$PROJECT_DIR$/monsters/Slime.py" />
-        <option value="$PROJECT_DIR$/monsters/world_parts/Location.py" />
-        <option value="$PROJECT_DIR$/World.py" />
-        <option value="$PROJECT_DIR$/World.py" />
         <option value="$PROJECT_DIR$/monsters/elements/Fire.py" />
         <option value="$PROJECT_DIR$/monsters/elements/Water.py" />
         <option value="$PROJECT_DIR$/monsters/elements/Wind.py" />
@@ -158,20 +143,24 @@
         <option value="$PROJECT_DIR$/monsters/elements/Metal.py" />
         <option value="$PROJECT_DIR$/monsters/elements/Wood.py" />
         <option value="$PROJECT_DIR$/monsters/body_parts/Sex.py" />
-        <option value="$PROJECT_DIR$/monsters/body_parts/Stomach.py" />
-        <option value="$PROJECT_DIR$/monsters/body_parts/Energy.py" />
-        <option value="$PROJECT_DIR$/monsters/body_types/Body_Formless.py" />
         <option value="$PROJECT_DIR$/monsters/body_types/Body_Ethereal.py" />
         <option value="$PROJECT_DIR$/monsters/body_types/Body_Elemental.py" />
         <option value="$PROJECT_DIR$/monsters/body_types/Body_Natural.py" />
         <option value="$PROJECT_DIR$/monsters/body_types/Body_Aquatic.py" />
         <option value="$PROJECT_DIR$/monsters/body_types/Body_Divine.py" />
+        <option value="$PROJECT_DIR$/monsters/body_parts/Energy.py" />
+        <option value="$PROJECT_DIR$/monsters/body_types/Body_Formless.py" />
+        <option value="$PROJECT_DIR$/World.py" />
+        <option value="$PROJECT_DIR$/World.py" />
+        <option value="$PROJECT_DIR$/monsters/world_parts/Location.py" />
+        <option value="$PROJECT_DIR$/monsters/body_parts/Stomach.py" />
+        <option value="$PROJECT_DIR$/monsters/Slime.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1812" />
-    <option name="y" value="13" />
+    <option name="x" value="-1688" />
+    <option name="y" value="58" />
     <option name="width" value="1696" />
     <option name="height" value="1026" />
   </component>
@@ -408,7 +397,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.20084439" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.14716525" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="0" />
       <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
@@ -416,7 +405,7 @@
       <window_info anchor="bottom" id="Message" order="3" />
       <window_info anchor="bottom" id="Find" order="4" />
       <window_info anchor="bottom" id="Version Control" order="5" />
-      <window_info anchor="bottom" id="Run" order="6" visible="true" weight="0.11646137" />
+      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.29227322" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.3997923" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
@@ -552,30 +541,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/yokai/body_types/Yokai.py" />
-    <entry file="file://$PROJECT_DIR$/monsters/world_parts/Location.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="12" lean-forward="true" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/World.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/monsters/Slime.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="43" column="37" lean-forward="true" selection-start-line="43" selection-start-column="37" selection-end-line="43" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/monsters/elements/Fire.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -606,41 +571,11 @@
     <entry file="file://$PROJECT_DIR$/monsters/elements/Wood.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/monsters/body_parts/Energy.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/monsters/body_parts/Sex.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/monsters/body_parts/Stomach.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/monsters/body_types/Body_Aquatic.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="25" selection-start-column="25" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/monsters/body_types/Body_Aquatic.py" />
     <entry file="file://$PROJECT_DIR$/monsters/body_types/Body_Natural.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="8" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/monsters/body_types/Body_Elemental.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="21" selection-start-column="21" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -651,17 +586,68 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/monsters/body_types/Body_Formless.py">
+    <entry file="file://$PROJECT_DIR$/monsters/body_parts/Sex.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monsters/body_types/Body_Elemental.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret selection-end-column="31" />
+          <caret column="21" selection-start-column="21" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/monsters/body_types/Body_Divine.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
-          <caret line="1" column="3" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="3" />
+          <caret line="1" column="43" lean-forward="true" selection-start-line="1" selection-start-column="43" selection-end-line="1" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monsters/body_parts/Energy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="481">
+          <caret line="64" column="90" selection-start-line="64" selection-start-column="90" selection-end-line="64" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monsters/body_parts/Stomach.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="31" column="12" selection-start-line="31" selection-start-column="12" selection-end-line="31" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/World.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1037">
+          <caret line="65" column="24" lean-forward="true" selection-start-line="65" selection-start-column="24" selection-end-line="65" selection-end-column="26" />
+          <folding>
+            <element signature="e#7#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monsters/world_parts/Location.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="18" column="38" lean-forward="true" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monsters/body_types/Body_Formless.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-147">
+          <caret line="38" column="31" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monsters/Slime.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="31" column="29" lean-forward="true" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

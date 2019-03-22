@@ -35,8 +35,8 @@ class Body_Formless:
         self.dexterity_real = 1
         self.dexterity_current = 1
 
-        self.speed_real = 1
-        self.speed_current = 1
+        self.speed_real = 10
+        self.speed_current = 10
 
         self.luck_real = 1
         self.luck_current = 1

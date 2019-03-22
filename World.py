@@ -21,10 +21,11 @@ class World:
 
 World = World()
 slime = Slime('Monokai', World)
-slime.body_idle.play()
+#slime.body_idle.play()
 
 update_counter = 0
 day_tracker = 0
+
 
 while True:  # main game loop
     for event in pygame.event.get():
@@ -56,11 +57,16 @@ while True:  # main game loop
                     slime.energy.activity_level = Activity_Level['Sleep']
 
     update_counter += 1
+
     if update_counter == World.FPS:
         slime.update()
         slime.display_stats()
         update_counter = 0
 
-    slime.body_idle.blit(World.surface, (slime.x, slime.y))
+    if update_counter % 15 == 0:
+        if not (slime.energy.activity_level.name == "Sleep" or slime.energy.activity_level.name == "Rest"):
+            World.surface.fill(World.surface_color)
+            slime.location.wander()
+
     pygame.display.update()
     pygame.time.Clock().tick(World.FPS)

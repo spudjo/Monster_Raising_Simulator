@@ -1,6 +1,7 @@
 import pyganim
 from monsters.body_parts.Energy import Energy
 from monsters.body_types.Body_Formless import Body_Formless as Formless
+from monsters.world_parts.Location import Location as Location
 
 
 class Slime:
@@ -12,6 +13,7 @@ class Slime:
         self.body = Formless()
         self.energy = Energy()
 
+
         # --------------------------------------------------
         '''
         # eating food will add the object to stomach contents, increasing weight and daily calorie intake
@@ -21,15 +23,16 @@ class Slime:
 
         # --------------------------------------------------
         '''
-        self.x = World.world_x / 2
-        self.y = World.world_y / 2
 
         self.body_idle = pyganim.PygAnimation([('assets/slime/blue/0.png', 250),
                                                ('assets/slime/blue/1.png', 250),
                                                ('assets/slime/blue/2.png', 250),
                                                ('assets/slime/blue/3.png', 250)])
 
-# ----------------------------------------------------------------------------------------------------------------------
+        self.body_idle.play()
+
+        self.location = Location(World, self.body.speed_current, self.body_idle)
+
 
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -44,12 +47,10 @@ class Slime:
         self.body.display_resources()
         print("")
         self.energy.display_energy_stats()
-
-
-    def display_location_stats(self):
-        print("X-Coordinate: " + str(self.x))
-        print("X-Coordinate: " + str(self.y))
         print("")
+        self.location.display_location()
+        print("")
+
 
 
 # changes that will occur every update based on world refresh_rate

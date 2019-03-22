@@ -14,6 +14,14 @@ class Stomach:
         self.capacity_max = 1000
         self.capacity_current = 200
 
+        self.guts = .7
+
+        self.urine_max = 1
+        self.urine_current = 1
+        self.fecal_max = 1
+        self.fecal_current = 1
+
+
     def eat(self, food):
         self.contents.append(food)
 

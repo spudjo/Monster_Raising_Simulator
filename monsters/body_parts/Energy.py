@@ -63,4 +63,3 @@ class Energy:
         print("Energy Expenditure: " + str(self.expenditure_current) + " / second")
         print("Energy Base: " + str(self.expenditure_base))
         print("Energy Factor: " + str(self.expenditure_factor[self.activity_level.value]))
-        print("")
