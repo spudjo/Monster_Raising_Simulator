@@ -282,7 +282,7 @@ XnView v1.97.1 (LIBFORMAT v5.60) 22/02/2010:
      * Bad quality for cached JPEG file - http://newsgroup.xnview.com/viewtopic.php?f=36&t=17148
      * Bug menu toolbar, some labels are missing
      * Drag&Drop from another software - http://newsgroup.xnview.com/viewtopic.php?f=36&t=19308
-     * Transpârency for paintshoppro format
+     * Transpï¿½rency for paintshoppro format
 
 
 XnView v1.97 (LIBFORMAT v5.54) 27/11/2009:
@@ -1206,7 +1206,7 @@ XnView v1.91.6 (LIBFORMAT v4.83) 19/10/2007:
      * Custom color not used in categories & Favorites view - http://newsgroup.xnview.com/viewtopic.php?p=53583
      * Random slideshow - http://newsgroup.xnview.com/viewtopic.php?t=13330
      * Folder icon on Vista - http://newsgroup.xnview.com/viewtopic.php?t=13149
-     * “Remove from all categories”
+     * ï¿½Remove from all categoriesï¿½
      * B&W mirrored - http://newsgroup.xnview.com/viewtopic.php?t=13607
      * B&W converted in RGB before printing
      * some EXIF problem - http://newsgroup.xnview.com/viewtopic.php?t=13612
@@ -1250,7 +1250,7 @@ XnView v1.91.5 (LIBFORMAT v4.82) 02/10/2007:
    Fixed:
      * Transparency & thumbnails - http://newsgroup.xnview.com/viewtopic.php?p=52684
      * Problem with "Show info" & fullscreen - http://newsgroup.xnview.com/viewtopic.php?t=13134
-     * Sort problem with 'ö' - http://newsgroup.xnview.com/viewtopic.php?p=52561
+     * Sort problem with 'ï¿½' - http://newsgroup.xnview.com/viewtopic.php?p=52561
      * High quality not used for folder thumbnail - http://newsgroup.xnview.com/viewtopic.php?t=13371
      * PDF crash - http://newsgroup.xnview.com/viewtopic.php?t=13311
      * CALS
@@ -1414,7 +1414,7 @@ XnView v1.91.1 (LIBFORMAT v4.79) 11/06/2007:
      * Tooltips problem - http://newsgroup.xnview.com/viewtopic.php?t=12710
      * psp not added slide/convert - http://newsgroup.xnview.com/viewtopic.php?p=49091
      * Hidden small toolbar receive focus - http://newsgroup.xnview.com/viewtopic.php?t=12658
-     * batch rename and ö - http://newsgroup.xnview.com/viewtopic.php?p=48686
+     * batch rename and ï¿½ - http://newsgroup.xnview.com/viewtopic.php?p=48686
      * folder loads twice after selected using keyboard - http://newsgroup.xnview.com/viewtopic.php?t=12657
      * Crash when saving converted B/W - http://newsgroup.xnview.com/viewtopic.php?t=12689
      * On Vista, crash in system32 folder...
@@ -2141,7 +2141,7 @@ XnView v1.70 (LIBFORMAT v4.20) 16/05/2004:
     Fixed : K25
     Fixed : SunRaster 32bits
     Fixed : ICNS Alpha
-    Fixed : Rotate 180°
+    Fixed : Rotate 180ï¿½
     Fixed : Bug when updated filelist (move/copy files)
     Fixed : Delete file + read ahead option
     Fixed : Synchronize view & browser
@@ -2702,7 +2702,7 @@ XnView v1.24 (LIBFORMAT v3.15) 10/10/2001:
     Added: Plugin info 
     Added: EXIF, IPTF & nCC informations
     Fixed: XPM
-    Added: Hebrew, Thaï, Croatian & Afrikaans language (Windows only)
+    Added: Hebrew, Thaï¿½, Croatian & Afrikaans language (Windows only)
     Added: Animated BMP, & "Enable Animated BMP"
     Added: MNG (anim)/JNG support
     Added: "Scan into..." (windows only)
@@ -3371,7 +3371,7 @@ XnView v1.09 (LIBFORMAT v2.73) 03/05/1999:
     Added: support to write ICO files
     Changed: Sorted all formats list (file selector, ...)
     Added: 'Sorted by ID' in 'Formats available'
-    Added: 'Copy File(s) Location' to copy pathname in clipboard
+    Added: 'Copy File(s) Creature_World_Movement' to copy pathname in clipboard
     Added: 'Esc' key to close window and quit XnView (Window only)
     Added: support to read/write binary/ascii GROB HP-48 files 
     Added: support to write MIFF files

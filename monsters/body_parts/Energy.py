@@ -25,10 +25,10 @@ class Energy:
 
         sleep_factor = 4
         rest_factor = 2
-        idle_factor = -0.5
-        light_factor = -1
+        idle_factor = -0.2
+        light_factor = -0.5
         moderate_factor = -2
-        heavy_factor = -4
+        heavy_factor = -5
         return sleep_factor, rest_factor, idle_factor, light_factor, moderate_factor, heavy_factor
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -56,10 +56,10 @@ class Energy:
 # ----------------------------------------------------------------------------------------------------------------------
 #   Display Functions
 
-    def display_energy_stats(self):
+    def display_values(self):
 
         print("Activity Level: " + str(self.activity_level.name))
-        print("Energy Level: " + str(self.current) + "/" + str(self.max))
+        print("Energy Level: " + str(round(self.current, 2)) + "/" + str(self.max))
         print("Energy Expenditure: " + str(self.expenditure_current) + " / second")
         print("Energy Base: " + str(self.expenditure_base))
         print("Energy Factor: " + str(self.expenditure_factor[self.activity_level.value]))

@@ -44,18 +44,18 @@ class Body_Formless:
 # ----------------------------------------------------------------------------------------------------------------------
 #   Display Functions
 
-    def display_body_stats(self):
+    def display_values(self):
 
         print("Type: " + str(self.type))
         print("Age: " + str(round(self.age, 2)))
         print("Weight: " + str(self.weight))
 
-    def display_resources(self):
+    def display_values(self):
 
         print("Health: " + str(self.health_current) + "/" + str(self.health_max))
         print("Aether: " + str(self.aether_current) + "/" + str(self.aether_max))
 
-    def display_battle_stats(self):
+    def display_battle_values(self):
 
         print("Strength: " + str(self.strength_current) + "(" + str(self.strength_real) + ")")
         print("Intelligence: " + str(self.intelligence_current) + "(" + str(self.intelligence_real) + ")")
@@ -64,10 +64,10 @@ class Body_Formless:
         print("Speed: " + str(self.speed_current) + "(" + str(self.speed_real) + ")")
         print("Luck: " + str(self.luck_current) + "(" + str(self.luck_real) + ")")
 
-    def display_full_body_stats(self):
-        self.display_body_stats()
-        self.display_resources()
-        self.display_battle_stats()
+    def display_full_body_values(self):
+        self.display_values()
+        self.display_values()
+        self.display_battle_values()
 
 # ----------------------------------------------------------------------------------------------------------------------
 #   Update Functions

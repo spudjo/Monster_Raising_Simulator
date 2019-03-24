@@ -3,6 +3,7 @@ import pygame, sys
 from monsters.Slime import Slime
 from food.Berry import Berry
 from Activity_Level import Activity_Level
+import time
 
 
 class World:
@@ -16,18 +17,22 @@ class World:
         self.surface = pygame.display.set_mode((self.world_x, self.world_y))  # pygame.Surface object for the window
         self.surface_color = (245, 245, 220)
         self.surface.fill(self.surface_color)
+        self.update_counter = 0
         pygame.display.set_caption('Yōkai Ranch')
+        self.time_start = time.time()
+
 
 
 World = World()
 slime = Slime('Monokai', World)
-#slime.body_idle.play()
+#slime.idle_animation.play()
 
-update_counter = 0
 day_tracker = 0
 
 
+
 while True:  # main game loop
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
@@ -41,14 +46,14 @@ while True:  # main game loop
                     World.food_container.append(World.food_container)
 
             if event.key == pygame.K_a:
-                if slime.energy.activity_level.name == "Sleep":
+                if slime.energy.activity_level.name == 'Sleep':
                     slime.energy.activity_level = Activity_Level['Rest']
-                    slime.body_idle.pause()
-                elif slime.energy.activity_level.name == "Rest":
+                    #slime.idle_animation.pause()
+                elif slime.energy.activity_level.name == 'Rest':
                     slime.energy.activity_level = Activity_Level['Idle']
                 elif slime.energy.activity_level.name == "Idle":
                     slime.energy.activity_level = Activity_Level['Light']
-                    slime.body_idle.play()
+                    #slime.idle_animation.play()
                 elif slime.energy.activity_level.name == "Light":
                     slime.energy.activity_level = Activity_Level['Moderate']
                 elif slime.energy.activity_level.name == "Moderate":
@@ -56,17 +61,21 @@ while True:  # main game loop
                 elif slime.energy.activity_level.name == "Heavy":
                     slime.energy.activity_level = Activity_Level['Sleep']
 
-    update_counter += 1
 
-    if update_counter == World.FPS:
+
+    if World.update_counter == World.FPS:
+        World.surface.fill(World.surface_color)
+        print("Time Elapsed: " + str(round(time.time() - World.time_start, 0)) + " " + " seconds")
         slime.update()
-        slime.display_stats()
-        update_counter = 0
+        slime.display_values()
+        World.update_counter = 0
 
-    if update_counter % 15 == 0:
-        if not (slime.energy.activity_level.name == "Sleep" or slime.energy.activity_level.name == "Rest"):
+    '''
+    if World.update_counter % 1 == 0:
+        if not (slime.energy.activity_level.name == 'Sleep' or slime.energy.activity_level.name == 'Rest'):
             World.surface.fill(World.surface_color)
-            slime.location.wander()
+    '''
 
     pygame.display.update()
     pygame.time.Clock().tick(World.FPS)
+    World.update_counter += 1
