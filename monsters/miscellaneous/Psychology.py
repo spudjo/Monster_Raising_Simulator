@@ -16,7 +16,7 @@ class Psychology:
         self.n = 50  # Neuroticism
 
     def display_values(self):
-        print("PSYCHOLOGY")
+        print("P S Y C H O L O G Y")
         print("O: " + str(self.o))
         print("C: " + str(self.o))
         print("E: " + str(self.o))

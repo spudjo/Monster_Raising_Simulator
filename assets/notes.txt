@@ -1,0 +1,2 @@
+https://gamedev.stackexchange.com/questions/14309/how-to-develop-rpg-damage-formulas
+https://www.reddit.com/r/gamedev/comments/8oa2nu/need_some_help_with_rpg_stat_designstat_growth/
