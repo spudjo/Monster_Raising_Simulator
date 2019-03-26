@@ -22,7 +22,6 @@ class Stomach:
         self.fecal_max = 1
         self.fecal_current = 1
 
-
     def eat(self, food):
         self.contents.append(food)
 

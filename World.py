@@ -2,7 +2,7 @@
 import pygame, sys
 from monsters.Slime import Slime
 from food.Berry import Berry
-from Activity_Level import Activity_Level
+from monsters.miscellaneous.Activity_Level import Activity_Level
 import time
 
 
@@ -46,33 +46,34 @@ while True:  # main game loop
                     World.food_container.append(World.food_container)
 
             if event.key == pygame.K_a:
-                if slime.energy.activity_level.name == 'Sleep':
-                    slime.energy.activity_level = Activity_Level['Rest']
+                if slime.body.stamina.activity_level.name == 'Sleep':
+                    slime.body.stamina.activity_level = Activity_Level['Rest']
                     #slime.idle_animation.pause()
-                elif slime.energy.activity_level.name == 'Rest':
-                    slime.energy.activity_level = Activity_Level['Idle']
-                elif slime.energy.activity_level.name == "Idle":
-                    slime.energy.activity_level = Activity_Level['Light']
+                elif slime.body.stamina.activity_level.name == 'Rest':
+                    slime.body.stamina.activity_level = Activity_Level['Idle']
+                elif slime.body.stamina.activity_level.name == "Idle":
+                    slime.body.stamina.activity_level = Activity_Level['Light']
                     #slime.idle_animation.play()
-                elif slime.energy.activity_level.name == "Light":
-                    slime.energy.activity_level = Activity_Level['Moderate']
-                elif slime.energy.activity_level.name == "Moderate":
-                    slime.energy.activity_level = Activity_Level['Heavy']
-                elif slime.energy.activity_level.name == "Heavy":
-                    slime.energy.activity_level = Activity_Level['Sleep']
+                elif slime.body.stamina.activity_level.name == "Light":
+                    slime.body.stamina.activity_level = Activity_Level['Moderate']
+                elif slime.body.stamina.activity_level.name == "Moderate":
+                    slime.body.stamina.activity_level = Activity_Level['Heavy']
+                elif slime.body.stamina.activity_level.name == "Heavy":
+                    slime.body.stamina.activity_level = Activity_Level['Sleep']
 
 
 
     if World.update_counter == World.FPS:
-        World.surface.fill(World.surface_color)
+        #World.surface.fill(World.surface_color)
         print("Time Elapsed: " + str(round(time.time() - World.time_start, 0)) + " " + " seconds")
-        slime.update()
+        #slime.update()
         slime.display_values()
         World.update_counter = 0
-
+    slime.update()
+    pygame.draw.rect(World.surface, (25, 0, 0), [slime.body.world_movement.x, slime.body.world_movement.y, 5, 5], 5)
     '''
     if World.update_counter % 1 == 0:
-        if not (slime.energy.activity_level.name == 'Sleep' or slime.energy.activity_level.name == 'Rest'):
+        if not (slime.body.stamina.activity_level.name == 'Sleep' or slime.body.stamina.activity_level.name == 'Rest'):
             World.surface.fill(World.surface_color)
     '''
 
