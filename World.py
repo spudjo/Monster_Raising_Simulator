@@ -64,12 +64,14 @@ while True:  # main game loop
 
 
     if World.update_counter == World.FPS:
-        #World.surface.fill(World.surface_color)
-        print("Time Elapsed: " + str(round(time.time() - World.time_start, 0)) + " " + " seconds")
-        #slime.update()
+        World.surface.fill(World.surface_color)
+        print("----------------------------------------")
+        print("TIME ELAPSED: " + str(round(time.time() - World.time_start, 0)) + " " + " seconds")
+        print("----------------------------------------")
+        slime.update()
         slime.display_values()
         World.update_counter = 0
-    slime.update()
+    #slime.update()
     pygame.draw.rect(World.surface, (25, 0, 0), [slime.body.world_movement.x, slime.body.world_movement.y, 5, 5], 5)
     '''
     if World.update_counter % 1 == 0:

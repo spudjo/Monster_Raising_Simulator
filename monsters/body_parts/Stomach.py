@@ -1,9 +1,14 @@
 # Food / digestion / excretion system, influenced by Endurance stat (not yet implemented)
+# stats are End and Luk
 
+from monsters.miscellaneous.Stats import Stats
 
 class Stomach:
 
     def __init__(self):
+        self.type = "Stomach"
+        self.weight = 5
+        self.base_stats = Stats(0, 0, 2, 0, 0, 1)
 
         self.hunger_max = 100
         self.hunger_current = 50
@@ -34,6 +39,11 @@ class Stomach:
 
     def urinate(self):
         pass
+
+    def display_values(self):
+        print("Type: " + str(self.type))
+        print("Weight: " + str(self.weight))
+        print("Base Stats: " + str(self.base_stats))
 
     def update(self):
         pass
