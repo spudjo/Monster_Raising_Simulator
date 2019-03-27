@@ -6,6 +6,8 @@ class Psychology:
     def __init__(self):
 
         self.happiness = 50
+        self.stress = 50
+        self.sanity = 50
 
         # personality traits based on the big five personality traits, OCEAN
         # works on a scale from 1-100, 100 being highest

@@ -2,17 +2,17 @@
 from monsters.miscellaneous.Stats import Stats
 
 
-class Lungs:
+class Lung:
 
     def __init__(self):
 
-        self.type = "Lungs"
-        self.weight = 3
-        self.stats = Stats(1, 0, 2, 0, 2, 1)
+        self.type = "Lung"
+        self.weight = 2
+        self.stats = Stats(1, 0, 1, 0, 1, 0)
 
     def display_values(self):
 
-        print("L U N G S")
+        print("L U N G")
         print("Type: " + str(self.type))
         print("Weight: " + str(self.weight))
         self.stats.display_values()

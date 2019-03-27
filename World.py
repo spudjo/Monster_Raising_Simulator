@@ -21,11 +21,17 @@ class World:
         pygame.display.set_caption('Yōkai Ranch')
         self.time_start = time.time()
 
+    def update_food_container(self):
+        for food in self.food_container:
+            if food.is_destroyed:
+                self.food_container.remove(food)
+
 
 World = World()
 slime = Slime('Monokai', World)
 
 day_tracker = 0
+
 
 
 
@@ -39,10 +45,16 @@ while True:  # main game loop
 
         if event.type == pygame.KEYDOWN:
 
+            # create food
             if event.key == pygame.K_f:
-                if len(World.food_container) < 5:
+                if len(World.food_container) < 50:
                     berry = Berry(World)
                     World.food_container.append(berry)
+
+            # set all food is_destroyed to True
+            if event.key == pygame.K_d:
+                for food in World.food_container:
+                    food.destroy()
 
             if event.key == pygame.K_a:
                 if slime.body.stamina.activity_level.name == 'Sleep':
@@ -59,22 +71,31 @@ while True:  # main game loop
                     slime.body.stamina.activity_level = Activity_Level['Sleep']
 
 
-
     if World.update_counter == World.FPS:
         World.surface.fill(World.surface_color)
+        slime.update()
+        for each in World.food_container:
+            each.update()
+            each.display_location()
         print("----------------------------------------")
         print("TIME ELAPSED: " + str(round(time.time() - World.time_start, 0)) + " " + " seconds")
         print("----------------------------------------")
-        #slime.update()
+        #print(World.food_container)
         slime.display_values()
+        slime.body.world_movement.display_closest_food()
         World.update_counter = 0
 
 
-    World.surface.fill(World.surface_color)
-    slime.update()
+
+
+    World.update_food_container()
+
+
+
+    #World.surface.fill(World.surface_color)
+    #slime.update()
     #slime.display_values()
-    for each in World.food_container:
-        each.update()
+
 
     pygame.display.update()
     pygame.time.Clock().tick(World.FPS)

@@ -1,3 +1,8 @@
+# health based on End
+# aether based on Int
+# stamina based on End (?)
+# Exponential growth based on stats
+
 from monsters.miscellaneous.Activity_Level import Activity_Level
 
 class Resources:

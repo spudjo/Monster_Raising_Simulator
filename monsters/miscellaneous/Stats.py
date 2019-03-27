@@ -11,10 +11,12 @@ class Stats:
 
     def __init__(self, str, int, end, dex, spd, luk):
 
-        self.base = self.get_base(str, int, end, dex, spd, luk)
+        self.base = self.get_base_stats(str, int, end, dex, spd, luk)
+
+        #TODO: vision, resistances
 
     @staticmethod
-    def get_base(str, int, end, dex, spd, luk):
+    def get_base_stats(str, int, end, dex, spd, luk):
 
         base = {
             'str': str,
@@ -27,7 +29,7 @@ class Stats:
         return base
 
     # add stats from different body_parts into a single object and returns
-    def add_base(self, body_parts):
+    def add_base_stats(self, body_parts):
 
         for part in body_parts:
             self.base['str'] += part.stats.base.get('str')
