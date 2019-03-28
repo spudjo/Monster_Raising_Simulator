@@ -1,11 +1,7 @@
 # Class for Formless body types
 # Slimes, etc
 from monsters.miscellaneous.Resources import Resources
-from monsters.body_parts.Brain import Brain
-from monsters.body_parts.Heart import Heart
-from monsters.body_parts.Stomach import Stomach
-from monsters.body_parts.Lung import Lung
-from monsters.body_parts.Eye import Eye
+import monsters.body_parts as body_parts
 from monsters.miscellaneous.Psychology import Psychology
 from monsters.miscellaneous.Stats import Stats
 from monsters.behaviour.World_Movement import World_Movement as World_Movement
@@ -14,18 +10,26 @@ import monsters.miscellaneous.Weight as Weight
 
 class Body_Formless:
 
-    def __init__(self, World):
+    def __init__(self, World, race):
+
         # Body Parts
         # TODO: Each bodypart should come with their own resources and base stats (partially done)
         #  which will all contribute to the body's overall stats
-        self.eye_r = Eye()
-        self.eye_l = Eye()
-        self.brain = Brain()
-        self.heart = Heart()
-        self.stomach = Stomach()
-        self.lung_l = Lung()
-        self.lung_r = Lung()
-        self.body_parts = [self.brain, self.heart, self.stomach, self.lung_l, self.lung_r]    # add all body parts into an array
+        self.eye_l = body_parts.Eye(race)
+        self.eye_r = body_parts.Eye(race)
+        self.brain = body_parts.Brain(race)
+        self.heart = body_parts.Heart(race)
+        self.stomach = body_parts.Stomach(race)
+        self.lung_l = body_parts.Lung(race)
+        self.lung_r = body_parts.Lung(race)
+        self.body_parts = [self.eye_l,
+                           self.eye_r,
+                           self.brain,
+                           self.heart,
+                           self.stomach,
+                           self.lung_l,
+                           self.lung_r]    # add all body parts into an array
+
 
         # Stats
         # add up stats of all individual body parts to get totals
@@ -40,7 +44,6 @@ class Body_Formless:
         self.stamina = Resources.Stamina(100, 50)
 
         # Behaviours
-        # TODO: should be passing self into world_movement, not self.stamina
         self.world_movement = World_Movement(self, World)
         self.psychology = Psychology()
 
@@ -49,30 +52,52 @@ class Body_Formless:
 #   Display Functions
 
     def display_body_part_values(self):
+
         for part in self.body_parts:
             part.display_values()
             print("")
 
     def display_values(self):
+
         print("R E S O U R C E S")
         self.health.display_values()
         self.aether.display_values()
         self.stamina.display_values()
         print("")
-        self.stats.display_values()
-        print("")
+        #self.stats.display_values()
+        #print("")
         #self.psychology.display_values()
         #print("")
-        #print("M I S C E L L A N E O U S")
-        #print("Weight: " + str(self.weight))
-        #print("")
         self.stomach.display_values()
+        self.world_movement.display_closest_food()
+        print("")
+        print("M I S C E L L A N E O U S")
+        print("Weight: " + str(self.weight))
+        print("")
+        self.world_movement.display_values()
         print("")
 
 # ----------------------------------------------------------------------------------------------------------------------
 #   Update Functions
 
+    # TODO: might make more sense to move this to miscellaneous.Weight module
+    def update_weight(self):
+
+        self.weight = Weight.calculate_weight(10, self.body_parts)
+
+    def update_resources(self):
+
+        self.update_health()
+
+    def update_health(self):
+
+        if self.stomach.is_starving:
+            self.health.cur -= 1
+
     def update(self):
+
+        self.update_resources()
         self.stamina.update()
         self.stomach.update()
         self.world_movement.update()
+        self.update_weight()

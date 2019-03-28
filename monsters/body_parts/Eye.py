@@ -4,9 +4,9 @@ from monsters.miscellaneous.Stats import Stats
 
 class Eye:
 
-    def __init__(self):
+    def __init__(self, race):
 
-        self.type = "Eye"
+        self.type = str(race) + " Eye"
         self.weight = 0.5
         self.stats = Stats(0, 0, 0, 1, 0, 0)
 

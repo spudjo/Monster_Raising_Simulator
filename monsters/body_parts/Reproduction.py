@@ -1,8 +1,8 @@
-from enum import Enum
-
-class Reproduction(Enum):
+class Reproduction:
 
     def __init__(self):
-        self.sex = None
+
+        self.sex = None     # yes please
+        self.gender = None
         self.sexual_orientation = None
-        self.genitalia = None
+        self.genitalia = None   # pp

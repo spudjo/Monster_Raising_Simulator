@@ -1,6 +1,6 @@
 # 妖怪牧場
 import pygame, sys
-from monsters.Slime import Slime
+from monsters.Slimes import Slime
 from food.Berry import Berry
 from monsters.miscellaneous.Activity_Level import Activity_Level
 import time
@@ -9,6 +9,7 @@ import time
 class World:
 
     def __init__(self):
+
         pygame.init()  # initiate pygame
         self.FPS = 60
         self.food_container = []
@@ -23,7 +24,7 @@ class World:
 
     def update_food_container(self):
         for food in self.food_container:
-            if food.is_destroyed:
+            if food.is_eaten:
                 self.food_container.remove(food)
 
 
@@ -31,10 +32,6 @@ World = World()
 slime = Slime('Monokai', World)
 
 day_tracker = 0
-
-
-
-
 
 while True:  # main game loop
 
@@ -47,8 +44,9 @@ while True:  # main game loop
 
             # create food
             if event.key == pygame.K_f:
-                if len(World.food_container) < 50:
-                    berry = Berry(World)
+                x, y = pygame.mouse.get_pos()
+                if len(World.food_container) < 5:
+                    berry = Berry(World, x , y)
                     World.food_container.append(berry)
 
             # set all food is_destroyed to True
@@ -67,35 +65,28 @@ while True:  # main game loop
                     slime.body.stamina.activity_level = Activity_Level['Moderate']
                 elif slime.body.stamina.activity_level.name == "Moderate":
                     slime.body.stamina.activity_level = Activity_Level['Heavy']
-                elif slime.body.stamina.activity_level.name == "Heavy":
+                elif slime.body.stamina.activity_level.name == 'Heavy':
                     slime.body.stamina.activity_level = Activity_Level['Sleep']
 
-
     if World.update_counter == World.FPS:
+
         World.surface.fill(World.surface_color)
         slime.update()
-        for each in World.food_container:
-            each.update()
-            each.display_location()
         print("----------------------------------------")
-        print("TIME ELAPSED: " + str(round(time.time() - World.time_start, 0)) + " " + " seconds")
+        print("TIME ELAPSED: " + str(round(time.time() - World.time_start, 0)) + " seconds")
         print("----------------------------------------")
         #print(World.food_container)
         slime.display_values()
-        slime.body.world_movement.display_closest_food()
+        for each in World.food_container:
+            each.update()
+        World.update_food_container()
+        print("World Food Container: " + str(World.food_container))
+
         World.update_counter = 0
-
-
-
-
-    World.update_food_container()
-
-
 
     #World.surface.fill(World.surface_color)
     #slime.update()
     #slime.display_values()
-
 
     pygame.display.update()
     pygame.time.Clock().tick(World.FPS)

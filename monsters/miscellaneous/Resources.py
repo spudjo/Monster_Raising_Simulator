@@ -5,6 +5,8 @@
 
 from monsters.miscellaneous.Activity_Level import Activity_Level
 
+
+# TODO: resources affected by base stats
 class Resources:
 
     def __init__(self, stats):

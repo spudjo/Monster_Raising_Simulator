@@ -4,9 +4,9 @@ from monsters.miscellaneous.Stats import Stats
 
 class Heart:
 
-    def __init__(self):
+    def __init__(self, race):
 
-        self.type = "Heart"
+        self.type = str(race) + " Heart"
         self.weight = 5
         self.stats = Stats(2, 0, 1, 0, 1, 2)
 

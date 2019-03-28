@@ -1,19 +1,19 @@
-'''
+"""
     str - influences physical damage...
     int - influences aether resource, aether damage...
     end - influences health resource, stamina, hunger...
-    dex - influences accuracy,
+    dex - influences accuracy...
     spd - influence attack speed, movement speed, dodging...
-    luk - influences crit attacks,
-'''
+    luk - influences crit attacks, dodging...
+"""
 
+
+# TODO: vision, resistances, swimming speed, climbing speed, etc...
 class Stats:
 
     def __init__(self, str, int, end, dex, spd, luk):
 
         self.base = self.get_base_stats(str, int, end, dex, spd, luk)
-
-        #TODO: vision, resistances
 
     @staticmethod
     def get_base_stats(str, int, end, dex, spd, luk):
@@ -28,7 +28,8 @@ class Stats:
         }
         return base
 
-    # add stats from different body_parts into a single object and returns
+    # add multiple Stats.base values together and return
+    # used to calculate creature's overall stats based on the individual stats of their body parts
     def add_base_stats(self, body_parts):
 
         for part in body_parts:
