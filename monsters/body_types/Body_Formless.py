@@ -58,6 +58,7 @@ class Body_Formless:
     #   Display Functions
 
     def display_body_parts(self):
+
         print("B O D Y - P A R T S")
         for part in self.body_parts:
             print(" " + part.type)
@@ -104,9 +105,14 @@ class Body_Formless:
         self.aether.update()
         self.stamina.update()
 
+    def update_body_parts(self):
+
+        for part in self.body_parts:
+            part.update()
+
     def update(self):
 
         self.update_resources()
-        self.stomach.update()
+        self.update_body_parts()
         self.world_movement.update()
         self.update_weight()

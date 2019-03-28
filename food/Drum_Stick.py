@@ -2,26 +2,26 @@ from random import randint
 import pygame
 
 
-class Berry():
+class Drum_Stick():
 
     def __init__(self, Container, x, y):
 
         self._container = Container
 
-        self.width = 14
+        self.width = 24
         self.height = 12
 
-        self.name = "Berry"
+        self.name = "Drum Stick"
         self.type = "Food"
-        self.nutrition = 12
-        self.weight = 2
+        self.nutrition = 48
+        self.weight = 5
         self.x = x
         self.y = y
 
         self.x_center = self.x + self.width / 2
         self.y_center = self.y + self.height / 2
 
-        self.body = pygame.image.load("assets/food/9.png")
+        self.body = pygame.image.load("assets/food/53.png")
         self._container.surface.blit(self.body, (self.x,  self.y))
 
         self.hitbox = pygame.Rect(self.x, self.y, self.width, self.height)
@@ -57,6 +57,5 @@ class Berry():
         #self.display_hitbox
 
     def update(self):
-        if self.is_eaten is False:
-            self.update_position()
+        self.update_position()
 

@@ -24,7 +24,7 @@ class Stomach:
 
         self.contents = []
         self.digestion_rate = 4         # amount of nutrients absorbed from food per tick
-        self.digestion_efficiency = 50   # influences the amount of waste material produced per tick (urine / feces)
+        self.digestion_efficiency = 75   # influences the amount of waste material produced per tick (urine / feces)
 
         self.urine_max = 100
         self.urine_cur = 80
@@ -37,7 +37,7 @@ class Stomach:
     def eat(self, food):
 
         self.contents.append(food)
-        food.become_eaten()
+        self.world.food_container.remove(food)
         self.weight += food.weight
 
     # controls digestion of each food objects in stomach content
@@ -86,12 +86,12 @@ class Stomach:
 
     def display_waste_values(self):
 
-        print("Urine: " + str(self.urine_cur) + "/" + str(self.urine_max))
-        print("Fecal: " + str(self.fecal_cur) + "/" + str(self.fecal_max))
+        print("Urine: " + str(round(self.urine_cur, 0)) + "/" + str(self.urine_max))
+        print("Fecal: " + str(round(self.fecal_cur, 0)) + "/" + str(self.fecal_max))
 
     def display_hunger_values(self):
 
-        print("Hunger: " + str(self.hunger_cur) + "/" + str(self.hunger_max))
+        print("Hunger: " + str(round(self.hunger_cur, 0)) + "/" + str(self.hunger_max))
         print("Is Hungry: " + str(self.is_hungry))
         print("Is Starving: " + str(self.is_starving))
         print("Contents: " + str(self.contents))
@@ -108,14 +108,14 @@ class Stomach:
 
     def update_urine(self, waste_gain):
         if self.urine_cur + waste_gain >= self.urine_max:
-            self.urine_cur += self.urine_max
+            self.urine_cur = self.urine_max
             self.urinate()
         else:
             self.urine_cur += waste_gain
 
     def update_fecal(self, waste_gain):
         if self.fecal_cur + waste_gain >= self.fecal_max:
-            self.fecal_cur += self.fecal_max
+            self.fecal_cur = self.fecal_max
             self.defecate()
         else:
             self.fecal_cur += waste_gain
@@ -135,12 +135,9 @@ class Stomach:
         else:
             self.hunger_cur += self.hunger_rate
             self.is_starving = False
-        # digest food if any in stomach
-        if len(self.contents) > 0:
-            self.digest_food()
 
     def update(self):
-
         self.update_hunger_cur()
         self.update_is_hungry()
+        self.digest_food()
 

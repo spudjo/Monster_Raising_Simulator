@@ -2,6 +2,7 @@
 import pygame, sys
 from monsters.Blue_Slime import Blue_Slime
 from food.Berry import Berry
+from food.Drum_Stick import Drum_Stick
 from monsters.miscellaneous.Activity_Level import Activity_Level
 import time
 
@@ -66,11 +67,17 @@ while True:  # main game loop
 
         if event.type == pygame.KEYDOWN:
             # create food
-            if event.key == pygame.K_f:
+            if event.key == pygame.K_9:
                 x, y = pygame.mouse.get_pos()
                 if len(World.food_container) < (3 + (len(World.creature_container) * 3)):
-                    berry = Berry(World, x , y)
+                    berry = Berry(World, x, y)
                     World.food_container.append(berry)
+
+            if event.key == pygame.K_0:
+                x, y = pygame.mouse.get_pos()
+                if len(World.food_container) < (3 + (len(World.creature_container) * 3)):
+                    drum_stick = Drum_Stick(World, x, y)
+                    World.food_container.append(drum_stick)
 
             # set all food is_destroyed to True
             if event.key == pygame.K_d:
@@ -127,6 +134,8 @@ while True:  # main game loop
 
         for each in World.food_container:
             each.update()
+            #each.display_values()
+
 
         for each in World.waste_container:
             each.update()
@@ -134,14 +143,9 @@ while True:  # main game loop
 
         for each in World.creature_container:
             each.update()
-
-
-        #'''
-        for each in World.creature_container:
             each.display_values()
-        #'''
-
-        World.update_food_container()
+            #for food in each.body.stomach.contents:
+            #    food.display_values()
 
         World.update_counter = 0
 

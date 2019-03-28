@@ -2,21 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="869c3710-3762-4ba5-bcab-530a7d1d85f9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/miscellaneous/Poop.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/food/Drum_Stick.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/World.py" beforeDir="false" afterPath="$PROJECT_DIR$/World.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/assets/notes.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/food/Berry.py" beforeDir="false" afterPath="$PROJECT_DIR$/food/Berry.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/monsters/Blue_Slime.py" beforeDir="false" afterPath="$PROJECT_DIR$/monsters/Blue_Slime.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/monsters/behaviour/World_Movement.py" beforeDir="false" afterPath="$PROJECT_DIR$/monsters/behaviour/World_Movement.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/monsters/body_parts/Brain.py" beforeDir="false" afterPath="$PROJECT_DIR$/monsters/body_parts/Brain.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/monsters/body_parts/Eye.py" beforeDir="false" afterPath="$PROJECT_DIR$/monsters/body_parts/Eye.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/monsters/body_parts/Heart.py" beforeDir="false" afterPath="$PROJECT_DIR$/monsters/body_parts/Heart.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/monsters/body_parts/Lung.py" beforeDir="false" afterPath="$PROJECT_DIR$/monsters/body_parts/Lung.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/monsters/body_parts/Stomach.py" beforeDir="false" afterPath="$PROJECT_DIR$/monsters/body_parts/Stomach.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/monsters/body_types/Body_Formless.py" beforeDir="false" afterPath="$PROJECT_DIR$/monsters/body_types/Body_Formless.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/monsters/miscellaneous/Resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/monsters/miscellaneous/Resources.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/monsters/miscellaneous/Stats.py" beforeDir="false" afterPath="$PROJECT_DIR$/monsters/miscellaneous/Stats.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,11 +19,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/World.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="369">
-              <caret line="130" column="42" lean-forward="true" selection-start-line="130" selection-start-column="42" selection-end-line="130" selection-end-column="42" />
+            <state relative-caret-position="781">
+              <caret line="147" column="38" selection-start-line="147" selection-start-column="38" selection-end-line="147" selection-end-column="38" />
               <folding>
                 <element signature="e#7#25#0" expanded="true" />
               </folding>
@@ -39,19 +32,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/monsters/Blue_Slime.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="119">
+                <caret line="7" column="33" lean-forward="true" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/monsters/behaviour/World_Movement.py">
+        <entry file="file://$PROJECT_DIR$/monsters/Blue_Slime.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-85">
-              <caret line="89" column="10" selection-start-line="89" selection-start-column="10" selection-end-line="89" selection-end-column="10" />
+            <state relative-caret-position="556">
+              <caret line="34" column="17" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -59,8 +55,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/monsters/body_types/Body_Formless.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="25" column="30" lean-forward="true" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
+            <state relative-caret-position="199">
+              <caret line="85" column="17" lean-forward="true" selection-start-line="85" selection-start-column="17" selection-end-line="85" selection-end-column="17" />
               <folding>
                 <element signature="e#46#100#0" expanded="true" />
               </folding>
@@ -78,10 +74,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/monsters/behaviour/World_Movement.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="577">
+              <caret line="94" column="33" selection-start-line="94" selection-start-column="30" selection-end-line="94" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/monsters/body_parts/Stomach.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="37" lean-forward="true" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
+            <state relative-caret-position="213">
+              <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
               <folding>
                 <element signature="e#114#160#0" expanded="true" />
               </folding>
@@ -89,11 +94,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/food/Berry.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="21" column="38" lean-forward="true" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
+            <state relative-caret-position="493">
+              <caret line="30" column="33" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/food/Drum_Stick.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="561">
+              <caret line="34" column="32" lean-forward="true" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -118,10 +132,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>&quot;Spd&quot;</find>
-      <find>&quot;Luk&quot;</find>
-      <find>'Str'</find>
-      <find>self.height</find>
       <find>self.hitbox_x</find>
       <find>world_y</find>
       <find>world_x</find>
@@ -147,7 +157,11 @@
       <find>light</find>
       <find>closest</find>
       <find>print</find>
+      <find>digest_food</find>
+      <find>eat(</find>
+      <find>stomach.eat</find>
       <find>search_for_food</find>
+      <find>eaten</find>
     </findStrings>
     <replaceStrings>
       <replace>display_values</replace>
@@ -188,7 +202,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/yokai/world_parts/Location.py" />
         <option value="$PROJECT_DIR$/yokai/body_parts/Energy.py" />
         <option value="$PROJECT_DIR$/yokai/body_types/Body_Ethereal.py" />
         <option value="$PROJECT_DIR$/yokai/body_types/Body_Elemental.py" />
@@ -220,25 +233,26 @@
         <option value="$PROJECT_DIR$/monsters/elements/Water.py" />
         <option value="$PROJECT_DIR$/monsters/body_parts/Reproduction.py" />
         <option value="$PROJECT_DIR$/monsters/Slime.py" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/monsters/Slimes.py" />
         <option value="$PROJECT_DIR$/monsters/miscellaneous/Resources.py" />
         <option value="$PROJECT_DIR$/assets/notes.txt" />
         <option value="$PROJECT_DIR$/monsters/miscellaneous/Psychology.py" />
         <option value="$PROJECT_DIR$/monsters/miscellaneous/Stats.py" />
-        <option value="$PROJECT_DIR$/monsters/behaviour/World_Movement.py" />
         <option value="$PROJECT_DIR$/miscellaneous/poop.py" />
         <option value="$PROJECT_DIR$/miscellaneous/Poop.py" />
-        <option value="$PROJECT_DIR$/food/Berry.py" />
-        <option value="$PROJECT_DIR$/monsters/body_types/Body_Formless.py" />
         <option value="$PROJECT_DIR$/monsters/body_parts/Heart.py" />
         <option value="$PROJECT_DIR$/monsters/body_parts/Lung.py" />
         <option value="$PROJECT_DIR$/monsters/body_parts/Brain.py" />
         <option value="$PROJECT_DIR$/monsters/body_parts/Eye.py" />
-        <option value="$PROJECT_DIR$/World.py" />
-        <option value="$PROJECT_DIR$/World.py" />
-        <option value="$PROJECT_DIR$/monsters/body_parts/Stomach.py" />
         <option value="$PROJECT_DIR$/monsters/Blue_Slime.py" />
+        <option value="$PROJECT_DIR$/monsters/body_types/Body_Formless.py" />
+        <option value="$PROJECT_DIR$/monsters/behaviour/World_Movement.py" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/monsters/body_parts/Stomach.py" />
+        <option value="$PROJECT_DIR$/food/Berry.py" />
+        <option value="$PROJECT_DIR$/food/Drum_Stick.py" />
+        <option value="$PROJECT_DIR$/World.py" />
+        <option value="$PROJECT_DIR$/World.py" />
       </list>
     </option>
   </component>
@@ -309,6 +323,7 @@
       <recent name="C:\Users\student\source\repos\-Shawn_Py\Monster_Raising_Simulator\food" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\student\source\repos\-Shawn_Py\Monster_Raising_Simulator\food" />
       <recent name="C:\Users\student\source\repos\-Shawn_Py\yokai_ranch" />
     </key>
   </component>
@@ -485,6 +500,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1688" y="58" width="1696" height="1026" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49916527" visible="true" weight="0.23039807" />
@@ -495,7 +511,7 @@
       <window_info anchor="bottom" id="Message" order="3" />
       <window_info anchor="bottom" id="Find" order="4" />
       <window_info anchor="bottom" id="Version Control" order="5" weight="0.32922733" />
-      <window_info active="true" anchor="bottom" x="1345" y="71" width="574" height="1008" id="Run" order="6" side_tool="true" type="WINDOWED" visible="true" weight="0.42795232" />
+      <window_info active="true" anchor="bottom" x="1024" y="71" width="548" height="1013" id="Run" order="6" side_tool="true" type="WINDOWED" visible="true" weight="0.42795232" />
       <window_info anchor="bottom" id="Debug" order="7" sideWeight="0.49939686" weight="0.20828667" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
@@ -525,7 +541,6 @@
     </layout-to-restore>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Animation_Test.py" />
     <entry file="file://$PROJECT_DIR$/assets/pyganim_examples/test1_pyganim.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
@@ -658,16 +673,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="187">
-            <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/monsters/body_types/Body_Divine.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -706,23 +711,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/monsters/miscellaneous/Stats.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="23" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/monsters/body_types/Body_Formless.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="30" lean-forward="true" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
-          <folding>
-            <element signature="e#46#100#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/monsters/body_parts/Lung.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -744,30 +732,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/monsters/body_parts/Brain.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/monsters/behaviour/World_Movement.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-85">
-          <caret line="89" column="10" selection-start-line="89" selection-start-column="10" selection-end-line="89" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/World.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="130" column="42" lean-forward="true" selection-start-line="130" selection-start-column="42" selection-end-line="130" selection-end-column="42" />
-          <folding>
-            <element signature="e#7#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/miscellaneous/Poop.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="233">
@@ -775,17 +739,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/monsters/body_parts/Brain.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/monsters/Blue_Slime.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        <state relative-caret-position="556">
+          <caret line="34" column="17" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monsters/miscellaneous/Stats.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="23" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monsters/body_types/Body_Formless.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="85" column="17" lean-forward="true" selection-start-line="85" selection-start-column="17" selection-end-line="85" selection-end-column="17" />
+          <folding>
+            <element signature="e#46#100#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="119">
+            <caret line="7" column="33" lean-forward="true" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monsters/behaviour/World_Movement.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="577">
+          <caret line="94" column="33" selection-start-line="94" selection-start-column="30" selection-end-line="94" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/monsters/body_parts/Stomach.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="37" lean-forward="true" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
+        <state relative-caret-position="213">
+          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
           <folding>
             <element signature="e#114#160#0" expanded="true" />
           </folding>
@@ -794,8 +799,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/food/Berry.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="21" column="38" lean-forward="true" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
+        <state relative-caret-position="493">
+          <caret line="30" column="33" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/food/Drum_Stick.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="34" column="32" lean-forward="true" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/World.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="781">
+          <caret line="147" column="38" selection-start-line="147" selection-start-column="38" selection-end-line="147" selection-end-column="38" />
+          <folding>
+            <element signature="e#7#25#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

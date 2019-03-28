@@ -93,7 +93,6 @@ class World_Movement:
 
         if self.hitbox.colliderect(self.closest_food.hitbox):
             self.body.stomach.eat(self.closest_food)
-            self.body.stomach.digest_food()
 
     def sleep_movement(self):
         self.update_coords()
@@ -231,6 +230,9 @@ class World_Movement:
             if self.closest_food is not None:
                 self.body.stamina.activity_level = Activity_Level['Light']
                 self.move_to_food()
+            #else:
+            #    self.body.stamina.activity_level = Activity_Level['Idle']
+
         else:
             self.body.stamina.activity_level = Activity_Level['Idle']
             self.closest_food = None
