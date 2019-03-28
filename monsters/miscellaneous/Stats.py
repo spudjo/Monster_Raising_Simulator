@@ -1,19 +1,22 @@
 """
-    str - influences physical damage...
+    str - influences melee damage, muscle mass?, carry weight?
     int - influences aether resource, aether damage...
-    end - influences health resource, stamina, hunger...
+    end - influences health resource, stamina, hunger, resistances?
     dex - influences accuracy...
     spd - influence attack speed, movement speed, dodging...
     luk - influences crit attacks, dodging...
 """
 
 
-# TODO: vision, resistances, swimming speed, climbing speed, etc...
+# TODO: vision (distance, in dark underwater), swimming speed, climbing speed, etc...
+#   resistance to disease, mutation (growing extra limbs?), stress (linked to psychology), bleeding, etc...
 class Stats:
 
     def __init__(self, str, int, end, dex, spd, luk):
 
         self.base = self.get_base_stats(str, int, end, dex, spd, luk)
+        self.element_resistances = self.get_resistance_stats(50, 50, 50, 50, 50, 50, 50, 50, 50, 50)
+        self.vision = 250
 
     @staticmethod
     def get_base_stats(str, int, end, dex, spd, luk):
@@ -27,6 +30,23 @@ class Stats:
             'luk': luk
         }
         return base
+
+    @staticmethod
+    def get_resistance_stats(fire, water, earth, wind, wood, metal, light, dark, time, space):
+
+        resistances = {
+            'fire': fire,
+            'water': water,
+            'earth': earth,
+            'wind': wind,
+            'wood': wood,
+            'metal': metal,
+            'light': light,
+            'dark': dark,
+            'time': time,
+            'space': space
+        }
+        return resistances
 
     # add multiple Stats.base values together and return
     # used to calculate creature's overall stats based on the individual stats of their body parts

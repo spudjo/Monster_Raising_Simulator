@@ -17,7 +17,6 @@ class Resources:
         #self.stamina = self.Stamina(50, 50)
         pass
 
-    # Hit Points
     class Health:
 
         def __init__(self, body, max, cur, regen):
@@ -44,7 +43,7 @@ class Resources:
         # ----------------------------------------------------------------------------------------------------------------------
         #   Update Functions
 
-        def update(self):
+        def update_on_sleep(self):
             # increase current health if is_regen is True, typically if creature is sleeping
             if self.body.stamina.activity_level.name == 'Sleep':
                 self.is_regen = True
@@ -54,7 +53,20 @@ class Resources:
                     else:
                         self.cur += self.regen
 
-    # Mana Points
+        def update_on_starving(self):
+
+            if self.body.stomach.is_starving:
+                if self.cur - 1 <= 0:
+                    self.cur = 0
+                else:
+                    self.cur -= 1
+
+        def update(self):
+            if self.body.stomach.is_starving:
+                self.update_on_starving()
+            else:
+                self.update_on_sleep()
+
     class Aether:
 
         def __init__(self, body, max, cur, regen):
@@ -81,8 +93,8 @@ class Resources:
         # ----------------------------------------------------------------------------------------------------------------------
         #   Update Functions
 
-        def update(self):
-            # increase current aether if is_regen is True, typically if creature is sleeping
+        def update_on_sleep(self):
+            # increase current health if is_regen is True, typically if creature is sleeping
             if self.body.stamina.activity_level.name == 'Sleep':
                 self.is_regen = True
                 if self.is_regen:
@@ -91,7 +103,20 @@ class Resources:
                     else:
                         self.cur += self.regen
 
-    # Stamina Points
+        def update_on_starving(self):
+
+            if self.body.stomach.is_starving:
+                if self.cur - 1 <= 0:
+                    self.cur = 0
+                else:
+                    self.cur -= 1
+
+        def update(self):
+            if self.body.stomach.is_starving:
+                self.update_on_starving()
+            else:
+                self.update_on_sleep()
+
     class Stamina:
 
         def __init__(self, body, max, cur):

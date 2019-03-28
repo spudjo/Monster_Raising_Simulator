@@ -8,9 +8,11 @@ class Blue_Slime:
         self.name = name
         self.race = self.get_class_name()
         self.age = 1
+        self.level = 1
+        self.exp = 0
 
         self.element = None
-        self.body = Formless(World, self.race)
+        self.body = Formless(self, World)
 
 # ----------------------------------------------------------------------------------------------------------------------
 #   Display Functions
@@ -20,6 +22,8 @@ class Blue_Slime:
         print("Name: " + str(self.name))
         print("Race: " + str(self.race))
         print("Age: " + str(round(self.age, 2)))
+        print("Level: " + str(self.level))
+        print("Exp: " + str(self.exp))
         #print("")
         self.body.display_values()
 

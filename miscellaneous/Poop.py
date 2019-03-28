@@ -2,7 +2,7 @@ from random import randint
 import pygame
 
 
-class Berry():
+class Poop():
 
     def __init__(self, Container, x, y):
 
@@ -11,9 +11,9 @@ class Berry():
         self.width = 14
         self.height = 12
 
-        self.name = "Berry"
-        self.type = "Food"
-        self.nutrition = 24
+        self.name = "Poop"
+        self.type = "Waste"
+        self.nutrition = 5
         self.weight = 2
         self.x = x
         self.y = y
@@ -21,7 +21,7 @@ class Berry():
         self.x_center = self.x + self.width / 2
         self.y_center = self.y + self.height / 2
 
-        self.body = pygame.image.load("assets/food/9.png")
+        self.body = pygame.image.load("assets/misc/poop.png")
         self._container.surface.blit(self.body, (self.x,  self.y))
 
 

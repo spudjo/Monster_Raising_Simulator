@@ -14,18 +14,21 @@ import monsters.miscellaneous.Weight as Weight
 
 class Body_Formless:
 
-    def __init__(self, world, race):
+    def __init__(self, whole_body, world):
+
+        self.whole_body = whole_body
+        self.world = world
 
         # Body Parts
         # TODO: Each bodypart should come with their own resources and base stats (partially done)
         #  which will all contribute to the body's overall stats
-        self.eye_l = Eye(race)
-        self.eye_r = Eye(race)
-        self.brain = Brain(race)
-        self.heart = Heart(race)
-        self.stomach = Stomach(race)
-        self.lung_l = Lung(race)
-        self.lung_r = Lung(race)
+        self.eye_l = Eye(self)
+        self.eye_r = Eye(self)
+        self.brain = Brain(self)
+        self.heart = Heart(self)
+        self.stomach = Stomach(self, world)
+        self.lung_l = Lung(self)
+        self.lung_r = Lung(self)
         self.body_parts = [self.eye_l,
                            self.eye_r,
                            self.brain,
@@ -78,9 +81,9 @@ class Body_Formless:
         self.stamina.display_activity_level()
         print("")
         self.stomach.display_values()
-        self.stomach.display_hunger_values()
+        self.stomach.display_hunger_values_full()
         print("")
-        #self.world_movement.display_closest_food()
+        self.world_movement.display_closest_food()
         #print("")
         #print("M I S C E L L A N E O U S")
         #self.display_miscellaneous_values()
@@ -100,12 +103,6 @@ class Body_Formless:
         self.health.update()
         self.aether.update()
         self.stamina.update()
-        self.update_health()
-
-    def update_health(self):
-
-        if self.stomach.is_starving:
-            self.health.cur -= 1
 
     def update(self):
 
