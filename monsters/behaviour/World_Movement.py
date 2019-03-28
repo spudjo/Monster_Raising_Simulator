@@ -25,8 +25,8 @@ class World_Movement:
 
         # creatures (x, y) hitbox coords
         # theres definitely a better way to do this but im keeping it like this for reasons ¯\_(ツ)_/¯
-        self.x = (self.container.width - self.width) / 2
-        self.y = (self.container.height - self.height) / 2
+        self.x = ((self.container.width - self.width) / 2) * random.uniform(0.85, 1.15)
+        self.y = ((self.container.height - self.height) / 2) * random.uniform(0.85, 1.15)
 
         self.x2 = self.x + self.width
         self.y2 = self.y
@@ -106,7 +106,7 @@ class World_Movement:
         y_chance_to_move = random.uniform(0, 1)
 
         # makes chance of creature's x changing on wander random
-        if x_chance_to_move > 0.5:
+        if x_chance_to_move > 0.25:
             # reverse direction when close to Container x border
             if self.x2 >= self.container.width and self.movement_speed_x > 0:
                 self.movement_speed_x = -self.movement_speed_x
@@ -114,12 +114,12 @@ class World_Movement:
                 self.movement_speed_x = -self.movement_speed_x
 
             # change x in opposite direction 20% of the time
-            if x_chance_to_move > .9:
+            if x_chance_to_move > .85:
                 self.movement_speed_x = -self.movement_speed_x
             self.x = self.x + (self.movement_speed_x * random.uniform(0.5, 1))
 
         # makes chance of creature's y changing on wander random
-        if y_chance_to_move > 0.5:
+        if y_chance_to_move > 0.25:
             # reverse direction when close to Container y border
             if self.y4 >= self.container.height and self.movement_speed_y > 0:
                 self.movement_speed_y = -self.movement_speed_y
@@ -127,7 +127,7 @@ class World_Movement:
                 self.movement_speed_y = -self.movement_speed_y
 
             # change y in opposite direction 20% of the time
-            if y_chance_to_move > .9:
+            if y_chance_to_move > .85:
                 self.movement_speed_y = -self.movement_speed_y
             self.y = self.y + (self.movement_speed_y * random.uniform(0.5, 1))
 
@@ -139,6 +139,7 @@ class World_Movement:
 # ----------------------------------------------------------------------------------------------------------------------
 #   Calculation Functions
 
+    # checks all food in container.food_array and returns instance of the closest food for tracking
     def get_closest_food(self):
 
         if len(self.container.food_container) > 0:
@@ -225,12 +226,15 @@ class World_Movement:
             self.idle_movement()
 
         elif self.body.stamina.activity_level.name == 'Light':
+            self.idle_animation.play()
             self.idle_animation.blit(self.container.surface, (self.x, self.y))
 
         elif self.body.stamina.activity_level.name == 'Moderate':
+            self.idle_animation.play()
             self.idle_animation.blit(self.container.surface, (self.x, self.y))
 
         elif self.body.stamina.activity_level.name == 'Heavy':
+            self.idle_animation.play()
             self.idle_animation.blit(self.container.surface, (self.x, self.y))
 
     # update 4 corners of hitbox, useful for collision detection later on

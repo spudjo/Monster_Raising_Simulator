@@ -14,7 +14,7 @@ class Stomach:
         self.is_starving = False
         self.is_hungry = False
         self.hunger_max = 100
-        self.hunger_cur = 40
+        self.hunger_cur = 60
         self.hunger_threshold = 60      # amount of hunger til creature will seek out food
         self.hunger_rate = 1            # hunger gain per tick
 
@@ -67,6 +67,11 @@ class Stomach:
 # ----------------------------------------------------------------------------------------------------------------------
 #   Display Functions
 
+    def display_values_full(self):
+
+        self.display_values()
+        self.display_hunger_values()
+
     def display_hunger_values(self):
 
         print("Hunger: " + str(self.hunger_cur) + "/" + str(self.hunger_max))
@@ -80,8 +85,6 @@ class Stomach:
         print("S T O M A C H")
         print("Type: " + str(self.type))
         print("Weight: " + str(self.weight))
-        self.display_hunger_values()
-        # self.stats.display_values()
 
 # ----------------------------------------------------------------------------------------------------------------------
 #   Update Functions

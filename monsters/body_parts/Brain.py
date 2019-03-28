@@ -10,12 +10,22 @@ class Brain:
         self.weight = 5
         self.stats = Stats(0, 7, 0, 3, 0, 2)
 
+    # ----------------------------------------------------------------------------------------------------------------------
+    #   Display Functions
+
+    def display_values_full(self):
+
+        self.display_values()
+        self.stats.display_values()
+
     def display_values(self):
 
         print("B R A I N")
         print("Type: " + str(self.type))
         print("Weight: " + str(self.weight))
-        self.stats.display_values()
+
+    # ----------------------------------------------------------------------------------------------------------------------
+    #   Update Functions
 
     def update(self):
 

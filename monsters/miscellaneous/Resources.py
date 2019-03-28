@@ -7,42 +7,96 @@ from monsters.miscellaneous.Activity_Level import Activity_Level
 
 
 # TODO: resources affected by base stats
+#   starving influences Psychology (happiness, stress. sanity)
 class Resources:
 
     def __init__(self, stats):
 
-        self.health = self.Health(50, 50)
-        self.aether = self.Aether(50, 50)
-        self.stamina = self.Stamina(50, 50)
+        #self.health = self.Health(50, 50)
+        #self.aether = self.Aether(50, 50)
+        #self.stamina = self.Stamina(50, 50)
+        pass
 
     # Hit Points
     class Health:
 
-        def __init__(self, max, cur):
+        def __init__(self, body, max, cur, regen):
+
+            self.body = body
 
             self.max = max
             self.cur = cur
+            self.regen = regen
+            self.is_regen = False
+
+        # ----------------------------------------------------------------------------------------------------------------------
+        #   Display Functions
+
+        def display_values_full(self):
+            self.display_values()
+            print("Regen: " + str(self.regen))
+            print("Is Regen: " + str(self.is_regen))
 
         def display_values(self):
 
             print("Health: " + str(self.cur) + "/" + str(self.max))
 
+        # ----------------------------------------------------------------------------------------------------------------------
+        #   Update Functions
+
+        def update(self):
+            # increase current health if is_regen is True, typically if creature is sleeping
+            if self.body.stamina.activity_level.name == 'Sleep':
+                self.is_regen = True
+                if self.is_regen:
+                    if self.cur + self.regen >= self.max:
+                        self.cur = self.max
+                    else:
+                        self.cur += self.regen
+
     # Mana Points
     class Aether:
 
-        def __init__(self, max, cur):
+        def __init__(self, body, max, cur, regen):
+
+            self.body = body
 
             self.max = max
             self.cur = cur
+            self.regen = regen
+            self.is_regen = False
+
+        # ----------------------------------------------------------------------------------------------------------------------
+        #   Display Functions
+
+        def display_values_full(self):
+            self.display_values()
+            print("Regen: " + str(self.regen))
+            print("Is Regen: " + str(self.is_regen))
 
         def display_values(self):
 
             print("Aether: " + str(self.cur) + "/" + str(self.max))
 
+        # ----------------------------------------------------------------------------------------------------------------------
+        #   Update Functions
+
+        def update(self):
+            # increase current aether if is_regen is True, typically if creature is sleeping
+            if self.body.stamina.activity_level.name == 'Sleep':
+                self.is_regen = True
+                if self.is_regen:
+                    if self.cur + self.regen >= self.max:
+                        self.cur = self.max
+                    else:
+                        self.cur += self.regen
+
     # Stamina Points
     class Stamina:
 
-        def __init__(self, max, cur):
+        def __init__(self, body, max, cur):
+
+            self.body = body
 
             self.activity_level = Activity_Level(2)
             self.max = max
@@ -54,8 +108,8 @@ class Resources:
                                                                                   # based on Activity level
             self.expenditure_current = 0         # current stamina expenditure per second based on base and factor
 
-    # ----------------------------------------------------------------------------------------------------------------------
-    #   Calculation Functions
+        # ----------------------------------------------------------------------------------------------------------------------
+        #   Calculation Functions
 
         @staticmethod
         def calculate_stamina_expenditure_factor():
@@ -68,8 +122,25 @@ class Resources:
             heavy_factor = -5
             return sleep_factor, rest_factor, idle_factor, light_factor, moderate_factor, heavy_factor
 
-    # ----------------------------------------------------------------------------------------------------------------------
-    #   Update Functions
+        # ----------------------------------------------------------------------------------------------------------------------
+        #   Display Functions
+
+        def display_values_full(self):
+            self.display_values()
+            print("Stamina Base: " + str(self.expenditure_base))
+            print("Stamina Factor: " + str(self.expenditure_factor[self.activity_level.value]))
+            self.display_activity_level()
+
+        def display_activity_level(self):
+            print("Activity Level: " + str(self.activity_level.name))
+
+        def display_values(self):
+            print("Stamina: " + str(round(self.cur, 2)) + "/" + str(self.max))
+            print("Stamina Expenditure: " + str(self.expenditure_current) + " / second")
+
+
+        # ----------------------------------------------------------------------------------------------------------------------
+        #   Update Functions
 
         def update_stamina_expenditure_current(self):
 
@@ -78,7 +149,7 @@ class Resources:
         def update_stamina_current(self):
 
             self.cur = self.cur + self.expenditure_current
-            if self.cur >= self.max:
+            if self.cur >= self.max and self.activity_level == Activity_Level['Sleep']:
                 self.activity_level = Activity_Level['Idle']
                 self.cur = self.max
             elif self.cur <= 0:
@@ -86,19 +157,7 @@ class Resources:
                 self.cur = 0
 
         def update(self):
-
             self.update_stamina_current()
             self.update_stamina_expenditure_current()
-
-    # ----------------------------------------------------------------------------------------------------------------------
-    #   Display Functions
-
-        def display_values(self):
-
-            print("Stamina: " + str(round(self.cur, 2)) + "/" + str(self.max))
-            print("Stamina Expenditure: " + str(self.expenditure_current) + " / second")
-            print("Stamina Base: " + str(self.expenditure_base))
-            print("Stamina Factor: " + str(self.expenditure_factor[self.activity_level.value]))
-            print("Activity Level: " + str(self.activity_level.name))
 
 

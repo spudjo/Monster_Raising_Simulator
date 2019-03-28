@@ -6,17 +6,17 @@ class Berry():
 
     def __init__(self, Container, x, y):
 
-        self.container = Container
+        self._container = Container
 
         self.name = "Berry"
         self.type = "Food"
         self.nutrition = 24
-        self.weight = 1
+        self.weight = 2
         self.x = x
         self.y = y
 
         self.body = pygame.image.load("assets/food/9.png")
-        self.container.surface.blit(self.body, (self.x,  self.y))
+        self._container.surface.blit(self.body, (self.x,  self.y))
 
         self.width = 14
         self.height = 12
@@ -48,11 +48,11 @@ class Berry():
 
     def display_hitbox(self):
 
-        pygame.draw.rect(self.container.surface, (25, 25, 25), self.hitbox, 1)
+        pygame.draw.rect(self._container.surface, (25, 25, 25), self.hitbox, 1)
 
     def update_position(self):
 
-        self.container.surface.blit(self.body, (self.x, self.y))
+        self._container.surface.blit(self.body, (self.x, self.y))
         #self.display_hitbox
 
     def update(self):

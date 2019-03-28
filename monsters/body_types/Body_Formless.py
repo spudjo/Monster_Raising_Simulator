@@ -1,7 +1,11 @@
 # Class for Formless body types
 # Slimes, etc
 from monsters.miscellaneous.Resources import Resources
-import monsters.body_parts as body_parts
+from monsters.body_parts.Eye import Eye
+from monsters.body_parts.Brain import Brain
+from monsters.body_parts.Heart import Heart
+from monsters.body_parts.Stomach import Stomach
+from monsters.body_parts.Lung import Lung
 from monsters.miscellaneous.Psychology import Psychology
 from monsters.miscellaneous.Stats import Stats
 from monsters.behaviour.World_Movement import World_Movement as World_Movement
@@ -10,18 +14,18 @@ import monsters.miscellaneous.Weight as Weight
 
 class Body_Formless:
 
-    def __init__(self, World, race):
+    def __init__(self, world, race):
 
         # Body Parts
         # TODO: Each bodypart should come with their own resources and base stats (partially done)
         #  which will all contribute to the body's overall stats
-        self.eye_l = body_parts.Eye(race)
-        self.eye_r = body_parts.Eye(race)
-        self.brain = body_parts.Brain(race)
-        self.heart = body_parts.Heart(race)
-        self.stomach = body_parts.Stomach(race)
-        self.lung_l = body_parts.Lung(race)
-        self.lung_r = body_parts.Lung(race)
+        self.eye_l = Eye(race)
+        self.eye_r = Eye(race)
+        self.brain = Brain(race)
+        self.heart = Heart(race)
+        self.stomach = Stomach(race)
+        self.lung_l = Lung(race)
+        self.lung_r = Lung(race)
         self.body_parts = [self.eye_l,
                            self.eye_r,
                            self.brain,
@@ -39,17 +43,21 @@ class Body_Formless:
         self.weight = Weight.calculate_weight(10, self.body_parts)
 
         # Resources
-        self.health = Resources.Health(100, 100)
-        self.aether = Resources.Aether(150, 150)
-        self.stamina = Resources.Stamina(100, 50)
+        self.health = Resources.Health(self, 100, 50, 2)
+        self.aether = Resources.Aether(self, 150, 75, 2)
+        self.stamina = Resources.Stamina(self, 100, 20)
 
         # Behaviours
-        self.world_movement = World_Movement(self, World)
+        self.world_movement = World_Movement(self, world)
         self.psychology = Psychology()
 
+    # ----------------------------------------------------------------------------------------------------------------------
+    #   Display Functions
 
-# ----------------------------------------------------------------------------------------------------------------------
-#   Display Functions
+    def display_body_parts(self):
+        print("B O D Y - P A R T S")
+        for part in self.body_parts:
+            print(" " + part.type)
 
     def display_body_part_values(self):
 
@@ -57,28 +65,30 @@ class Body_Formless:
             part.display_values()
             print("")
 
-    def display_values(self):
+    def display_miscellaneous_values(self):
+        print("Weight: " + str(self.weight))
 
+    def display_values(self):
+        print("Weight: " + str(self.weight))
+        print("")
         print("R E S O U R C E S")
         self.health.display_values()
         self.aether.display_values()
         self.stamina.display_values()
+        self.stamina.display_activity_level()
         print("")
-        #self.stats.display_values()
-        #print("")
-        #self.psychology.display_values()
-        #print("")
         self.stomach.display_values()
-        self.world_movement.display_closest_food()
+        self.stomach.display_hunger_values()
         print("")
-        print("M I S C E L L A N E O U S")
-        print("Weight: " + str(self.weight))
-        print("")
-        self.world_movement.display_values()
-        print("")
+        #self.world_movement.display_closest_food()
+        #print("")
+        #print("M I S C E L L A N E O U S")
+        #self.display_miscellaneous_values()
+        #print("")
 
-# ----------------------------------------------------------------------------------------------------------------------
-#   Update Functions
+
+    # ----------------------------------------------------------------------------------------------------------------------
+    #   Update Functions
 
     # TODO: might make more sense to move this to miscellaneous.Weight module
     def update_weight(self):
@@ -87,6 +97,9 @@ class Body_Formless:
 
     def update_resources(self):
 
+        self.health.update()
+        self.aether.update()
+        self.stamina.update()
         self.update_health()
 
     def update_health(self):
@@ -97,7 +110,6 @@ class Body_Formless:
     def update(self):
 
         self.update_resources()
-        self.stamina.update()
         self.stomach.update()
         self.world_movement.update()
         self.update_weight()
