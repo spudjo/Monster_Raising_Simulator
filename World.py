@@ -1,12 +1,18 @@
 # 妖怪牧場
 import pygame, sys
-from monsters.Blue_Slime import Blue_Slime
+from creature_files.creatures.formless.Blue_Slime import Blue_Slime
 from food.Berry import Berry
 from food.Drum_Stick import Drum_Stick
-from monsters.miscellaneous.Activity_Level import Activity_Level
 import time
+import configparser
 
-# TODO: world 'cleaning up' (removal of dead creatures, eaten food, etc) should be controlled by World, current controlled within objects themselves
+# TODO: world 'cleaning up' (removal of dead creature_files, eaten food, etc) should be controlled by World, current controlled within objects themselves
+#   if multiple creatures collide with the same food object on the same update game will crash!
+
+config = configparser.ConfigParser()
+config.read('config.ini')
+config_world = config['WORLD']
+
 
 class World:
 
@@ -22,11 +28,13 @@ class World:
         self.name_tracker = 0
         self.max_creatures = 5
 
+        self.name_container = []
+
         self.food_container = []
         self.waste_container = []
 
-        self.width = 800
-        self.height = 600
+        self.width = int(config_world['width'])
+        self.height = int(config_world['height'])
 
         self.surface = pygame.display.set_mode((self.width, self.height))  # pygame.Surface object for the window
         self.surface_color = (245, 245, 220)
@@ -56,6 +64,9 @@ class World:
 
 
 World = World()
+
+
+
 
 
 day_tracker = 0
@@ -122,7 +133,6 @@ while True:  # main game loop
                 elif slime.body.stamina.activity_level.name == 'Heavy':
                     slime.body.stamina.activity_level = Activity_Level['Sleep']
             '''
-
     World.toggle_hitbox()
     World.toggle_vision()
 
@@ -154,6 +164,14 @@ while True:  # main game loop
             each.display_values()
             #for food in each.body.stomach.contents:
             #    food.display_values()
+
+            # display name
+            font = pygame.font.Font('freesansbold.ttf', 20)
+            text = font.render(each.name, True, (100, 100, 100))
+            textRect = text.get_rect()
+            textRect.center = (each.body.world_movement.x_center, each.body.world_movement.y_center - 40)
+            World.surface.blit(text, textRect)
+
 
         World.update_counter = 0
         #'''
