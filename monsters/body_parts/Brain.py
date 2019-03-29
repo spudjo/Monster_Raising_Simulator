@@ -8,7 +8,8 @@ class Brain:
 
         self.type = str(body.whole_body.race) + " Brain"
         self.weight = 5
-        self.stats = Stats(0, 7, 0, 3, 0, 2)
+        self.stats = Stats(0, 7, 0, 3, 0, 2,
+                           0, 0, 0, 0)
 
     # ----------------------------------------------------------------------------------------------------------------------
     #   Display Functions

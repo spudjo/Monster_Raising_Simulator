@@ -8,7 +8,8 @@ class Heart:
 
         self.type = str(body.whole_body.race) + " Heart"
         self.weight = 5
-        self.stats = Stats(2, 0, 1, 0, 1, 2)
+        self.stats = Stats(2, 0, 1, 0, 1, 2,
+                           0, 0, 0, 0)
 
     # ----------------------------------------------------------------------------------------------------------------------
     #   Display Functions

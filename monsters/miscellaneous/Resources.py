@@ -43,6 +43,12 @@ class Resources:
         # ----------------------------------------------------------------------------------------------------------------------
         #   Update Functions
 
+        def update_on_zero_health(self):
+
+            if self.cur <= 0:
+                self.body.whole_body.is_destroyed = False
+                self.body.world.creature_container.remove(self.body.whole_body)
+
         def update_on_sleep(self):
             # increase current health if is_regen is True, typically if creature is sleeping
             if self.body.stamina.activity_level.name == 'Sleep':
@@ -66,6 +72,7 @@ class Resources:
                 self.update_on_starving()
             else:
                 self.update_on_sleep()
+            self.update_on_zero_health()
 
     class Aether:
 

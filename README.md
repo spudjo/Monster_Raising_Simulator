@@ -15,5 +15,7 @@ Controls:
 
 S: Spawns a slime (max of 3)
 
+Z: Toggle world speed increase
+
 Slime will become hungry and seek out food as it's hunger reaches a certain level. 
 While starving, health and aether will decrease.

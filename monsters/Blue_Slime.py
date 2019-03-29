@@ -12,6 +12,7 @@ class Blue_Slime:
         self.exp = 0
 
         self.element = None
+        self.is_destroyed = True
         self.body = Formless(self, World)
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -36,6 +37,7 @@ class Blue_Slime:
 
     # returns class name as a string with underscores replaced with spaces
     def get_class_name(self):
+
         class_name = self.__class__.__name__
         class_name_spaces = ""
         for char in class_name:

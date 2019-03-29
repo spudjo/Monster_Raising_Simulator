@@ -2,7 +2,7 @@ from random import randint
 import pygame
 
 
-class Poop():
+class Poop:
 
     def __init__(self, Container, x, y):
 
@@ -30,15 +30,13 @@ class Poop():
 
         self.is_edible = True
         self.is_destroyed = False
-        self.is_eaten = False
 
     def destroy(self):
 
         self.is_destroyed = True
 
-    def become_eaten(self):
-
-        self.is_eaten = True
+    # ----------------------------------------------------------------------------------------------------------------------
+    #   Display Functions
 
     def display_location(self):
 
@@ -62,6 +60,6 @@ class Poop():
         #self.display_hitbox
 
     def update(self):
-        if self.is_eaten is False:
-            self.update_position()
+
+         self.update_position()
 

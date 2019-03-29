@@ -41,12 +41,13 @@ class Body_Formless:
         # Stats
         # add up stats of all individual body parts to get totals
         # TODO: Look into a better way of doing stats
-        self.stats = Stats(0, 0, 1, 0, 0, 2)  # body base stats
-        self.stats = Stats.add_base_stats(self.stats, self.body_parts)
+        self.stats = Stats(0, 0, 1, 0, 0, 2,
+                           0, 0, 0, 0)  # body base stats
+        self.stats = Stats.combine_stats(self.stats, self.body_parts)
         self.weight = Weight.calculate_weight(10, self.body_parts)
 
         # Resources
-        self.health = Resources.Health(self, 100, 50, 2)
+        self.health = Resources.Health(self, 100, 75, 2)
         self.aether = Resources.Aether(self, 150, 75, 2)
         self.stamina = Resources.Stamina(self, 100, 20)
 

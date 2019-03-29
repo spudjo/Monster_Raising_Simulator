@@ -58,8 +58,8 @@ class World_Movement:
         self.rest_animation = pyganim.PygAnimation([('assets/slime/blue/rest/0.png', 25), ('assets/slime/blue/rest/1.png', 25)])
         self.idle_animation = pyganim.PygAnimation([('assets/slime/blue/idle/0.png', 25), ('assets/slime/blue/idle/1.png', 25)])
 
-# ----------------------------------------------------------------------------------------------------------------------
-#   Movement Functions
+    # ----------------------------------------------------------------------------------------------------------------------
+    #   Movement Functions
 
     def move_to_food(self):
 
@@ -147,15 +147,15 @@ class World_Movement:
         self.idle_animation.play()
         self.idle_animation.blit(self.container.surface, (self.x, self.y))
 
-# ----------------------------------------------------------------------------------------------------------------------
-#   Calculation Functions
+    # ----------------------------------------------------------------------------------------------------------------------
+    #   Calculation Functions
 
     # checks all food in container.food_array and returns instance of the closest food for tracking
     def get_closest_food(self):
 
         if len(self.container.food_container) > 0:
             for food in self.container.food_container:
-                if self.get_distance(food) <= self.body.stats.vision:
+                if self.get_distance(food) <= self.body.stats.explore.get('vis'):
                     if self.closest_food is None:
                         self.closest_food = food
                     elif self.get_distance(self.closest_food) > self.get_distance(food):
@@ -176,12 +176,12 @@ class World_Movement:
 
         # return distance between two points
 
-# ----------------------------------------------------------------------------------------------------------------------
-#   Display Functions
+    # ----------------------------------------------------------------------------------------------------------------------
+    #   Display Functions
 
     def display_vision_radius(self):
 
-        pygame.draw.circle(self.container.surface, (255, 0, 0), (int(round(self.x_center, 0)), int(round(self.y_center, 0))), self.body.stats.vision, 1)
+        pygame.draw.circle(self.container.surface, (255, 0, 0), (int(round(self.x_center, 0)), int(round(self.y_center, 0))), self.body.stats.explore.get('vis'), 1)
 
     def display_closest_food(self):
 
@@ -190,6 +190,7 @@ class World_Movement:
             print("Distance: " + str(self.get_distance(self.closest_food)))
 
     def display_coordinates(self):
+
         print("W O R L D - M O V E M E N T")
         print("X-Coord: " + str(self.x))
         print("Y-Coord: " + str(self.y))

@@ -8,7 +8,8 @@ class Lung:
 
         self.type = str(body.whole_body.race) + " Lung"
         self.weight = 2
-        self.stats = Stats(1, 0, 1, 0, 1, 0)
+        self.stats = Stats(1, 0, 1, 0, 1, 0,
+                           0, 0, 0, 0)
 
     # ----------------------------------------------------------------------------------------------------------------------
     #   Display Functions

@@ -2,6 +2,7 @@
 # stats are End and Luk
 from monsters.miscellaneous.Stats import Stats
 from miscellaneous.Poop import Poop
+from miscellaneous.Urine import Urine
 
 
 class Stomach:
@@ -13,7 +14,8 @@ class Stomach:
 
         self.type = str(body.whole_body.race) + " Stomach"
         self.weight = 3
-        self.stats = Stats(0, 0, 2, 0, 0, 1)
+        self.stats = Stats(0, 0, 2, 0, 0, 1,
+                           0, 0, 0, 0)
 
         self.is_starving = False
         self.is_hungry = False
@@ -29,7 +31,7 @@ class Stomach:
         self.urine_max = 100
         self.urine_cur = 80
         self.fecal_max = 100
-        self.fecal_cur = 80
+        self.fecal_cur = 50
 
     # function to eat food objects, called from World_Movement class on collision with food object when is_hungry equals True
     # food object is added to stomach content, food is_eaten variable is set to True and food's weight is added to stomach weight, which
@@ -37,10 +39,14 @@ class Stomach:
     def eat(self, food):
 
         self.contents.append(food)
+
+        print("Test before")
+        self.body.world_movement.closest_food = None
         self.world.food_container.remove(food)
+        print("Test after")
         self.weight += food.weight
 
-    # controls digestion of each food objects in stomach content
+    # controls digestion of each food objects in stomach content0
     def digest_food(self):
         # iterate through each food in stomach.content
         for food in self.contents:
@@ -63,13 +69,16 @@ class Stomach:
                 self.contents.remove(food)
 
     def defecate(self):
+
         poop = Poop(self.world, self.body.world_movement.x_center, self.body.world_movement.y_center)
         self.world.waste_container.append(poop)
         self.fecal_cur = 0
 
     def urinate(self):
 
-        pass
+        urine = Urine(self.world, self.body.world_movement.x_center, self.body.world_movement.y_center)
+        self.world.waste_container.append(urine)
+        self.urine_cur = 0
 
 # ----------------------------------------------------------------------------------------------------------------------
 #   Display Functions
@@ -132,6 +141,8 @@ class Stomach:
         if self.hunger_cur >= self.hunger_max:
             self.hunger_cur = self.hunger_max
             self.is_starving = True
+        elif self.hunger_cur <= 0:
+            self.hunger_cur = 0
         else:
             self.hunger_cur += self.hunger_rate
             self.is_starving = False

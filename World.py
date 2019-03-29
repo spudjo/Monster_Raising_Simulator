@@ -6,41 +6,43 @@ from food.Drum_Stick import Drum_Stick
 from monsters.miscellaneous.Activity_Level import Activity_Level
 import time
 
+# TODO: world 'cleaning up' (removal of dead creatures, eaten food, etc) should be controlled by World, current controlled within objects themselves
+
 class World:
 
     def __init__(self):
 
         pygame.init()  # initiate pygame
+        pygame.display.set_caption('Yōkai Ranch')
+
         self.FPS = 60
 
         self.creature_container = []
-        self.name_array = ['Monokai', 'Creme', 'Sbeve']
+        self.name_array = ['Monokai', 'Creme', 'Slim', 'Alice', 'Bally']
         self.name_tracker = 0
+        self.max_creatures = 5
 
         self.food_container = []
         self.waste_container = []
 
         self.width = 800
         self.height = 600
+
         self.surface = pygame.display.set_mode((self.width, self.height))  # pygame.Surface object for the window
         self.surface_color = (245, 245, 220)
         self.surface.fill(self.surface_color)
+
         self.update_counter = 0
-        pygame.display.set_caption('Yōkai Ranch')
+        self.update_increment = 1
         self.time_start = time.time()
 
         self.display_hitbox = False
         self.display_vision = False
 
-    def update_food_container(self):
-        for food in self.food_container:
-            if food.is_eaten:
-                self.food_container.remove(food)
-
     def spawn_slime(self):
-        if self.name_tracker < 3:
+        self.name_tracker = len(self.creature_container)
+        if self.name_tracker < self.max_creatures:
             self.creature_container.append(Blue_Slime(self.name_array[self.name_tracker], self))
-            self.name_tracker += 1
 
     def toggle_hitbox(self):
         if self.display_hitbox:
@@ -99,6 +101,12 @@ while True:  # main game loop
                 else:
                     World.display_vision = True
 
+            if event.key == pygame.K_z:
+                if World.update_increment == 1:
+                    World.update_increment = 10
+                else:
+                    World.update_increment = 1
+
             '''
             if event.key == pygame.K_a:
                 if slime.body.stamina.activity_level.name == 'Sleep':
@@ -118,8 +126,8 @@ while True:  # main game loop
     World.toggle_hitbox()
     World.toggle_vision()
 
-    if World.update_counter == World.FPS:
-
+    if World.update_counter >= World.FPS:
+        #'''
         print("----------------------------------------")
         print("W O R L D - S T A T S")
         print("----------------------------------------")
@@ -131,7 +139,7 @@ while True:  # main game loop
 
         World.surface.fill(World.surface_color)
 
-
+        
         for each in World.food_container:
             each.update()
             #each.display_values()
@@ -148,6 +156,7 @@ while True:  # main game loop
             #    food.display_values()
 
         World.update_counter = 0
+        #'''
 
 
 
@@ -157,4 +166,4 @@ while True:  # main game loop
 
     pygame.display.update()
     pygame.time.Clock().tick(World.FPS)
-    World.update_counter += 1
+    World.update_counter += World.update_increment

@@ -10,13 +10,20 @@
 
 # TODO: vision (distance, in dark underwater), swimming speed, climbing speed, etc...
 #   resistance to disease, mutation (growing extra limbs?), stress (linked to psychology), bleeding, etc...
+# TODO: better way of doing get() methods
 class Stats:
 
-    def __init__(self, str, int, end, dex, spd, luk):
+    def __init__(self,
+                 str, int, end, dex, spd, luk,
+                 vis, vis_dark, swim, climb):
 
         self.base = self.get_base_stats(str, int, end, dex, spd, luk)
-        self.element_resistances = self.get_resistance_stats(50, 50, 50, 50, 50, 50, 50, 50, 50, 50)
-        self.vision = 250
+
+        self.explore = self.get_explore_stats(vis, vis_dark, swim, climb)
+
+        self.resist = self.get_resist_stats(0, 0, 0, 0,
+                                            0, 0, 0, 0,
+                                            0, 0)
 
     @staticmethod
     def get_base_stats(str, int, end, dex, spd, luk):
@@ -32,7 +39,20 @@ class Stats:
         return base
 
     @staticmethod
-    def get_resistance_stats(fire, water, earth, wind, wood, metal, light, dark, time, space):
+    def get_explore_stats(vis, vis_dark, swim, climb):
+
+        explore = {
+            'vis': vis,
+            'vis_dark': vis_dark,
+            'swim': swim,
+            'climb': climb
+        }
+        return explore
+
+    @staticmethod
+    def get_resist_stats(fire, water, earth, wind,
+                             wood, metal, light, dark,
+                             time, space):
 
         resistances = {
             'fire': fire,
@@ -48,25 +68,48 @@ class Stats:
         }
         return resistances
 
-    # add multiple Stats.base values together and return
-    # used to calculate creature's overall stats based on the individual stats of their body parts
-    def add_base_stats(self, body_parts):
+    # add all stats together and returns
+    # used to calculate creature's overall stats on the individual stats of their body parts
+    def combine_stats(self, body_parts):
 
         for part in body_parts:
-            self.base['str'] += part.stats.base.get('str')
-            self.base['int'] += part.stats.base.get('int')
-            self.base['end'] += part.stats.base.get('end')
-            self.base['dex'] += part.stats.base.get('dex')
-            self.base['spd'] += part.stats.base.get('spd')
-            self.base['luk'] += part.stats.base.get('luk')
+            # add all base stats
+            for value in part.stats.base:
+                self.base[value] += part.stats.base[value]
+            # add all explore stats
+            for value in part.stats.explore:
+                self.explore[value] += part.stats.explore[value]
+            # add all resist stats
+            for value in part.stats.resist:
+                self.resist[value] += part.stats.resist[value]
+
         return self
+
+    # ----------------------------------------------------------------------------------------------------------------------
+    #   Display Functions
+
+    def display_base_values(self):
+
+        print("B A S E - S T A T S")
+        for value in self.base:
+            print(str.capitalize(value) + ": " + str(self.base[value]))
+
+    def display_explore_values(self):
+
+        print("E X P L O R E - S T A T S")
+        for value in self.explore:
+            print(str.capitalize(value) + ": " + str(self.explore[value]))
+
+    def display_resist_values(self):
+
+        print("R E S I S T A N C E - S T A T S")
+        for value in self.resist:
+            print(str.capitalize(value) + ": " + str(self.resist[value]))
 
     def display_values(self):
 
-        print("B A S E - S T A T S")
-        print("Str: " + str(self.base.get('str')))
-        print("Int: " + str(self.base.get('int')))
-        print("End: " + str(self.base.get('end')))
-        print("Dex: " + str(self.base.get('dex')))
-        print("Spd: " + str(self.base.get('spd')))
-        print("Luk: " + str(self.base.get('luk')))
+        self.display_base_values()
+        print("")
+        self.display_explore_values()
+        print("")
+        self.display_resist_values()

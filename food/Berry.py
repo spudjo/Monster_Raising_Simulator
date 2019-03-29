@@ -2,7 +2,7 @@ from random import randint
 import pygame
 
 
-class Berry():
+class Berry:
 
     def __init__(self, Container, x, y):
 
@@ -13,7 +13,7 @@ class Berry():
 
         self.name = "Berry"
         self.type = "Food"
-        self.nutrition = 12
+        self.nutrition = 8
         self.weight = 2
         self.x = x
         self.y = y
@@ -34,6 +34,9 @@ class Berry():
 
         self.is_destroyed = True
 
+    # ----------------------------------------------------------------------------------------------------------------------
+    #   Display Functions
+
     def display_location(self):
 
         print("Location: (" + str(self.x) + ", " + str(self.y) + ")")
@@ -51,12 +54,15 @@ class Berry():
 
         pygame.draw.rect(self._container.surface, (25, 25, 25), self.hitbox, 1)
 
+    # ----------------------------------------------------------------------------------------------------------------------
+    #   Update Functions
+
     def update_position(self):
 
         self._container.surface.blit(self.body, (self.x, self.y))
         #self.display_hitbox
 
     def update(self):
-        if self.is_eaten is False:
-            self.update_position()
+
+        self.update_position()
 
