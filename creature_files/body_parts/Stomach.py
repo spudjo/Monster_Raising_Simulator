@@ -13,7 +13,8 @@ class Stomach:
         self.world = world # used for expelling waste!
         self.body = body
 
-        self.type = str(body.whole_body.race) + " Stomach"
+        self.name = str(body.whole_body.race) + " Stomach"
+        self.type = "Stomach"
         self.weight = 3
         self.stats = Stats(0, 0, 2, 0, 0, 1,
                            0, 0, 0, 0)
@@ -38,10 +39,10 @@ class Stomach:
     # food object is added to stomach content, food is_eaten variable is set to True and food's weight is added to stomach weight, which
     # will later be added to overall body weight on update
     def eat(self, food):
-
-        self.contents.append(food)
+        if food in self.world.food_container:
+            self.contents.append(food)
+            self.world.food_container.remove(food)
         self.body.world_movement.closest_food = None
-        self.world.food_container.remove(food)
         self.weight += food.weight
 
     # controls digestion of each food objects in stomach content0
@@ -49,14 +50,17 @@ class Stomach:
         # iterate through each food in stomach.content
         for food in self.contents:
             food_nutrition_cur = food.nutrition      # get food's current nutrition for hunger decrease calculation
-            food.nutrition -= self.digestion_rate    # decrease the nutrition points in food by digestion rate
+            food.nutrition -= self.digestion_rate    # decrease food's current nutrition food by digestion rate
             if food.nutrition < 0:
                 food.nutrition = 0  # if digestion rate would bring food nutrition to less than or equal to 0, simply set it to 0
 
             nutrition_gain = (food_nutrition_cur - food.nutrition) * (self.digestion_efficiency / 100)
             waste_gain = (food_nutrition_cur - food.nutrition) - nutrition_gain
 
-            self.hunger_cur -= nutrition_gain   # decreases food's nutrition loss from hunger
+            if self.hunger_cur - nutrition_gain < 0:
+                self.hunger_cur = 0 # simply set current hunger to 0 if nutrition gain would bring it lower than zero, preventing negative hunger
+            else:
+                self.hunger_cur -= nutrition_gain   # decreases food's nutrition loss from hunger
 
             self.update_urine(waste_gain)
             self.update_fecal(waste_gain)
@@ -68,13 +72,13 @@ class Stomach:
 
     def defecate(self):
 
-        poop = Poop(self.world, self.body.world_movement.x_center, self.body.world_movement.y_center)
+        poop = Poop(self.world, round(self.body.world_movement.x_center, 0), round(self.body.world_movement.y_center, 0))
         self.world.waste_container.append(poop)
         self.fecal_cur = 0
 
     def urinate(self):
 
-        urine = Urine(self.world, self.body.world_movement.x_center, self.body.world_movement.y_center)
+        urine = Urine(self.world, round(self.body.world_movement.x_center, 0), round(self.body.world_movement.y_center, 0))
         self.world.waste_container.append(urine)
         self.urine_cur = 0
 
@@ -107,26 +111,39 @@ class Stomach:
     def display_values(self):
 
         print("S T O M A C H")
+        print("Name: " + str(self.name))
         print("Type: " + str(self.type))
         print("Weight: " + str(self.weight))
 
 # ----------------------------------------------------------------------------------------------------------------------
 #   Update Functions
 
+    # increase urine levels based on waste_gain from digest_food()
     def update_urine(self, waste_gain):
+
         if self.urine_cur + waste_gain >= self.urine_max:
             self.urine_cur = self.urine_max
             self.urinate()
         else:
             self.urine_cur += waste_gain
 
+    # increase fecal levels based on waste_gain from digest_food()
     def update_fecal(self, waste_gain):
+
         if self.fecal_cur + waste_gain >= self.fecal_max:
             self.fecal_cur = self.fecal_max
             self.defecate()
         else:
             self.fecal_cur += waste_gain
 
+    def update_is_starving(self):
+
+        if self.hunger_cur >= self.hunger_max:
+            self.is_starving = True
+        else:
+            self.is_starving = False
+
+    # set is_hungry to True if current hunger equals or exceeds threshold
     def update_is_hungry(self):
 
         if self.hunger_cur >= self.hunger_threshold:
@@ -134,19 +151,17 @@ class Stomach:
         else:
             self.is_hungry = False
 
+    # increase current hunger every update tick based on hunger_rate
     def update_hunger_cur(self):
 
-        if self.hunger_cur >= self.hunger_max:
+        if self.hunger_cur + self.hunger_rate >= self.hunger_max:
             self.hunger_cur = self.hunger_max
-            self.is_starving = True
-        elif self.hunger_cur <= 0:
-            self.hunger_cur = 0
         else:
             self.hunger_cur += self.hunger_rate
-            self.is_starving = False
 
     def update(self):
         self.update_hunger_cur()
         self.update_is_hungry()
+        self.update_is_starving()
         self.digest_food()
 

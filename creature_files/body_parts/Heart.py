@@ -7,6 +7,7 @@ class Heart:
     def __init__(self, body):
 
         self.type = str(body.whole_body.race) + " Heart"
+        self.type = "Heart"
         self.weight = 5
         self.stats = Stats(2, 0, 1, 0, 1, 2,
                            0, 0, 0, 0)
@@ -22,6 +23,7 @@ class Heart:
     def display_values(self):
 
         print("H E A R T")
+        print("Name: " + str(self.name))
         print("Type: " + str(self.type))
         print("Weight: " + str(self.weight))
 

@@ -95,6 +95,7 @@ class World_Movement:
             self.body.stomach.eat(self.closest_food)
 
     def sleep_movement(self):
+
         self.update_coords()
         # self.display_hitbox()
         # self.display_vision_radius()
@@ -102,6 +103,7 @@ class World_Movement:
         self.sleep_animation.blit(self.container.surface, (self.x, self.y))
 
     def rest_movement(self):
+
         self.update_coords()
         # self.display_hitbox()
         # self.display_vision_radius()
@@ -122,7 +124,7 @@ class World_Movement:
             elif self.x <= 0 and self.movement_speed_x < 0:
                 self.movement_speed_x = -self.movement_speed_x
 
-            # change x in opposite direction 20% of the time
+            # change x in opposite direction 15% of the time
             if x_chance_to_move > .85:
                 self.movement_speed_x = -self.movement_speed_x
             self.x = self.x + (self.movement_speed_x * random.uniform(0.5, 1))
@@ -135,7 +137,7 @@ class World_Movement:
             elif self.y <= 0 and self.movement_speed_y < 0:
                 self.movement_speed_y = -self.movement_speed_y
 
-            # change y in opposite direction 20% of the time
+            # change y in opposite direction 15% of the time
             if y_chance_to_move > .85:
                 self.movement_speed_y = -self.movement_speed_y
             self.y = self.y + (self.movement_speed_y * random.uniform(0.5, 1))
@@ -170,11 +172,10 @@ class World_Movement:
         y2 = other.y_center
         return math.sqrt(math.pow((x2 - self.x_center), 2) + math.pow((y2 - self.y_center), 2))
 
+    # sets self.closest_food to instance of closest food object within vision range
     def search_for_food(self):
 
         self.get_closest_food()
-
-        # return distance between two points
 
     # ----------------------------------------------------------------------------------------------------------------------
     #   Display Functions

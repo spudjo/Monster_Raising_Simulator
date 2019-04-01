@@ -39,7 +39,7 @@ class Berry:
 
     def display_location(self):
 
-        print("Location: (" + str(self.x) + ", " + str(self.y) + ")")
+        print("Location: (" + str(self.x_center) + ", " + str(self.y_center) + ")")
 
     def display_values(self):
 

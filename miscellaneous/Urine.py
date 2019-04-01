@@ -36,7 +36,8 @@ class Urine:
     #   Display Functions
 
     def display_location(self):
-        print("Location: (" + str(self.x) + ", " + str(self.y) + ")")
+
+        print("Location: (" + str(self.x_center) + ", " + str(self.y_center) + ")")
 
     def display_values(self):
         print("Name: " + str(self.name))
@@ -50,8 +51,9 @@ class Urine:
 
     def update_position(self):
         self._container.surface.blit(self.body, (self.x, self.y))
-        # self.display_hitbox
+        #self.display_hitbox
 
     def update(self):
         self.update_position()
+
 

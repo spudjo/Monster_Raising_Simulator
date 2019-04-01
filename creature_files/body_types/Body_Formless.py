@@ -20,7 +20,7 @@ class Body_Formless:
         self.world = world
 
         # Body Parts
-        # TODO: Each bodypart should come with their own resources and base stats (partially done)
+        # TODO: Each body part should come with their own resources and base stats (partially done)
         #  which will all contribute to the body's overall stats
         self.eye_l = Eye(self)
         self.eye_r = Eye(self)
@@ -71,9 +71,11 @@ class Body_Formless:
             print("")
 
     def display_miscellaneous_values(self):
+
         print("Weight: " + str(self.weight))
 
     def display_values(self):
+
         print("Weight: " + str(self.weight))
         print("")
         print("R E S O U R C E S")

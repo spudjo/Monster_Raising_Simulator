@@ -8,8 +8,8 @@ class Poop:
 
         self._container = Container
 
-        self.width = 14
-        self.height = 12
+        self.width = 16
+        self.height = 11
 
         self.name = "Poop"
         self.type = "Waste"
@@ -19,7 +19,7 @@ class Poop:
         self.y = y
 
         self.x_center = self.x + self.width / 2
-        self.y_center = self.y + self.height / 2
+        self.y_center = round(self.y + self.height / 2, 0)
 
         self.body = pygame.image.load("assets/misc/poop.png")
         self._container.surface.blit(self.body, (self.x,  self.y))
@@ -40,7 +40,7 @@ class Poop:
 
     def display_location(self):
 
-        print("Location: (" + str(self.x) + ", " + str(self.y) + ")")
+        print("Location: (" + str(self.x_center) + ", " + str(self.y_center) + ")")
 
     def display_values(self):
 
@@ -60,6 +60,5 @@ class Poop:
         #self.display_hitbox
 
     def update(self):
-
-         self.update_position()
+        self.update_position()
 
