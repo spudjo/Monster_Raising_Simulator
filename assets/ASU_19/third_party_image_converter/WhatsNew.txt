@@ -2811,7 +2811,7 @@ XnView v1.20 (LIBFORMAT v3.00) 26/06/2001:
     Changed: Zoom are in %
     Changed: Print preview and more options (Windows only)
     Added: support to read Neopaint Mask, Neopaint Stamp, ESM software PIX, Solitaire Image Recorder format
-    Added: support to read Jovian VI, Iris CT, Core IDC, Autologic, Imaging Technology format
+    Added: support to read Jovian VI, Iris CT, creature IDC, Autologic, Imaging Technology format
     Added: Stereo image & Pixel Power Collage format
     Fixed: very very long filename (Windows only)
     Added: import of NeoBook Cartoon, Amapi & Vue d'esprit format
@@ -2985,7 +2985,7 @@ XnView v1.17 (LIBFORMAT v2.95) 01/11/2000:
     Fixed: Scitex reading
     Fixed: network under windows
     Added: "EXE/DLL" import (Windows only)
-    Added: support to read Corel Metafile Exchange files
+    Added: support to read creaturel Metafile Exchange files
     Added: support to read TRS-80, Poser Bump files
     Added: support to read Postscript files in Windows. Ghostscript needed !
     Added: support to read/write Radiance files
@@ -3149,7 +3149,7 @@ XnView v1.13 (LIBFORMAT v2.91) 01/02/2000:
     Added: support to read multi-image Psion 5 files
     Added: support to read PostScript files (only if ghostscript is installed)
     Added: support to read QV-5000 Camera files
-    Added: support to read BMF (Corel Flow) files
+    Added: support to read BMF (creaturel Flow) files
     Added: support to write Enhanced Metafile files (Windows only)
     Added: support to drop files in XnView (Windows only)
     Added: support to drag & drop files in browser (Windows only)
@@ -3311,7 +3311,7 @@ XnView v1.10 (LIBFORMAT v2.80) 30/08/1999:
     Added: support to read Kodak DC120 Digital Camera files 
     Added: support to read Preview in Encapsulated Postscript files 
     Added: support to read first bitmap in WordPerfect files 
-    Added: support to read first bitmap in CorelDraw files 
+    Added: support to read first bitmap in creaturelDraw files
     Added: support to read Degas TT mode (pi4,pi5,pi6) files 
     Added: support to read Windows cursor with more than 1 bits per pixel
     Added: support to write X Bitmap files
@@ -3402,7 +3402,7 @@ XnView v1.08 (LIBFORMAT v2.72) 01/03/1999:
 
     Fixed: bug with Slide Show when file on root drive are added (Windows only)
     Fixed: bug with 'Sequence/Multi convert', View menu bar not enabled (Motif only)
-    Fixed: bug with reading Gif, some file can generate a core dump
+    Fixed: bug with reading Gif, some file can generate a creature dump
     Fixed: bug with bad font (Linux only)
     Fixed: bug with bad redraw in Browser's preview
     Fixed: bug with 'All Graphics Files' in Open box (Windows only)

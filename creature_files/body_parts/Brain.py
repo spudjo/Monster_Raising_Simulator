@@ -6,11 +6,12 @@ class Brain:
 
     def __init__(self, body):
 
-        self.name = str(body.whole_body.race) + " Brain"
+        self.config = body.creature.config[str.upper(self.__class__.__name__)]
+
+        self.name = str(body.creature.race) + " Brain"
         self.type = "Brain"
         self.weight = 5
-        self.stats = Stats(0, 7, 0, 3, 0, 2,
-                           0, 0, 0, 0)
+        self.stats = Stats(self)
 
     # ----------------------------------------------------------------------------------------------------------------------
     #   Display Functions

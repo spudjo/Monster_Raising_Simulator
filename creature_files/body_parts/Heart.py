@@ -6,11 +6,12 @@ class Heart:
 
     def __init__(self, body):
 
-        self.type = str(body.whole_body.race) + " Heart"
+        self.config = body.creature.config[str.upper(self.__class__.__name__)]
+
+        self.name = str(body.creature.race) + " Heart"
         self.type = "Heart"
         self.weight = 5
-        self.stats = Stats(2, 0, 1, 0, 1, 2,
-                           0, 0, 0, 0)
+        self.stats = Stats(self)
 
     # ----------------------------------------------------------------------------------------------------------------------
     #   Display Functions

@@ -325,8 +325,8 @@ Usage : nconvert.exe [options] file ...
                [car     ]     : NeoBook Cartoon 
                [cart    ]     : Crayola 
                [cat     ]     : Photomatrix 
-               [cbmf    ]     : Corel Flow (preview) 
-               [cdr     ]     : Corel Draw Bitmap (preview) 
+               [cbmf    ]     : creaturel Flow (preview)
+               [cdr     ]     : creaturel Draw Bitmap (preview)
                [cdu     ]     : CDU Paint 
                [ce      ]     : Computer Eyes, Digital Vision 
                [ce1     ]     : ComputerEyes Raw 
@@ -344,14 +344,14 @@ Usage : nconvert.exe [options] file ...
                [clp     ]     : Windows Clipboard 
                [cmt     ]     : Chinon ES-1000 digital camera 
                [cmu     ]     : CMU Window Manager 
-               [cmx     ]     : Corel Metafile Exchange (preview) 
+               [cmx     ]     : creaturel Metafile Exchange (preview)
                [cncd    ]     : CoverDesigner (images) 
                [cnct    ]     : CoverDesigner Template (images) 
                [cp8     ]     : CP8 256 Gray Scale 
                [cpa     ]     : Prism 
-               [cpat    ]     : Corel Draw Pattern (preview) 
+               [cpat    ]     : creaturel Draw Pattern (preview)
                [cpc     ]     : Amstrad Cpc Screen 
-               [cpt     ]     : Corel PhotoPaint 6.0 
+               [cpt     ]     : creaturel PhotoPaint 6.0
                [cr2     ]     : Canon EOS-1D Mark II RAW 
                [craw    ]     : Camera RAW 
                [crd     ]     : PowerCard maker 
@@ -420,7 +420,7 @@ Usage : nconvert.exe [options] file ...
                [fpt     ]     : Face Painter 
                [fre     ]     : Male Normal CT 
                [frm     ]     : PhotoFrame 
-               [frm2    ]     : Album bébé 
+               [frm2    ]     : Album bï¿½bï¿½ 
                [fsh     ]     : EA Sports FSH 
                [fsy     ]     : PhotoFantasy Image 
                [ftf     ]     : Faxable TIFF 
@@ -459,7 +459,7 @@ Usage : nconvert.exe [options] file ...
                [hsi     ]     : HSI Raw 
                [hta     ]     : Hemera Thumbs 
                [icb     ]     : Image Capture Board 
-               [icd     ]     : Core IDC 
+               [icd     ]     : creature IDC
                [icl     ]     : Icon Library 
                [icn     ]     : AT&T multigen 
                [icns    ]     : Mac icon 

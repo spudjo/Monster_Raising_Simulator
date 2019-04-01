@@ -40,7 +40,6 @@ class World_Movement:
         self.x_center = self.x + self.width / 2
         self.y_center = self.y + self.height / 2
 
-
         self.hitbox = pygame.Rect(self.x, self.y, self.width, self.height)
 
         self.movement_speed_x = 10
@@ -54,9 +53,14 @@ class World_Movement:
         if random.random() > .5:
             self.movement_speed_y *= -1
 
-        self.sleep_animation = pyganim.PygAnimation([('assets/slime/blue/sleep/0.png', 25), ('assets/slime/blue/sleep/1.png', 25)])
-        self.rest_animation = pyganim.PygAnimation([('assets/slime/blue/rest/0.png', 25), ('assets/slime/blue/rest/1.png', 25)])
-        self.idle_animation = pyganim.PygAnimation([('assets/slime/blue/idle/0.png', 25), ('assets/slime/blue/idle/1.png', 25)])
+        assets_directory = 'assets/creatures/' + str.lower(self.body.__class__.__name__) + '/' + str.lower(self.body.creature.__class__.__name__) + '/'
+
+        self.sleep_animation = pyganim.PygAnimation([(assets_directory + 'sleep/0.png', 25),
+                                                     (assets_directory + 'sleep/1.png', 25)])
+        self.rest_animation = pyganim.PygAnimation([(assets_directory + 'rest/0.png', 25),
+                                                    (assets_directory + 'rest/1.png', 25)])
+        self.idle_animation = pyganim.PygAnimation([(assets_directory + 'idle/0.png', 25),
+                                                    (assets_directory + 'idle/1.png', 25)])
 
     # ----------------------------------------------------------------------------------------------------------------------
     #   Movement Functions
@@ -230,33 +234,33 @@ class World_Movement:
         if self.body.stomach.is_hungry:
             self.search_for_food()
             if self.closest_food is not None:
-                self.body.stamina.activity_level = Activity_Level['Light']
+                self.body.resources.stamina.activity_level = Activity_Level['Light']
                 self.move_to_food()
             #else:
             #    self.body.stamina.activity_level = Activity_Level['Idle']
 
         else:
-            self.body.stamina.activity_level = Activity_Level['Idle']
+            self.body.resources.stamina.activity_level = Activity_Level['Idle']
             self.closest_food = None
 
-        if self.body.stamina.activity_level.name == 'Sleep':
+        if self.body.resources.stamina.activity_level.name == 'Sleep':
             self.sleep_movement()
 
-        elif self.body.stamina.activity_level.name == 'Rest':
+        elif self.body.resources.stamina.activity_level.name == 'Rest':
             self.rest_movement()
 
-        elif self.body.stamina.activity_level.name == 'Idle':
+        elif self.body.resources.stamina.activity_level.name == 'Idle':
             self.idle_movement()
 
-        elif self.body.stamina.activity_level.name == 'Light':
+        elif self.body.resources.stamina.activity_level.name == 'Light':
             self.idle_animation.play()
             self.idle_animation.blit(self.container.surface, (self.x, self.y))
 
-        elif self.body.stamina.activity_level.name == 'Moderate':
+        elif self.body.resources.stamina.activity_level.name == 'Moderate':
             self.idle_animation.play()
             self.idle_animation.blit(self.container.surface, (self.x, self.y))
 
-        elif self.body.stamina.activity_level.name == 'Heavy':
+        elif self.body.resources.stamina.activity_level.name == 'Heavy':
             self.idle_animation.play()
             self.idle_animation.blit(self.container.surface, (self.x, self.y))
 

@@ -6,11 +6,12 @@ class Lung:
 
     def __init__(self, body):
 
-        self.name = str(body.whole_body.race) + " Lung"
+        self.config = body.creature.config[str.upper(self.__class__.__name__)]
+
+        self.name = str(body.creature.race) + " Lung"
         self.type = "Lung"
         self.weight = 2
-        self.stats = Stats(1, 0, 1, 0, 1, 0,
-                           0, 0, 0, 0)
+        self.stats = Stats(self)
 
     # ----------------------------------------------------------------------------------------------------------------------
     #   Display Functions

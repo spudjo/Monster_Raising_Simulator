@@ -3,6 +3,18 @@
 # stamina based on End (?)
 # Exponential growth based on stats
 
+"""
+
+Formulas
+
+MAX_HP = BASE_HP + (10 + (0.5 * END)) * LEVEL
+MAX_AP = BASE_AP + (10 + (0.5 * INT)) * LEVEL
+
+
+"""
+
+
+
 from creature_files.miscellaneous.Activity_Level import Activity_Level
 
 
@@ -10,22 +22,31 @@ from creature_files.miscellaneous.Activity_Level import Activity_Level
 #   starving influences Psychology (happiness, stress. sanity)
 class Resources:
 
-    def __init__(self, stats):
+    def __init__(self, body):
 
-        #self.health = self.Health(50, 50)
-        #self.aether = self.Aether(50, 50)
-        #self.stamina = self.Stamina(50, 50)
-        pass
+        self.config_health = body.creature.config['HEALTH']
+        self.config_aether = body.creature.config['AETHER']
+        self.config_stamina = body.creature.config['STAMINA']
+        self.body = body
+
+        self.int = body.stats.base['int']
+        self.end = body.stats.base['end']
+        self.level = body.creature.level
+
+        self.health = self.Health(self.config_health, body)
+        self.aether = self.Aether(self.config_aether, body)
+        self.stamina = self.Stamina(self.config_stamina, body)
 
     class Health:
 
-        def __init__(self, body, max, cur, regen):
+        def __init__(self, config, body):
 
+            self.config = config
             self.body = body
 
-            self.max = max
-            self.cur = cur
-            self.regen = regen
+            self.max = int(self.config['max']) + (10 + (0.5 * self.body.stats.base['end'])) * self.body.creature.level
+            self.cur = self.max
+            self.regen = int(config['regen'])
             self.is_regen = False
 
         # ----------------------------------------------------------------------------------------------------------------------
@@ -43,15 +64,22 @@ class Resources:
         # ----------------------------------------------------------------------------------------------------------------------
         #   Update Functions
 
+        def update_max(self):
+
+            if int(self.config['max']) == 0:
+                self.max = 0
+            else:
+                self.max = int(self.config['max']) + (10 + (0.5 * self.body.stats.base['end'])) * self.body.creature.level
+
         def update_on_zero_health(self):
 
             if self.cur <= 0:
-                self.body.whole_body.is_destroyed = False
-                self.body.world.creature_container.remove(self.body.whole_body)
+                self.body.creature.is_destroyed = False
+                self.body.world.creature_container.remove(self.body.creature)
 
         def update_on_sleep(self):
             # increase current health if is_regen is True, typically if creature is sleeping
-            if self.body.stamina.activity_level.name == 'Sleep':
+            if self.body.resources.stamina.activity_level.name == 'Sleep':
                 self.is_regen = True
                 if self.is_regen:
                     if self.cur + self.regen >= self.max:
@@ -68,6 +96,7 @@ class Resources:
                     self.cur -= 1
 
         def update(self):
+            self.update_max()
             if self.body.stomach.is_starving:
                 self.update_on_starving()
             else:
@@ -76,13 +105,19 @@ class Resources:
 
     class Aether:
 
-        def __init__(self, body, max, cur, regen):
+        def __init__(self, config, body):
 
+            self.config = config
             self.body = body
 
-            self.max = max
-            self.cur = cur
-            self.regen = regen
+            self.max = int(self.config['max']) + (10 + (0.5 * self.body.stats.base['int'])) * self.body.creature.level
+            self.cur = self.max
+            if int(self.config['max']) == 0:
+                self.cur = 0
+            else:
+                self.cur = self.max
+
+            self.regen = int(config['regen'])
             self.is_regen = False
 
         # ----------------------------------------------------------------------------------------------------------------------
@@ -100,9 +135,16 @@ class Resources:
         # ----------------------------------------------------------------------------------------------------------------------
         #   Update Functions
 
+        def update_max(self):
+
+            if int(self.config['max']) == 0:
+                self.max = 0
+            else:
+                self.max = int(self.config['max']) + (10 + (0.5 * self.body.stats.base['int'])) * self.body.creature.level
+
         def update_on_sleep(self):
             # increase current health if is_regen is True, typically if creature is sleeping
-            if self.body.stamina.activity_level.name == 'Sleep':
+            if self.body.resources.stamina.activity_level.name == 'Sleep':
                 self.is_regen = True
                 if self.is_regen:
                     if self.cur + self.regen >= self.max:
@@ -119,6 +161,7 @@ class Resources:
                     self.cur -= 1
 
         def update(self):
+            self.update_max()
             if self.body.stomach.is_starving:
                 self.update_on_starving()
             else:
@@ -126,15 +169,16 @@ class Resources:
 
     class Stamina:
 
-        def __init__(self, body, max, cur):
+        def __init__(self, config, body):
 
+            self.config = config
             self.body = body
 
             self.activity_level = Activity_Level(2)
-            self.max = max
-            self.cur = cur
+            self.max = int(config['max'])
+            self.cur = self.max
 
-            self.expenditure_base = 1                                             # stamina expenditure level to be used as a
+            self.expenditure_base = int(config['exp_base'])               # stamina expenditure level to be used as a
                                                                                   # base for all energery related calculations
             self.expenditure_factor = self.calculate_stamina_expenditure_factor()  # multiples expenditure base by a factor
                                                                                   # based on Activity level
@@ -191,5 +235,16 @@ class Resources:
         def update(self):
             self.update_stamina_current()
             self.update_stamina_expenditure_current()
+
+    def display_values(self):
+        print("R E S O U R C E S")
+        self.health.display_values()
+        self.aether.display_values()
+        self.stamina.display_values()
+
+    def update(self):
+        self.health.update()
+        self.aether.update()
+        self.stamina.update()
 
 

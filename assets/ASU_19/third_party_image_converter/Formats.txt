@@ -33,7 +33,7 @@ Supported formats                                 Extension                 Rema
 [psd]      Adobe Photoshop                          psd 
 [ocp]      Advanced Art Studio                      ocp art pic 
 [anv]      AirNav                                   anv 
-[frm2]     Album bébé                               frm 
+[frm2]     Album bï¿½bï¿½                               frm 
 [alias]    Alias Image File                         pix als alias 
 [abmp]     Alpha Microsystems BMP                   bmp 
 [2d]       Amapi                                    2d 
@@ -96,12 +96,12 @@ Supported formats                                 Extension                 Rema
 [gif]      CompuServe GIF                           gif giff 
 [ce]       Computer Eyes, Digital Vision            ce 
 [ce1]      ComputerEyes Raw                         ce1 ce2 
-[icd]      Core IDC                                 idc 
-[cdr]      Corel Draw Bitmap (preview)              cdr 
-[cpat]     Corel Draw Pattern (preview)             pat 
-[cbmf]     Corel Flow (preview)                     bmf 
-[cmx]      Corel Metafile Exchange (preview)        cmx 
-[cpt]      Corel PhotoPaint 6.0                     cpt 
+[icd]      creature IDC                                 idc
+[cdr]      creaturel Draw Bitmap (preview)              cdr
+[cpat]     creaturel Draw Pattern (preview)             pat
+[cbmf]     creaturel Flow (preview)                     bmf
+[cmx]      creaturel Metafile Exchange (preview)        cmx
+[cpt]      creaturel PhotoPaint 6.0                     cpt
 [cncd]     CoverDesigner (images)                   ncd 
 [cnct]     CoverDesigner Template (images)          nct 
 [cart]     Crayola                                  art 

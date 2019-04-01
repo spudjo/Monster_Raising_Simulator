@@ -1,10 +1,10 @@
-from random import randint
 import pygame
 
 
 class Urine:
 
     def __init__(self, Container, x, y):
+
         self._container = Container
 
         self.width = 32
@@ -17,8 +17,8 @@ class Urine:
         self.x = x
         self.y = y
 
-        self.x_center = self.x + self.width / 2
-        self.y_center = self.y + self.height / 2
+        self.x_center = round(self.x + self.width / 2, 0)
+        self.y_center = round(self.y + self.height / 2, 0)
 
         self.body = pygame.image.load("assets/misc/urine.png")
         self._container.surface.blit(self.body, (self.x, self.y))
@@ -30,6 +30,7 @@ class Urine:
         self.is_destroyed = False
 
     def destroy(self):
+
         self.is_destroyed = True
 
     # ----------------------------------------------------------------------------------------------------------------------
@@ -40,6 +41,7 @@ class Urine:
         print("Location: (" + str(self.x_center) + ", " + str(self.y_center) + ")")
 
     def display_values(self):
+
         print("Name: " + str(self.name))
         print("Type: " + str(self.type))
         self.display_location()
@@ -47,13 +49,13 @@ class Urine:
         print("")
 
     def display_hitbox(self):
+
         pygame.draw.rect(self._container.surface, (25, 25, 25), self.hitbox, 1)
 
     def update_position(self):
+
         self._container.surface.blit(self.body, (self.x, self.y))
         #self.display_hitbox
 
     def update(self):
         self.update_position()
-
-

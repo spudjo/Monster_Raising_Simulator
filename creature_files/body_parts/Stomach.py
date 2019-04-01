@@ -8,32 +8,34 @@ import random
 
 class Stomach:
 
-    def __init__(self, body, world):
+    def __init__(self, body):
 
-        self.world = world # used for expelling waste!
+        self.config = body.creature.config[str.upper(self.__class__.__name__)]
+
+
         self.body = body
+        self.world = body.world  # used for expelling waste!
 
-        self.name = str(body.whole_body.race) + " Stomach"
+        self.name = str(body.creature.race) + " Stomach"
         self.type = "Stomach"
         self.weight = 3
-        self.stats = Stats(0, 0, 2, 0, 0, 1,
-                           0, 0, 0, 0)
-
-        self.is_starving = False
-        self.is_hungry = False
-        self.hunger_max = 100
-        self.hunger_cur = (self.hunger_max / 2) * random.uniform(.75, 1.25)
-        self.hunger_threshold = 60      # amount of hunger til creature will seek out food
-        self.hunger_rate = 1            # hunger gain per tick
+        self.stats = Stats(self)
 
         self.contents = []
-        self.digestion_rate = 4         # amount of nutrients absorbed from food per tick
-        self.digestion_efficiency = 75   # influences the amount of waste material produced per tick (urine / feces)
+        self.is_starving = False
+        self.is_hungry = False
 
-        self.urine_max = 100
-        self.urine_cur = (self.urine_max / 2) * random.uniform(.75, 1.25)
-        self.fecal_max = 50
-        self.fecal_cur = (self.fecal_max / 2) * random.uniform(.75, 1.25)
+        self.hunger_max = int(self.config['hunger_max'])
+        self.hunger_cur = round((self.hunger_max / 2) * random.uniform(.75, 1.25), 0)
+        self.hunger_threshold = int(self.config['hunger_threshold'])      # amount of hunger til creature will seek out food
+        self.hunger_rate = int(self.config['hunger_rate'])            # hunger gain per tick
+        self.digestion_rate = int(self.config['digestion_rate'])         # amount of nutrients absorbed from food per tick
+        self.digestion_efficiency = int(self.config['digestion_efficiency'])   # influences the amount of waste material produced per tick (urine / feces)
+
+        self.urine_max = int(self.config['urine_max'])
+        self.urine_cur = round(int(self.urine_max / 2) * random.uniform(.75, 1.25), 0)
+        self.fecal_max = int(self.config['fecal_max'])
+        self.fecal_cur = round(int(self.fecal_max / 2) * random.uniform(.75, 1.25), 0)
 
     # function to eat food objects, called from World_Movement class on collision with food object when is_hungry equals True
     # food object is added to stomach content, food is_eaten variable is set to True and food's weight is added to stomach weight, which

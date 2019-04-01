@@ -1,18 +1,18 @@
 # 妖怪牧場
 import pygame, sys
 from creature_files.creatures.formless.Blue_Slime import Blue_Slime
+from creature_files.creatures.formless.Red_Slime import Red_Slime
 from food.Berry import Berry
 from food.Drum_Stick import Drum_Stick
 import time
 import configparser
+import random
 
 # TODO: world 'cleaning up' (removal of dead creature_files, eaten food, etc) should be controlled by World, current controlled within objects themselves
-#   if multiple creatures collide with the same food object on the same update game will crash!
 
 config = configparser.ConfigParser()
-config.read('config.ini')
+config.read('world_config.ini')
 config_world = config['WORLD']
-
 
 class World:
 
@@ -24,9 +24,7 @@ class World:
         self.FPS = 60
 
         self.creature_container = []
-        self.name_array = ['Monokai', 'Creme', 'Slim', 'Alice', 'Bally']
-        self.name_tracker = 0
-        self.max_creatures = 5
+        self.max_creatures = 100
 
         self.name_container = []
 
@@ -40,6 +38,9 @@ class World:
         self.surface_color = (245, 245, 220)
         self.surface.fill(self.surface_color)
 
+        self.background = pygame.image.load('assets/world/grass.png')
+        self.surface.blit(self.background, (0, 0))
+
         self.update_counter = 0
         self.display_counter = 0
 
@@ -50,10 +51,15 @@ class World:
         self.display_hitbox = False
         self.display_vision = False
 
-    def spawn_slime(self):
+    def spawn_blue_slime(self):
         self.name_tracker = len(self.creature_container)
         if self.name_tracker < self.max_creatures:
-            self.creature_container.append(Blue_Slime(self.name_array[self.name_tracker], self))
+            self.creature_container.append(Blue_Slime(self.get_name(), self))
+
+    def spawn_red_slime(self):
+        self.name_tracker = len(self.creature_container)
+        if self.name_tracker < self.max_creatures:
+            self.creature_container.append(Red_Slime(self.get_name(), self))
 
     def toggle_hitbox(self):
         if self.display_hitbox:
@@ -73,7 +79,16 @@ class World:
         if food in self.food_container:
             self.food_container.remove(food)
 
+    def get_name(self):
+        name_list = open('assets/names.txt', 'r')
+        list = name_list.readlines()
 
+        while True:
+            name = list[random.randint(0, len(list) - 1)].rstrip()
+            for each in self.creature_container:
+                if each.name == name:
+                    continue
+            return name
 
 World = World()
 paused = False
@@ -86,96 +101,80 @@ while True:  # main game loop
             sys.exit()
 
         if event.type == pygame.KEYDOWN:
+
+            # pause / unpause
             if event.key == pygame.K_SPACE:
                 if paused is True:
                     paused = False
-                    print("Game Resumed")
+                    print("----------------------------------------")
+                    print("         G A M E - R E S U M E D        ")
+                    print("----------------------------------------")
                 else:
                     paused = True
-                    print("Game Paused")
+                    print("----------------------------------------")
+                    print("         G A M E - P A U S E D          ")
+                    print("----------------------------------------")
 
         if event.type == pygame.KEYDOWN and not paused:
-            # create food
+
+            # spawn red slime
+            if event.key == pygame.K_1:
+                World.spawn_red_slime()
+
+            # spawn blue slime
+            if event.key == pygame.K_2:
+                World.spawn_blue_slime()
+
+            # spawn berry
             if event.key == pygame.K_9:
                 x, y = pygame.mouse.get_pos()
                 if len(World.food_container) < (3 + (len(World.creature_container) * 3)):
                     berry = Berry(World, x, y)
                     World.food_container.append(berry)
 
+            # spawn drum stick
             if event.key == pygame.K_0:
                 x, y = pygame.mouse.get_pos()
                 if len(World.food_container) < (3 + (len(World.creature_container) * 3)):
                     drum_stick = Drum_Stick(World, x, y)
                     World.food_container.append(drum_stick)
 
-            # set all food is_destroyed to True
-            if event.key == pygame.K_d:
-                for food in World.food_container:
-                    food.destroy()
-
-            if event.key == pygame.K_s:
-                World.spawn_slime()
-
-            if event.key == pygame.K_1:
-                if World.display_hitbox:
-                    World.display_hitbox = False
-                else:
-                    World.display_hitbox = True
-
-            if event.key == pygame.K_2:
-                if World.display_vision:
-                    World.display_vision = False
-                else:
-                    World.display_vision = True
-
-            if event.key == pygame.K_z:
-                if World.update_increment == 1:
-                    World.update_increment = 10
-                else:
-                    World.update_increment = 1
-
-
-            # TODO: THIS
+            # clean waste
             if event.key == pygame.K_c:
                 waste_deleted = False
                 x, y = pygame.mouse.get_pos()
                 click_radius = 10
 
                 for waste in World.waste_container:
-                    waste.display_location()
                     for num1 in range(-click_radius, click_radius):
                         for num2 in range(-click_radius, click_radius):
-
-                            #print(("(" + str(x + num1) + ", " + str(y + num2) + ")"))
-                            #pygame.draw.rect(World.surface, (0, 0, 255), [x + num1, y + num2, 1, 1], 1)
-
                             if waste.x == (x + num1) and waste.y == (y + num2) and waste_deleted is False:
                                 print("Waste Cleaned!")
                                 World.clean_waste(waste)
                                 waste_deleted = True
                 waste_deleted = False
 
+            # display hitbox
+            if event.key == pygame.K_h:
+                if World.display_hitbox:
+                    World.display_hitbox = False
+                else:
+                    World.display_hitbox = True
 
+            # display vision range
+            if event.key == pygame.K_v:
+                if World.display_vision:
+                    World.display_vision = False
+                else:
+                    World.display_vision = True
 
+            # speed / slow time
+            if event.key == pygame.K_z:
+                if World.update_increment == 1:
+                    World.update_increment = 10
+                else:
+                    World.update_increment = 1
 
-
-
-
-            '''
-            if event.key == pygame.K_a:
-                if slime.body.stamina.activity_level.name == 'Sleep':
-                    slime.body.stamina.activity_level = Activity_Level['Rest']
-                elif slime.body.stamina.activity_level.name == 'Rest':
-                    slime.body.stamina.activity_level = Activity_Level['Idle']
-                elif slime.body.stamina.activity_level.name == "Idle":
-                    slime.body.stamina.activity_level = Activity_Level['Light']
-                elif slime.body.stamina.activity_level.name == "Light":
-                    slime.body.stamina.activity_level = Activity_Level['Moderate']
-                elif slime.body.stamina.activity_level.name == "Moderate":
-                    slime.body.stamina.activity_level = Activity_Level['Heavy']
-                elif slime.body.stamina.activity_level.name == 'Heavy':
-                    slime.body.stamina.activity_level = Activity_Level['Sleep']
-            '''
     if not paused:
         World.toggle_hitbox()
         World.toggle_vision()
@@ -183,11 +182,11 @@ while True:  # main game loop
         if World.update_counter >= World.FPS:
 
             World.surface.fill(World.surface_color)
+            World.surface.blit(World.background, (0,0))
 
             for each in World.food_container:
                 each.update()
                 #each.display_values()
-
 
             for each in World.waste_container:
                 each.update()
@@ -195,10 +194,7 @@ while True:  # main game loop
             for each in World.creature_container:
                 each.update()
 
-                #for food in each.body.stomach.contents:
-                #    food.display_values()
-
-                # display name
+            for each in World.creature_container:
                 font = pygame.font.Font('freesansbold.ttf', 20)
                 text = font.render(each.name, True, (100, 100, 100))
                 textRect = text.get_rect()
@@ -210,7 +206,7 @@ while True:  # main game loop
 
         if World.display_counter >= World.FPS:
             print("----------------------------------------")
-            print("W O R L D - S T A T S")
+            print("          W O R L D - S T A T S         ")
             print("----------------------------------------")
             print("Time Elapsed: " + str(round(time.time() - World.time_start, 0)) + " seconds")
             print("Creatures: " + str(World.creature_container))

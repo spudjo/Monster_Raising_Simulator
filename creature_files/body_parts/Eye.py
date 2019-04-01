@@ -6,11 +6,12 @@ class Eye:
 
     def __init__(self, body):
 
-        self.name = str(body.whole_body.race) + " Eye"
+        self.config = body.creature.config[str.upper(self.__class__.__name__)]
+
+        self.name = str(body.creature.race) + " Eye"
         self.type = "Eye"
         self.weight = 0.5
-        self.stats = Stats(0, 0, 0, 1, 0, 0,
-                           125, 50, 0, 0)
+        self.stats = Stats(self)
 
     # ----------------------------------------------------------------------------------------------------------------------
     #   Display Functions

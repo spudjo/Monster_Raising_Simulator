@@ -7,46 +7,43 @@
     luk - influences crit attacks, dodging...
 """
 
-
 # TODO: vision (distance, in dark underwater), swimming speed, climbing speed, etc...
 #   resistance to disease, mutation (growing extra limbs?), stress (linked to psychology), bleeding, etc...
 # TODO: better way of doing get() methods
+
 class Stats:
 
-    def __init__(self,
-                 str, int, end, dex, spd, luk,
-                 vis, vis_dark, swim, climb):
+    def __init__(self, body):
 
-        self.base = self.get_base_stats(str, int, end, dex, spd, luk)
+        self.config = body.config
 
-        self.explore = self.get_explore_stats(vis, vis_dark, swim, climb)
-
+        self.base = self.get_base_stats()
+        self.explore = self.get_explore_stats()
         self.resist = self.get_resist_stats(0, 0, 0, 0,
                                             0, 0, 0, 0,
                                             0, 0)
 
-    @staticmethod
-    def get_base_stats(str, int, end, dex, spd, luk):
 
+    def get_base_stats(self):
         base = {
-            'str': str,
-            'int': int,
-            'end': end,
-            'dex': dex,
-            'spd': spd,
-            'luk': luk
+            'str': int(self.config['str']),
+            'int': int(self.config['int']),
+            'end': int(self.config['end']),
+            'dex': int(self.config['dex']),
+            'spd': int(self.config['spd']),
+            'luk': int(self.config['luk'])
         }
+
         return base
 
-    @staticmethod
-    def get_explore_stats(vis, vis_dark, swim, climb):
-
+    def get_explore_stats(self):
         explore = {
-            'vis': vis,
-            'vis_dark': vis_dark,
-            'swim': swim,
-            'climb': climb
+            'vis': int(self.config['vis']),
+            'vis_dark': int(self.config['vis_dark']),
+            'swim': int(self.config['swim']),
+            'climb': int(self.config['climb'])
         }
+
         return explore
 
     @staticmethod

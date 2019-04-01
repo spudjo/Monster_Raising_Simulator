@@ -1,4 +1,3 @@
-from random import randint
 import pygame
 
 
@@ -18,12 +17,11 @@ class Poop:
         self.x = x
         self.y = y
 
-        self.x_center = self.x + self.width / 2
+        self.x_center = round(self.x + self.width / 2, 0)
         self.y_center = round(self.y + self.height / 2, 0)
 
         self.body = pygame.image.load("assets/misc/poop.png")
-        self._container.surface.blit(self.body, (self.x,  self.y))
-
+        self._container.surface.blit(self.body, (self.x, self.y))
 
         self.hitbox = pygame.Rect(self.x, self.y, self.width, self.height)
         # self.display_hitbox()
@@ -61,4 +59,3 @@ class Poop:
 
     def update(self):
         self.update_position()
-
