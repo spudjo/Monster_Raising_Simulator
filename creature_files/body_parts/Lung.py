@@ -10,8 +10,18 @@ class Lung:
 
         self.name = str(body.creature.race) + " Lung"
         self.type = "Lung"
-        self.weight = 2
+
+        self.value = float(self.config['value'])
+        self.weight = float(self.config['weight'])
+
         self.stats = Stats(self)
+
+    # ----------------------------------------------------------------------------------------------------------------------
+    #   Update Functions
+
+    def update(self):
+
+        pass
 
     # ----------------------------------------------------------------------------------------------------------------------
     #   Display Functions
@@ -26,11 +36,5 @@ class Lung:
         print("L U N G")
         print("Name: " + str(self.name))
         print("Type: " + str(self.type))
+        print("Value: " + str((round(self.value,2))) + " ¥")
         print("Weight: " + str(self.weight))
-
-    # ----------------------------------------------------------------------------------------------------------------------
-    #   Update Functions
-
-    def update(self):
-
-        pass

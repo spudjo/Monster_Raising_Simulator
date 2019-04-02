@@ -12,9 +12,6 @@ MAX_AP = BASE_AP + (10 + (0.5 * INT)) * LEVEL
 
 
 """
-
-
-
 from creature_files.miscellaneous.Activity_Level import Activity_Level
 
 
@@ -43,23 +40,12 @@ class Resources:
 
             self.config = config
             self.body = body
+            self.stomach = body.get_body_parts('stomach')[0]
 
             self.max = int(self.config['max']) + (10 + (0.5 * self.body.stats.base['end'])) * self.body.creature.level
             self.cur = self.max
             self.regen = int(config['regen'])
             self.is_regen = False
-
-        # ----------------------------------------------------------------------------------------------------------------------
-        #   Display Functions
-
-        def display_values_full(self):
-            self.display_values()
-            print("Regen: " + str(self.regen))
-            print("Is Regen: " + str(self.is_regen))
-
-        def display_values(self):
-
-            print("Health: " + str(self.cur) + "/" + str(self.max))
 
         # ----------------------------------------------------------------------------------------------------------------------
         #   Update Functions
@@ -89,19 +75,33 @@ class Resources:
 
         def update_on_starving(self):
 
-            if self.body.stomach.is_starving:
+            if self.stomach.is_starving:
                 if self.cur - 1 <= 0:
                     self.cur = 0
                 else:
                     self.cur -= 1
 
         def update(self):
+
             self.update_max()
-            if self.body.stomach.is_starving:
+            if self.stomach.is_starving:
                 self.update_on_starving()
             else:
                 self.update_on_sleep()
             self.update_on_zero_health()
+
+        # ----------------------------------------------------------------------------------------------------------------------
+        #   Display Functions
+
+        def display_values_full(self):
+
+            self.display_values()
+            print("Regen: " + str(self.regen))
+            print("Is Regen: " + str(self.is_regen))
+
+        def display_values(self):
+
+            print("Health: " + str(self.cur) + "/" + str(self.max))
 
     class Aether:
 
@@ -109,6 +109,7 @@ class Resources:
 
             self.config = config
             self.body = body
+            self.stomach = body.get_body_parts('stomach')[0]
 
             self.max = int(self.config['max']) + (10 + (0.5 * self.body.stats.base['int'])) * self.body.creature.level
             self.cur = self.max
@@ -119,18 +120,6 @@ class Resources:
 
             self.regen = int(config['regen'])
             self.is_regen = False
-
-        # ----------------------------------------------------------------------------------------------------------------------
-        #   Display Functions
-
-        def display_values_full(self):
-            self.display_values()
-            print("Regen: " + str(self.regen))
-            print("Is Regen: " + str(self.is_regen))
-
-        def display_values(self):
-
-            print("Aether: " + str(self.cur) + "/" + str(self.max))
 
         # ----------------------------------------------------------------------------------------------------------------------
         #   Update Functions
@@ -154,18 +143,32 @@ class Resources:
 
         def update_on_starving(self):
 
-            if self.body.stomach.is_starving:
+            if self.stomach.is_starving:
                 if self.cur - 1 <= 0:
                     self.cur = 0
                 else:
                     self.cur -= 1
 
         def update(self):
+
             self.update_max()
-            if self.body.stomach.is_starving:
+            if self.stomach.is_starving:
                 self.update_on_starving()
             else:
                 self.update_on_sleep()
+
+        # ----------------------------------------------------------------------------------------------------------------------
+        #   Display Functions
+
+        def display_values_full(self):
+
+            self.display_values()
+            print("Regen: " + str(self.regen))
+            print("Is Regen: " + str(self.is_regen))
+
+        def display_values(self):
+
+            print("Aether: " + str(self.cur) + "/" + str(self.max))
 
     class Stamina:
 
@@ -199,23 +202,6 @@ class Resources:
             return sleep_factor, rest_factor, idle_factor, light_factor, moderate_factor, heavy_factor
 
         # ----------------------------------------------------------------------------------------------------------------------
-        #   Display Functions
-
-        def display_values_full(self):
-            self.display_values()
-            print("Stamina Base: " + str(self.expenditure_base))
-            print("Stamina Factor: " + str(self.expenditure_factor[self.activity_level.value]))
-            self.display_activity_level()
-
-        def display_activity_level(self):
-            print("Activity Level: " + str(self.activity_level.name))
-
-        def display_values(self):
-            print("Stamina: " + str(round(self.cur, 2)) + "/" + str(self.max))
-            print("Stamina Expenditure: " + str(self.expenditure_current) + " / second")
-
-
-        # ----------------------------------------------------------------------------------------------------------------------
         #   Update Functions
 
         def update_stamina_expenditure_current(self):
@@ -229,12 +215,33 @@ class Resources:
                 self.activity_level = Activity_Level['Idle']
                 self.cur = self.max
             elif self.cur <= 0:
+                print(self.activity_level)
                 self.activity_level = Activity_Level['Sleep']
+                print(self.activity_level)
                 self.cur = 0
 
         def update(self):
             self.update_stamina_current()
             self.update_stamina_expenditure_current()
+
+        # ----------------------------------------------------------------------------------------------------------------------
+        #   Display Functions
+
+        def display_values_full(self):
+
+            self.display_values()
+            print("Stamina Base: " + str(self.expenditure_base))
+            print("Stamina Factor: " + str(self.expenditure_factor[self.activity_level.value]))
+            self.display_activity_level()
+
+        def display_activity_level(self):
+
+            print("Activity Level: " + str(self.activity_level.name))
+
+        def display_values(self):
+
+            print("Stamina: " + str(round(self.cur, 2)) + "/" + str(self.max))
+            print("Stamina Expenditure: " + str(self.expenditure_current) + " / second")
 
     def display_values(self):
         print("R E S O U R C E S")

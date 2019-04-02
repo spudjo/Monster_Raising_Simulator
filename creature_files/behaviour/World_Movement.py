@@ -17,6 +17,7 @@ class World_Movement:
 
         self.container = container
         self.body = body
+        self.stomach = body.get_body_parts('stomach')[0]
 
         self.width = 48     # may keep this hardcoded
         self.height = 42    # may keep this hardcoded
@@ -42,8 +43,8 @@ class World_Movement:
 
         self.hitbox = pygame.Rect(self.x, self.y, self.width, self.height)
 
-        self.movement_speed_x = 10
-        self.movement_speed_y = 10
+        self.movement_speed_x = self.body.stats.base['spd']
+        self.movement_speed_y = self.body.stats.base['spd']
 
         # randomize wandering x direction
         if random.random() > .5:
@@ -70,23 +71,27 @@ class World_Movement:
         x2 = self.closest_food.x
         y2 = self.closest_food.y
 
-        if self.x is not x2:
-            if self.x < x2:
-                if self.movement_speed_x < 0:
-                    self.movement_speed_x *= -1
-            elif self.x > x2:
-                if self.movement_speed_x > 0:
-                    self.movement_speed_x *= -1
-            self.x = self.x + self.movement_speed_x
+        if self.movement_speed_x >= self.get_distance(self.closest_food):
+            self.x = x2
+            self.y = y2
+        else:
+            if self.x is not x2:
+                if self.x < x2:
+                    if self.movement_speed_x < 0:
+                        self.movement_speed_x *= -1
+                elif self.x > x2:
+                    if self.movement_speed_x > 0:
+                        self.movement_speed_x *= -1
+                self.x = self.x + self.movement_speed_x
 
-        if self.y is not y2:
-            if self.y < y2:
-                if self.movement_speed_y < 0:
-                    self.movement_speed_y *= -1
-            elif self.y > y2:
-                if self.movement_speed_y > 0:
-                    self.movement_speed_y *= -1
-            self.y = self.y + self.movement_speed_y
+            if self.y is not y2:
+                if self.y < y2:
+                    if self.movement_speed_y < 0:
+                        self.movement_speed_y *= -1
+                elif self.y > y2:
+                    if self.movement_speed_y > 0:
+                        self.movement_speed_y *= -1
+                self.y = self.y + self.movement_speed_y
 
         self.update_coords()
         self.update_hitbox()
@@ -96,7 +101,7 @@ class World_Movement:
         self.idle_animation.blit(self.container.surface, (self.x, self.y))
 
         if self.hitbox.colliderect(self.closest_food.hitbox):
-            self.body.stomach.eat(self.closest_food)
+            self.stomach.eat(self.closest_food)
 
     def sleep_movement(self):
 
@@ -182,6 +187,69 @@ class World_Movement:
         self.get_closest_food()
 
     # ----------------------------------------------------------------------------------------------------------------------
+    #   Update Functions
+
+    def update_hitbox(self):
+
+        self.hitbox = pygame.Rect(self.x, self.y, self.width, self.height)
+
+    def update_movement(self):
+
+        if self.stomach.is_hungry and self.body.resources.stamina.activity_level.name is not 'Sleep':
+            self.search_for_food()
+            if self.closest_food is not None:
+                self.body.resources.stamina.activity_level = Activity_Level['Light']
+                self.move_to_food()
+            else:
+                self.body.resources.stamina.activity_level = Activity_Level['Idle']
+
+        else:
+            # commented out as it will cause creatures to wake up when hungry!
+            #self.body.resources.stamina.activity_level = Activity_Level['Idle']
+            self.closest_food = None
+
+        if self.body.resources.stamina.activity_level.name == 'Sleep':
+            self.sleep_movement()
+
+        elif self.body.resources.stamina.activity_level.name == 'Rest':
+            self.rest_movement()
+
+        elif self.body.resources.stamina.activity_level.name == 'Idle':
+            self.idle_movement()
+
+        elif self.body.resources.stamina.activity_level.name == 'Light':
+            self.idle_animation.play()
+            self.idle_animation.blit(self.container.surface, (self.x, self.y))
+
+        elif self.body.resources.stamina.activity_level.name == 'Moderate':
+            self.idle_animation.play()
+            self.idle_animation.blit(self.container.surface, (self.x, self.y))
+
+        elif self.body.resources.stamina.activity_level.name == 'Heavy':
+            self.idle_animation.play()
+            self.idle_animation.blit(self.container.surface, (self.x, self.y))
+
+        # update 4 corners of hitbox, useful for collision detection later on
+
+    def update_coords(self):
+
+        self.x2 = self.x + self.width
+        self.y2 = self.y
+
+        self.x3 = self.x
+        self.y3 = self.y + self.height
+
+        self.x4 = self.x2
+        self.y4 = self.y3
+
+        self.x_center = self.x + self.width / 2
+        self.y_center = self.y + self.height / 2
+
+    def update(self):
+
+        self.update_movement()
+
+    # ----------------------------------------------------------------------------------------------------------------------
     #   Display Functions
 
     def display_vision_radius(self):
@@ -221,65 +289,3 @@ class World_Movement:
         pygame.draw.rect(self.container.surface, (0, 255, 0), [self.x2, self.y2, 2, 2], 4)
         pygame.draw.rect(self.container.surface, (0, 0, 255), [self.x3, self.y3, 2, 2], 4)
         pygame.draw.rect(self.container.surface, (50, 50, 50), [self.x4, self.y4, 2, 2], 4)
-
-# ----------------------------------------------------------------------------------------------------------------------
-#   Update Functions
-
-    def update_hitbox(self):
-
-        self.hitbox = pygame.Rect(self.x, self.y, self.width, self.height)
-
-    def update_movement(self):
-
-        if self.body.stomach.is_hungry:
-            self.search_for_food()
-            if self.closest_food is not None:
-                self.body.resources.stamina.activity_level = Activity_Level['Light']
-                self.move_to_food()
-            #else:
-            #    self.body.stamina.activity_level = Activity_Level['Idle']
-
-        else:
-            self.body.resources.stamina.activity_level = Activity_Level['Idle']
-            self.closest_food = None
-
-        if self.body.resources.stamina.activity_level.name == 'Sleep':
-            self.sleep_movement()
-
-        elif self.body.resources.stamina.activity_level.name == 'Rest':
-            self.rest_movement()
-
-        elif self.body.resources.stamina.activity_level.name == 'Idle':
-            self.idle_movement()
-
-        elif self.body.resources.stamina.activity_level.name == 'Light':
-            self.idle_animation.play()
-            self.idle_animation.blit(self.container.surface, (self.x, self.y))
-
-        elif self.body.resources.stamina.activity_level.name == 'Moderate':
-            self.idle_animation.play()
-            self.idle_animation.blit(self.container.surface, (self.x, self.y))
-
-        elif self.body.resources.stamina.activity_level.name == 'Heavy':
-            self.idle_animation.play()
-            self.idle_animation.blit(self.container.surface, (self.x, self.y))
-
-    # update 4 corners of hitbox, useful for collision detection later on
-    def update_coords(self):
-
-        self.x2 = self.x + self.width
-        self.y2 = self.y
-
-        self.x3 = self.x
-        self.y3 = self.y + self.height
-
-        self.x4 = self.x2
-        self.y4 = self.y3
-
-        self.x_center = self.x + self.width / 2
-        self.y_center = self.y + self.height / 2
-
-    def update(self):
-
-        self.update_movement()
-

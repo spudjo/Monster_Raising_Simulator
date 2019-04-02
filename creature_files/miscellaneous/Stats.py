@@ -1,9 +1,13 @@
 """
     str - influences melee damage, muscle mass?, carry weight?
+
+
     int - influences aether resource, aether damage...
+        - increase by training brain
+
     end - influences health resource, stamina, hunger, resistances?
     dex - influences accuracy...
-    spd - influence attack speed, movement speed, dodging...
+    spd - influences attack speed, movement speed, dodging...
     luk - influences crit attacks, dodging...
 """
 
@@ -19,49 +23,43 @@ class Stats:
 
         self.base = self.get_base_stats()
         self.explore = self.get_explore_stats()
-        self.resist = self.get_resist_stats(0, 0, 0, 0,
-                                            0, 0, 0, 0,
-                                            0, 0)
-
+        self.resist = self.get_resist_stats()
 
     def get_base_stats(self):
-        base = {
-            'str': int(self.config['str']),
-            'int': int(self.config['int']),
-            'end': int(self.config['end']),
-            'dex': int(self.config['dex']),
-            'spd': int(self.config['spd']),
-            'luk': int(self.config['luk'])
-        }
 
+        base = {
+            'str': int(self.config['str']) if ('str' in self.config) else 0,
+            'int': int(self.config['int']) if ('int' in self.config) else 0,
+            'end': int(self.config['end']) if ('end' in self.config) else 0,
+            'dex': int(self.config['dex']) if ('dex' in self.config) else 0,
+            'spd': int(self.config['spd']) if ('spd' in self.config) else 0,
+            'luk': int(self.config['luk']) if ('luk' in self.config) else 0
+        }
         return base
 
     def get_explore_stats(self):
-        explore = {
-            'vis': int(self.config['vis']),
-            'vis_dark': int(self.config['vis_dark']),
-            'swim': int(self.config['swim']),
-            'climb': int(self.config['climb'])
-        }
 
+        explore = {
+            'vis': int(self.config['vis']) if ('vis' in self.config) else 0,
+            'vis_dark': int(self.config['vis_dark']) if ('vis_dark' in self.config) else 0,
+            'swim': int(self.config['swim']) if ('swim' in self.config) else 0,
+            'climb': int(self.config['climb']) if ('climb' in self.config) else 0
+        }
         return explore
 
-    @staticmethod
-    def get_resist_stats(fire, water, earth, wind,
-                             wood, metal, light, dark,
-                             time, space):
+    def get_resist_stats(self):
 
         resistances = {
-            'fire': fire,
-            'water': water,
-            'earth': earth,
-            'wind': wind,
-            'wood': wood,
-            'metal': metal,
-            'light': light,
-            'dark': dark,
-            'time': time,
-            'space': space
+            'fire': int(self.config['fire']) if ('fire' in self.config) else 0,
+            'water': int(self.config['water']) if ('water' in self.config) else 0,
+            'earth': int(self.config['earth']) if ('earth' in self.config) else 0,
+            'wind': int(self.config['wind']) if ('wind' in self.config) else 0,
+            'wood': int(self.config['wood']) if ('wood' in self.config) else 0,
+            'metal': int(self.config['metal']) if ('metal' in self.config) else 0,
+            'light': int(self.config['light']) if ('light' in self.config) else 0,
+            'dark': int(self.config['dark']) if ('dark' in self.config) else 0,
+            'time': int(self.config['time']) if ('time' in self.config) else 0,
+            'space': int(self.config['space']) if ('space' in self.config) else 0
         }
         return resistances
 

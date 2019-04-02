@@ -2,8 +2,11 @@
 import pygame, sys
 from creature_files.creatures.formless.Blue_Slime import Blue_Slime
 from creature_files.creatures.formless.Red_Slime import Red_Slime
+from creature_files.creatures.formless.Yellow_Slime import Yellow_Slime
+from creature_files.creatures.formless.Eldritch_Slime import Eldritch_Slime
 from food.Berry import Berry
 from food.Drum_Stick import Drum_Stick
+from items.Book import Book
 import time
 import configparser
 import random
@@ -24,12 +27,13 @@ class World:
         self.FPS = 60
 
         self.creature_container = []
-        self.max_creatures = 100
+        self.max_creatures = int(config_world['max_creatures'])
 
         self.name_container = []
 
         self.food_container = []
         self.waste_container = []
+        self.item_container = []
 
         self.width = int(config_world['width'])
         self.height = int(config_world['height'])
@@ -52,34 +56,53 @@ class World:
         self.display_vision = False
 
     def spawn_blue_slime(self):
+
         self.name_tracker = len(self.creature_container)
         if self.name_tracker < self.max_creatures:
             self.creature_container.append(Blue_Slime(self.get_name(), self))
 
     def spawn_red_slime(self):
+
         self.name_tracker = len(self.creature_container)
         if self.name_tracker < self.max_creatures:
             self.creature_container.append(Red_Slime(self.get_name(), self))
 
+    def spawn_yellow_slime(self):
+
+        self.name_tracker = len(self.creature_container)
+        if self.name_tracker < self.max_creatures:
+            self.creature_container.append(Yellow_Slime(self.get_name(), self))
+
+    def spawn_eldritch_slime(self):
+
+        self.name_tracker = len(self.creature_container)
+        if self.name_tracker < self.max_creatures:
+            self.creature_container.append(Eldritch_Slime(self.get_name(), self))
+
     def toggle_hitbox(self):
+
         if self.display_hitbox:
             for each in self.creature_container:
                 each.body.world_movement.display_hitbox()
 
     def toggle_vision(self):
+
         if self.display_vision:
             for each in self.creature_container:
                 each.body.world_movement.display_vision_radius()
 
     def clean_waste(self, waste):
+
         if waste in self.waste_container:
             self.waste_container.remove(waste)
 
     def clean_food(self, food):
+
         if food in self.food_container:
             self.food_container.remove(food)
 
     def get_name(self):
+
         name_list = open('assets/names.txt', 'r')
         list = name_list.readlines()
 
@@ -89,6 +112,7 @@ class World:
                 if each.name == name:
                     continue
             return name
+
 
 World = World()
 paused = False
@@ -125,6 +149,14 @@ while True:  # main game loop
             if event.key == pygame.K_2:
                 World.spawn_blue_slime()
 
+            # spawn yellow slime
+            if event.key == pygame.K_3:
+                World.spawn_yellow_slime()
+
+            # spawn eldritch slime
+            if event.key == pygame.K_4:
+                World.spawn_eldritch_slime()
+
             # spawn berry
             if event.key == pygame.K_9:
                 x, y = pygame.mouse.get_pos()
@@ -138,6 +170,12 @@ while True:  # main game loop
                 if len(World.food_container) < (3 + (len(World.creature_container) * 3)):
                     drum_stick = Drum_Stick(World, x, y)
                     World.food_container.append(drum_stick)
+
+            # spawn book
+            if event.key == pygame.K_b:
+                x, y = pygame.mouse.get_pos()
+                book = Book(World, x, y)
+                World.item_container.append(book)
 
             # clean waste
             if event.key == pygame.K_c:
@@ -186,43 +224,46 @@ while True:  # main game loop
 
             for each in World.food_container:
                 each.update()
-                #each.display_values()
 
             for each in World.waste_container:
                 each.update()
 
-            for each in World.creature_container:
+            for each in World.item_container:
                 each.update()
 
             for each in World.creature_container:
-                font = pygame.font.Font('freesansbold.ttf', 20)
-                text = font.render(each.name, True, (100, 100, 100))
-                textRect = text.get_rect()
-                textRect.center = (each.body.world_movement.x_center, each.body.world_movement.y_center - 40)
-                World.surface.blit(text, textRect)
+                each.update()
+
+            if config_world['display_names'] == 'True':
+                for each in World.creature_container:
+                    font = pygame.font.Font('freesansbold.ttf', 20)
+                    text = font.render(each.name, True, (100, 100, 100))
+                    textRect = text.get_rect()
+                    textRect.center = (each.body.world_movement.x_center, each.body.world_movement.y_center - 40)
+                    World.surface.blit(text, textRect)
 
             World.update_counter = 0
 
-
         if World.display_counter >= World.FPS:
-            print("----------------------------------------")
-            print("          W O R L D - S T A T S         ")
-            print("----------------------------------------")
-            print("Time Elapsed: " + str(round(time.time() - World.time_start, 0)) + " seconds")
-            print("Creatures: " + str(World.creature_container))
-            print("Food: " + str(World.food_container))
-            print("Waste: " + str(World.waste_container))
-            print("")
+            if config_world['display_data'] == 'True':
+                print("----------------------------------------")
+                print("          W O R L D - S T A T S         ")
+                print("----------------------------------------")
+                print("Time Elapsed: " + str(round(time.time() - World.time_start, 0)) + " seconds")
+                print("Creatures: " + str(World.creature_container))
+                print("Items: " + str(World.item_container))
+                print("Food: " + str(World.food_container))
+                print("Waste: " + str(World.waste_container))
+                print("")
 
-            for each in World.food_container:
-                pass
+                for each in World.food_container:
+                    pass
 
-            for each in World.waste_container:
-                pass
+                for each in World.waste_container:
+                    pass
 
-            for each in World.creature_container:
-                each.display_values()
-
+                for each in World.creature_container:
+                    each.display_values()
             World.display_counter = 0
 
 

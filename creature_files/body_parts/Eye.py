@@ -10,8 +10,18 @@ class Eye:
 
         self.name = str(body.creature.race) + " Eye"
         self.type = "Eye"
-        self.weight = 0.5
+
+        self.value = float(self.config['value'])
+        self.weight = float(self.config['weight'])
+
         self.stats = Stats(self)
+
+    # ----------------------------------------------------------------------------------------------------------------------
+    #   Update Functions
+
+    def update(self):
+
+        pass
 
     # ----------------------------------------------------------------------------------------------------------------------
     #   Display Functions
@@ -26,11 +36,5 @@ class Eye:
         print("E Y E")
         print("Name: " + str(self.name))
         print("Type: " + str(self.type))
+        print("Value: " + str((round(self.value, 2))) + " ¥")
         print("Weight: " + str(self.weight))
-
-    # ----------------------------------------------------------------------------------------------------------------------
-    #   Update Functions
-
-    def update(self):
-
-        pass

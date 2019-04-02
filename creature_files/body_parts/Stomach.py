@@ -12,13 +12,15 @@ class Stomach:
 
         self.config = body.creature.config[str.upper(self.__class__.__name__)]
 
-
         self.body = body
         self.world = body.world  # used for expelling waste!
 
         self.name = str(body.creature.race) + " Stomach"
         self.type = "Stomach"
-        self.weight = 3
+
+        self.value = float(self.config['value'])
+        self.weight = float(self.config['weight'])
+
         self.stats = Stats(self)
 
         self.contents = []
@@ -41,6 +43,7 @@ class Stomach:
     # food object is added to stomach content, food is_eaten variable is set to True and food's weight is added to stomach weight, which
     # will later be added to overall body weight on update
     def eat(self, food):
+
         if food in self.world.food_container:
             self.contents.append(food)
             self.world.food_container.remove(food)
@@ -84,41 +87,8 @@ class Stomach:
         self.world.waste_container.append(urine)
         self.urine_cur = 0
 
-# ----------------------------------------------------------------------------------------------------------------------
-#   Display Functions
-
-    def display_values_full(self):
-
-        self.display_values()
-        self.display_hunger_values_full
-        self.stats.display_values()
-
-    def display_hunger_values_full(self):
-        self.display_hunger_values()
-        self.display_waste_values()
-
-    def display_waste_values(self):
-
-        print("Urine: " + str(round(self.urine_cur, 0)) + "/" + str(self.urine_max))
-        print("Fecal: " + str(round(self.fecal_cur, 0)) + "/" + str(self.fecal_max))
-
-    def display_hunger_values(self):
-
-        print("Hunger: " + str(round(self.hunger_cur, 0)) + "/" + str(self.hunger_max))
-        print("Is Hungry: " + str(self.is_hungry))
-        print("Is Starving: " + str(self.is_starving))
-        print("Contents: " + str(self.contents))
-        print("Digestion Rate: " + str(self.digestion_rate))
-
-    def display_values(self):
-
-        print("S T O M A C H")
-        print("Name: " + str(self.name))
-        print("Type: " + str(self.type))
-        print("Weight: " + str(self.weight))
-
-# ----------------------------------------------------------------------------------------------------------------------
-#   Update Functions
+    # ----------------------------------------------------------------------------------------------------------------------
+    #   Update Functions
 
     # increase urine levels based on waste_gain from digest_food()
     def update_urine(self, waste_gain):
@@ -138,6 +108,7 @@ class Stomach:
         else:
             self.fecal_cur += waste_gain
 
+    # sets creature to starving if hunger is at max, decreasing their HP
     def update_is_starving(self):
 
         if self.hunger_cur >= self.hunger_max:
@@ -162,8 +133,43 @@ class Stomach:
             self.hunger_cur += self.hunger_rate
 
     def update(self):
+
         self.update_hunger_cur()
         self.update_is_hungry()
         self.update_is_starving()
         self.digest_food()
 
+    # ----------------------------------------------------------------------------------------------------------------------
+    #   Display Functions
+
+    def display_values_full(self):
+
+        self.display_values()
+        self.display_hunger_values_full
+        self.stats.display_values()
+
+    def display_hunger_values_full(self):
+
+        self.display_hunger_values()
+        self.display_waste_values()
+
+    def display_waste_values(self):
+
+        print("Urine: " + str(round(self.urine_cur, 0)) + "/" + str(self.urine_max))
+        print("Fecal: " + str(round(self.fecal_cur, 0)) + "/" + str(self.fecal_max))
+
+    def display_hunger_values(self):
+
+        print("Hunger: " + str(round(self.hunger_cur, 0)) + "/" + str(self.hunger_max))
+        print("Is Hungry: " + str(self.is_hungry))
+        print("Is Starving: " + str(self.is_starving))
+        print("Contents: " + str(self.contents))
+        print("Digestion Rate: " + str(self.digestion_rate))
+
+    def display_values(self):
+
+        print("S T O M A C H")
+        print("Name: " + str(self.name))
+        print("Type: " + str(self.type))
+        print("Value: " + str((round(self.value,2))) + " ¥")
+        print("Weight: " + str(self.weight))

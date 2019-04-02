@@ -1,6 +1,8 @@
 from enum import Enum
 
+
 class Activity_Level(Enum):
+
     Sleep = 0
     Rest = 1
     Idle = 2

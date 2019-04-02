@@ -19,6 +19,16 @@ class Psychology:
         self.a = 50  # Agreeableness
         self.n = 50  # Neuroticism
 
+    # ----------------------------------------------------------------------------------------------------------------------
+    #   Update Functions
+
+    def update(self):
+
+        pass
+
+    # ----------------------------------------------------------------------------------------------------------------------
+    #   Display Functions
+
     def display_values(self):
 
         print("P S Y C H O L O G Y")
