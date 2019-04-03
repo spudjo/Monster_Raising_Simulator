@@ -1,4 +1,5 @@
 from creature_files.body_types.Body_Formless import Body_Formless as Formless
+from creature_files.elements.Water import Water
 import configparser
 
 
@@ -17,8 +18,8 @@ class Blue_Slime:
         self.level = 1
         self.exp = 0
 
-        self.element = None
-        self.is_destroyed = True
+        self.element = Water()
+        self.is_destroyed = False
         self.body = Formless(self, World)
 
     # returns class name as a string with underscores replaced with spaces

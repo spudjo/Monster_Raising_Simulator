@@ -60,7 +60,7 @@ class Resources:
         def update_on_zero_health(self):
 
             if self.cur <= 0:
-                self.body.creature.is_destroyed = False
+                self.body.creature.is_destroyed = True
                 self.body.world.creature_container.remove(self.body.creature)
 
         def update_on_sleep(self):

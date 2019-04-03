@@ -198,13 +198,15 @@ class World_Movement:
         if self.stomach.is_hungry and self.body.resources.stamina.activity_level.name is not 'Sleep':
             self.search_for_food()
             if self.closest_food is not None:
+                # sets activity mode to Light if hungry and food is found, then move towards food
                 self.body.resources.stamina.activity_level = Activity_Level['Light']
                 self.move_to_food()
             else:
+                # sets activity mode to idle if hungry, not asleep and no food is found
                 self.body.resources.stamina.activity_level = Activity_Level['Idle']
 
         else:
-            # commented out as it will cause creatures to wake up when hungry!
+            # commented out as it will cause creatures to wake up immediately after 1 tick when hungry!
             #self.body.resources.stamina.activity_level = Activity_Level['Idle']
             self.closest_food = None
 

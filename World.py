@@ -6,7 +6,7 @@ from creature_files.creatures.formless.Yellow_Slime import Yellow_Slime
 from creature_files.creatures.formless.Eldritch_Slime import Eldritch_Slime
 from food.Berry import Berry
 from food.Drum_Stick import Drum_Stick
-from items.Book import Book
+from items.training.Book import Book
 import time
 import configparser
 import random

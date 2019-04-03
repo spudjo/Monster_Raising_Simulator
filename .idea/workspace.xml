@@ -2,43 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="869c3710-3762-4ba5-bcab-530a7d1d85f9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/creature_files/creatures/formless/Eldritch_Slime.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/creature_files/creatures/formless/Yellow_Slime.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/creature_files/creatures_config/formless/Eldritch_Slime.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/creature_files/creatures_config/formless/Yellow_Slime.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/creature_files/creatures_config/formless/_template.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/creature_files/miscellaneous/Value.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/items/Book.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Calculations.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/creature_files/body_parts/Spirit_Core.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/World.py" beforeDir="false" afterPath="$PROJECT_DIR$/World.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/names.txt" beforeDir="false" afterPath="$PROJECT_DIR$/assets/names.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/assets/notes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/slime/blue/idle/0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/slime/blue/idle/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/slime/blue/rest/0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/slime/blue/rest/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/slime/blue/sleep/0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/slime/blue/sleep/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/slime/sprite sheet/slime spritesheet calciumtrice 2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/slime/sprite sheet/slime spritesheet calciumtrice 4x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/slime/sprite sheet/slime spritesheet calciumtrice.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/creature_files/behaviour/World_Movement.py" beforeDir="false" afterPath="$PROJECT_DIR$/creature_files/behaviour/World_Movement.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/creature_files/body_parts/Brain.py" beforeDir="false" afterPath="$PROJECT_DIR$/creature_files/body_parts/Brain.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/creature_files/body_parts/Eye.py" beforeDir="false" afterPath="$PROJECT_DIR$/creature_files/body_parts/Eye.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/creature_files/body_parts/Heart.py" beforeDir="false" afterPath="$PROJECT_DIR$/creature_files/body_parts/Heart.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/creature_files/body_parts/Lung.py" beforeDir="false" afterPath="$PROJECT_DIR$/creature_files/body_parts/Lung.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/creature_files/body_parts/Stomach.py" beforeDir="false" afterPath="$PROJECT_DIR$/creature_files/body_parts/Stomach.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/creature_files/body_types/Body_Formless.py" beforeDir="false" afterPath="$PROJECT_DIR$/creature_files/body_types/Body_Formless.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/creature_files/creatures/formless/Blue_Slime.py" beforeDir="false" afterPath="$PROJECT_DIR$/creature_files/creatures/formless/Blue_Slime.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/creature_files/creatures/formless/Eldritch_Slime.py" beforeDir="false" afterPath="$PROJECT_DIR$/creature_files/creatures/formless/Eldritch_Slime.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/creature_files/creatures/formless/Red_Slime.py" beforeDir="false" afterPath="$PROJECT_DIR$/creature_files/creatures/formless/Red_Slime.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/creature_files/creatures/formless/template.py" beforeDir="false" afterPath="$PROJECT_DIR$/creature_files/creatures/formless/_template.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/creature_files/creatures_config/formless/Blue_Slime.ini" beforeDir="false" afterPath="$PROJECT_DIR$/creature_files/creatures_config/formless/Blue_Slime.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/creature_files/creatures/formless/Yellow_Slime.py" beforeDir="false" afterPath="$PROJECT_DIR$/creature_files/creatures/formless/Yellow_Slime.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/creature_files/creatures_config/formless/Eldritch_Slime.ini" beforeDir="false" afterPath="$PROJECT_DIR$/creature_files/creatures_config/formless/Eldritch_Slime.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/creature_files/creatures_config/formless/Red_Slime.ini" beforeDir="false" afterPath="$PROJECT_DIR$/creature_files/creatures_config/formless/Red_Slime.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/creature_files/creatures_config/formless/template.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/creature_files/miscellaneous/Activity_Level.py" beforeDir="false" afterPath="$PROJECT_DIR$/creature_files/miscellaneous/Activity_Level.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/creature_files/miscellaneous/Psychology.py" beforeDir="false" afterPath="$PROJECT_DIR$/creature_files/miscellaneous/Psychology.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/creature_files/elements/Water.py" beforeDir="false" afterPath="$PROJECT_DIR$/creature_files/elements/Water.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/creature_files/miscellaneous/Resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/creature_files/miscellaneous/Resources.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/creature_files/miscellaneous/Stats.py" beforeDir="false" afterPath="$PROJECT_DIR$/creature_files/miscellaneous/Stats.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/creature_files/miscellaneous/Weight.py" beforeDir="false" afterPath="$PROJECT_DIR$/creature_files/miscellaneous/Weight.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/world_config.ini" beforeDir="false" afterPath="$PROJECT_DIR$/world_config.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/items/Book.py" beforeDir="false" afterPath="$PROJECT_DIR$/items/training/Book.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -54,8 +35,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/creature_files/body_types/Body_Formless.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-51">
-              <caret line="12" column="50" lean-forward="true" selection-start-line="12" selection-start-column="50" selection-end-line="12" selection-end-column="50" />
+            <state relative-caret-position="425">
+              <caret line="25" selection-end-line="140" />
               <folding>
                 <element signature="e#46#106#0" expanded="true" />
               </folding>
@@ -64,40 +45,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/creature_files/miscellaneous/Stats.py">
+        <entry file="file://$PROJECT_DIR$/creature_files/body_parts/Spirit_Core.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/creature_files/creatures_config/formless/Red_Slime.ini">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
-              <caret line="33" column="67" selection-start-line="33" selection-start-column="67" selection-end-line="33" selection-end-column="67" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/creature_files/creatures/formless/Blue_Slime.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="21" selection-end-column="41" />
-              <folding>
-                <element signature="e#0#77#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/creature_files/miscellaneous/Resources.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Test.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="19" column="37" lean-forward="true" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
+              <caret line="6" column="10" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -105,8 +65,38 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/creature_files/creatures_config/formless/Blue_Slime.ini">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="10" lean-forward="true" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
+            <state relative-caret-position="85">
+              <caret line="5" column="45" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Calculations.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="476">
+              <caret line="32" selection-start-line="32" selection-end-line="32" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/creature_files/creatures_config/formless/Yellow_Slime.ini">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/creature_files/creatures_config/formless/Eldritch_Slime.ini">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="527">
+              <caret line="31" column="8" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -122,7 +112,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>self.body.stats.explore.vis</find>
       <find>display_vis</find>
       <find>display_vission</find>
       <find>display_vision_radius</find>
@@ -152,6 +141,7 @@
       <find>print(&quot;Value: &quot; + str(&quot;{(round(self.value,2))f&quot;}.format(2)) + &quot; ¥&quot;.format(2))</find>
       <find>print(&quot;Value: &quot; + str(&quot;{(round(self.value,2))f}&quot;.format(2)) + &quot; ¥&quot;)</find>
       <find>self.value = float(self.config['value'])</find>
+      <find>is_destroyed</find>
     </findStrings>
     <replaceStrings>
       <replace>self.stats</replace>
@@ -192,10 +182,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/monsters/Blue_Slime.py" />
-        <option value="$PROJECT_DIR$/monsters/body_types/Body_Formless.py" />
-        <option value="$PROJECT_DIR$/monsters/body_parts/Stomach.py" />
-        <option value="$PROJECT_DIR$/monsters/stats.config" />
         <option value="$PROJECT_DIR$/cofig_test.py" />
         <option value="$PROJECT_DIR$/assets/test.ini" />
         <option value="$PROJECT_DIR$/test.ini" />
@@ -222,15 +208,10 @@
         <option value="$PROJECT_DIR$/creature_files/body_parts/Heart.py" />
         <option value="$PROJECT_DIR$/creature_files/body_parts/Brain.py" />
         <option value="$PROJECT_DIR$/creature_files/body_parts/Eye.py" />
-        <option value="$PROJECT_DIR$/creature_files/creatures_config/formless/Red_Slime.ini" />
         <option value="$PROJECT_DIR$/creature_files/creatures_config/formless/Yellow_Slime.ini" />
-        <option value="$PROJECT_DIR$/creature_files/creatures/formless/Eldritch_Slime.py" />
-        <option value="$PROJECT_DIR$/creature_files/miscellaneous/Resources.py" />
         <option value="$PROJECT_DIR$/assets/names.txt" />
-        <option value="$PROJECT_DIR$/creature_files/behaviour/World_Movement.py" />
         <option value="$PROJECT_DIR$/creature_files/creatures_config/formless/Blue_Slime.ini" />
         <option value="$PROJECT_DIR$/assets/notes.txt" />
-        <option value="$PROJECT_DIR$/creature_files/creatures_config/formless/Eldritch_Slime.ini" />
         <option value="$PROJECT_DIR$/fsadsdsad.py" />
         <option value="$PROJECT_DIR$/world_config.ini" />
         <option value="$PROJECT_DIR$/creature_files/miscellaneous/Psychology.py" />
@@ -238,19 +219,28 @@
         <option value="$PROJECT_DIR$/items/Book.py" />
         <option value="$PROJECT_DIR$/World.py" />
         <option value="$PROJECT_DIR$/World.py" />
-        <option value="$PROJECT_DIR$/creature_files/creatures/formless/Blue_Slime.py" />
-        <option value="$PROJECT_DIR$/creature_files/creatures/formless/Red_Slime.py" />
-        <option value="$PROJECT_DIR$/creature_files/creatures/formless/Yellow_Slime.py" />
         <option value="$PROJECT_DIR$/creature_files/body_types/Body_Formless.py" />
         <option value="$PROJECT_DIR$/Test.py" />
+        <option value="$PROJECT_DIR$/Calculations.py" />
+        <option value="$PROJECT_DIR$/creature_files/behaviour/World_Movement.py" />
+        <option value="$PROJECT_DIR$/creature_files/elements/Water.py" />
+        <option value="$PROJECT_DIR$/creature_files/miscellaneous/Resources.py" />
+        <option value="$PROJECT_DIR$/creature_files/creatures/formless/Yellow_Slime.py" />
+        <option value="$PROJECT_DIR$/creature_files/creatures/formless/Red_Slime.py" />
+        <option value="$PROJECT_DIR$/creature_files/creatures/formless/Eldritch_Slime.py" />
+        <option value="$PROJECT_DIR$/creature_files/creatures/formless/Blue_Slime.py" />
+        <option value="$PROJECT_DIR$/creature_files/creatures_config/formless/Red_Slime.ini" />
+        <option value="$PROJECT_DIR$/creature_files/creatures_config/formless/Eldritch_Slime.ini" />
+        <option value="$PROJECT_DIR$/creature_files/body_parts/Spirit Core.py" />
+        <option value="$PROJECT_DIR$/creature_files/body_types/Body_Ethereal.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1577" />
-    <option name="y" value="-1" />
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="302" />
+    <option name="y" value="46" />
     <option name="width" value="958" />
-    <option name="height" value="988" />
+    <option name="height" value="1001" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -258,6 +248,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -265,11 +256,20 @@
               <item name="Monster_Raising_Simulator" type="b2602c69:ProjectViewProjectNode" />
               <item name="Monster_Raising_Simulator" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Monster_Raising_Simulator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Monster_Raising_Simulator" type="462c0819:PsiDirectoryNode" />
+              <item name="creature_files" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Monster_Raising_Simulator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Monster_Raising_Simulator" type="462c0819:PsiDirectoryNode" />
+              <item name="items" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -278,19 +278,19 @@
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\student\source\repos\-Shawn_Py\Monster_Raising_Simulator\creature_files\creatures_config" />
-      <recent name="C:\Users\student\source\repos\-Shawn_Py\Monster_Raising_Simulator" />
-      <recent name="C:\Users\student\source\repos\-Shawn_Py\Monster_Raising_Simulator\creature_files\creatures_config\formless" />
-      <recent name="C:\Users\student\source\repos\-Shawn_Py\Monster_Raising_Simulator\creature_files\creatures\formless" />
-      <recent name="C:\Users\student\source\repos\-Shawn_Py\Monster_Raising_Simulator\creature_files\creatures" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\student\source\repos\-Shawn_Py\Monster_Raising_Simulator\items" />
       <recent name="C:\Users\student\source\repos\-Shawn_Py\Monster_Raising_Simulator\creature_files\creatures_config\formless" />
       <recent name="C:\Users\student\source\repos\-Shawn_Py\Monster_Raising_Simulator\creature_files\creatures\formless" />
       <recent name="C:\Users\student\source\repos\-Shawn_Py\Monster_Raising_Simulator\assets\creatures\body_formless\blue_slime" />
       <recent name="C:\Users\student\source\repos\-Shawn_Py\Monster_Raising_Simulator\creature_files\miscellaneous" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\student\source\repos\-Shawn_Py\Monster_Raising_Simulator\items\training" />
+      <recent name="C:\Users\student\source\repos\-Shawn_Py\Monster_Raising_Simulator\creature_files\creatures_config" />
+      <recent name="C:\Users\student\source\repos\-Shawn_Py\Monster_Raising_Simulator" />
+      <recent name="C:\Users\student\source\repos\-Shawn_Py\Monster_Raising_Simulator\creature_files\creatures_config\formless" />
+      <recent name="C:\Users\student\source\repos\-Shawn_Py\Monster_Raising_Simulator\creature_files\creatures\formless" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -305,7 +305,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Test">
+  <component name="RunManager" selected="Python.World">
     <configuration name="Blue_Slime" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Monster_Raising_Simulator" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -360,7 +360,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Test.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\student\source\repos\-Shawn_Py\Monster_Raising_Simulator\Calculations.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -434,8 +434,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Test" />
         <item itemvalue="Python.World" />
+        <item itemvalue="Python.Test" />
         <item itemvalue="Python.Body_Formless" />
         <item itemvalue="Python.Blue_Slime" />
         <item itemvalue="Python.TestCreature" />
@@ -465,11 +465,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1688" y="58" width="1696" height="1026" extended-state="6" />
+    <frame x="302" y="46" width="958" height="1001" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" sideWeight="0.5016308" side_tool="true" weight="0.20136186" />
-      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49836922" visible="true" weight="0.17490953" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.49836922" visible="true" weight="0.3152174" />
       <window_info id="Structure" order="2" sideWeight="0.5016308" side_tool="true" weight="0.20136186" />
       <window_info anchor="bottom" id="Terminal" order="0" weight="0.18113612" />
       <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.50060314" side_tool="true" weight="0.20828667" />
@@ -477,8 +477,8 @@
       <window_info anchor="bottom" id="Message" order="3" />
       <window_info anchor="bottom" id="Find" order="4" weight="0.32922733" />
       <window_info anchor="bottom" id="Version Control" order="5" weight="0.32876712" />
-      <window_info active="true" anchor="bottom" x="-1186" y="174" width="946" height="818" id="Run" order="6" side_tool="true" type="WINDOWED" visible="true" weight="0.42795232" />
-      <window_info anchor="bottom" id="Debug" order="7" sideWeight="0.49939686" visible="true" weight="0.10638298" />
+      <window_info anchor="bottom" x="348" y="146" width="946" height="818" id="Run" order="6" side_tool="true" type="WINDOWED" weight="0.42795232" />
+      <window_info anchor="bottom" id="Debug" order="7" sideWeight="0.49939686" weight="0.10638298" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="10" weight="0.32876712" />
@@ -547,28 +547,9 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/venv/Scripts/activate.bat">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="19" lean-forward="true" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/food/Drum_Stick.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="41" column="83" selection-start-line="41" selection-start-column="83" selection-end-line="41" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/creature_files/creatures/formless/Blue_Slime_Old.py" />
     <entry file="file://$PROJECT_DIR$/creature_files/miscellaneous/Stats_Test.py" />
-    <entry file="file://$PROJECT_DIR$/assets/slime/blue/sleep/1.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/slime/blue/sleep/1.png" />
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/site-packages/pyganim/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -606,13 +587,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/creature_files/body_types/Body_Ethereal.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="20" selection-start-column="20" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -672,13 +646,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/creature_files/creatures_config/formless/Red_Slime.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="85" selection-start-line="2" selection-start-column="85" selection-end-line="2" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/creature_files/creatures_config/formless/_template.ini">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
@@ -707,20 +674,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/creature_files/body_parts/Eye.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/creature_files/creatures_config/formless/Yellow_Slime.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="9" lean-forward="true" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/creature_files/body_parts/Stomach.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="116">
@@ -745,24 +698,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fsadsdsad.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="50" lean-forward="true" selection-start-line="8" selection-start-column="50" selection-end-line="8" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/fsadsdsad.py" />
     <entry file="file://$PROJECT_DIR$/assets/notes.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="33" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/creature_files/creatures_config/formless/Eldritch_Slime.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="11" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="24" selection-end-column="11" />
         </state>
       </provider>
     </entry>
@@ -773,54 +713,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/creature_files/creatures/formless/Yellow_Slime.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="16" column="22" lean-forward="true" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/creature_files/creatures/formless/Red_Slime.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#77#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/World.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="253" column="48" selection-start-line="253" selection-start-column="48" selection-end-line="253" selection-end-column="48" />
-          <folding>
-            <element signature="e#7#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/items/Book.py">
+    <entry file="file://$PROJECT_DIR$/items/training/Book.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="15" selection-start-line="15" selection-end-line="15" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/food/Berry.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="26" column="15" selection-end-line="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/creature_files/behaviour/World_Movement.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="206" column="70" selection-start-line="206" selection-start-column="70" selection-end-line="206" selection-end-column="70" />
-          <folding>
-            <element signature="e#477#490#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -828,13 +724,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="56" selection-start-line="14" selection-start-column="56" selection-end-line="14" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/creature_files/creatures/formless/Eldritch_Slime.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="16" column="24" lean-forward="true" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -848,13 +737,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/creature_files/creatures_config/formless/Blue_Slime.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="10" lean-forward="true" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/creature_files/miscellaneous/Stats.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -862,37 +744,151 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/creature_files/creatures/formless/Blue_Slime.py">
+    <entry file="file://$PROJECT_DIR$/food/Drum_Stick.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="21" selection-end-column="41" />
+        <state relative-caret-position="680">
+          <caret line="41" column="83" selection-start-line="41" selection-start-column="83" selection-end-line="41" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/food/Berry.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="16" column="23" lean-forward="true" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/World.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="253" column="48" selection-start-line="253" selection-start-column="48" selection-end-line="253" selection-end-column="48" />
+          <folding>
+            <element signature="e#7#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/creature_files/behaviour/World_Movement.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="14" lean-forward="true" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/creature_files/elements/Water.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/creature_files/miscellaneous/Resources.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="62" column="54" selection-start-line="62" selection-start-column="50" selection-end-line="62" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/creature_files/creatures/formless/Red_Slime.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
           <folding>
             <element signature="e#0#77#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/creature_files/creatures/formless/Yellow_Slime.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="20" column="33" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/creature_files/creatures/formless/Blue_Slime.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="17" column="22" lean-forward="true" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#77#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/creature_files/creatures/formless/Eldritch_Slime.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/creature_files/creatures_config/formless/Yellow_Slime.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/creature_files/creatures_config/formless/Eldritch_Slime.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" column="8" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/creature_files/creatures_config/formless/Red_Slime.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="10" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/creature_files/creatures_config/formless/Blue_Slime.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="45" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/creature_files/body_parts/Eye.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" lean-forward="true" selection-end-line="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/creature_files/body_types/Body_Ethereal.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="23" lean-forward="true" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/creature_files/body_types/Body_Formless.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-51">
-          <caret line="12" column="50" lean-forward="true" selection-start-line="12" selection-start-column="50" selection-end-line="12" selection-end-column="50" />
+        <state relative-caret-position="425">
+          <caret line="25" selection-end-line="140" />
           <folding>
             <element signature="e#46#106#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/creature_files/miscellaneous/Resources.py">
+    <entry file="file://$PROJECT_DIR$/creature_files/body_parts/Spirit_Core.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+        <state relative-caret-position="170">
+          <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Test.py">
+    <entry file="file://$PROJECT_DIR$/Calculations.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="19" column="37" lean-forward="true" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
+        <state relative-caret-position="476">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

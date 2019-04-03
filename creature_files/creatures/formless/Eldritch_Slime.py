@@ -18,7 +18,7 @@ class Eldritch_Slime:
         self.exp = 0
 
         self.element = None
-        self.is_destroyed = True
+        self.is_destroyed = False
         self.body = Formless(self, World)
 
     # returns class name as a string with underscores replaced with spaces
