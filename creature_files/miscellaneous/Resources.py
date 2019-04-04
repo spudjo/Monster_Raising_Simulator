@@ -28,7 +28,7 @@ class Resources:
 
         self.int = body.stats.base['int']
         self.end = body.stats.base['end']
-        self.level = body.creature.level
+
 
         self.health = self.Health(self.config_health, body)
         self.aether = self.Aether(self.config_aether, body)
@@ -41,8 +41,9 @@ class Resources:
             self.config = config
             self.body = body
             self.stomach = body.get_body_parts('stomach')[0]
+            self.level = body.creature.exp.level
 
-            self.max = int(self.config['max']) + (10 + (0.5 * self.body.stats.base['end'])) * self.body.creature.level
+            self.max = int(int(self.config['max']) + (10 + (0.5 * self.body.stats.base['end'])) * self.level)
             self.cur = self.max
             self.regen = int(config['regen'])
             self.is_regen = False
@@ -50,12 +51,15 @@ class Resources:
         # ----------------------------------------------------------------------------------------------------------------------
         #   Update Functions
 
+        # used to update max health on level or endurance increase
         def update_max(self):
 
             if int(self.config['max']) == 0:
                 self.max = 0
             else:
-                self.max = int(self.config['max']) + (10 + (0.5 * self.body.stats.base['end'])) * self.body.creature.level
+                self.level = self.body.creature.exp.level
+                self.max = int(int(self.config['max']) + (10 + (0.5 * self.body.stats.base['end'])) * self.level)
+                self.cur = self.max
 
         def update_on_zero_health(self):
 
@@ -110,8 +114,9 @@ class Resources:
             self.config = config
             self.body = body
             self.stomach = body.get_body_parts('stomach')[0]
+            self.level = body.creature.exp.level
 
-            self.max = int(self.config['max']) + (10 + (0.5 * self.body.stats.base['int'])) * self.body.creature.level
+            self.max = int(int(self.config['max']) + (10 + (0.5 * self.body.stats.base['int'])) * self.level)
             self.cur = self.max
             if int(self.config['max']) == 0:
                 self.cur = 0
@@ -124,12 +129,15 @@ class Resources:
         # ----------------------------------------------------------------------------------------------------------------------
         #   Update Functions
 
+        # used to update max aether on level or endurance increase
         def update_max(self):
 
             if int(self.config['max']) == 0:
                 self.max = 0
             else:
-                self.max = int(self.config['max']) + (10 + (0.5 * self.body.stats.base['int'])) * self.body.creature.level
+                self.level = self.body.creature.exp.level
+                self.max = int(int(self.config['max']) + (10 + (0.5 * self.body.stats.base['int'])) * self.level)
+                self.cur = self.max
 
         def update_on_sleep(self):
             # increase current health if is_regen is True, typically if creature is sleeping

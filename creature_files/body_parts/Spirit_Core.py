@@ -11,7 +11,7 @@ class Spirit_Core:
         self.name = str(body.creature.race) + " Spirit Core"
         self.type = "Spirit Core"
 
-        self.value = float(self.config['value'])
+        self.value = int(self.config['value'])
         self.weight = float(self.config['weight'])
 
         self.stats = Stats(self)
@@ -36,5 +36,5 @@ class Spirit_Core:
         print("S P I R I T - C O R E")
         print("Name: " + str(self.name))
         print("Type: " + str(self.type))
-        print("Value: " + str((round(self.value, 2))) + " ¥")
+        print("Value: " + str(int(self.value)) + " ¥")
         print("Weight: " + str(self.weight))

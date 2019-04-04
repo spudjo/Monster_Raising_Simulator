@@ -1,4 +1,6 @@
 from creature_files.body_types.Body_Formless import Body_Formless as Formless
+from creature_files.miscellaneous.Experience import Experience
+from creature_files.elements.Dark import Dark
 import configparser
 
 
@@ -14,12 +16,12 @@ class Eldritch_Slime:
         self.race = config_general['race']
         self.description = config_general['description']
         self.age = 5000
-        self.level = 125
-        self.exp = 0
 
-        self.element = None
-        self.is_destroyed = False
+        self.exp = Experience(self)
+        self.element = Dark()
         self.body = Formless(self, World)
+
+        self.is_destroyed = False
 
     # returns class name as a string with underscores replaced with spaces
     def get_class_name(self):
@@ -38,6 +40,7 @@ class Eldritch_Slime:
     def update(self):
 
         self.age += (1 / 60)    # age approx 1 year every minute
+        self.exp.update()
         self.body.update()
 
     # ----------------------------------------------------------------------------------------------------------------------
@@ -50,6 +53,6 @@ class Eldritch_Slime:
         print("Race: " + str(self.race))
         print("Description: " + str(self.description))
         print("Age: " + str(round(self.age, 2)))
-        print("Level: " + str(self.level))
-        print("Exp: " + str(self.exp))
+        self.exp.display_values()
+        print("")
         self.body.display_values()

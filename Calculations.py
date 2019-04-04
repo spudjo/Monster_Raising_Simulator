@@ -29,6 +29,7 @@ def stat_points_gain_range_calculator(starting_level, ending_level, luck):
 
 # amount of stat points gained based on current level and luk stat
 def stats_points_gain_calculator(current_level, luk):
+
     amount_of_bonus_increases = math.floor(current_level / 10)
 
     luk = luk
@@ -50,18 +51,20 @@ def stats_points_gain_calculator(current_level, luk):
     print('Level ' + str(current_level) + ": " + str(stat_gain) + " pts (" + str(current_level) + "+" + str(bonus) + " bonus)")
 
 
-# amount of points required for any stat value
+# amount of points required for any stat value, Σn, where n = (stat value - 1)
 # the cost to increase any given stat is equivalent to the stat's current value: Increasing Strength from 10 to 11 costs 10 points
 def cost_of_stat(number):
+
     total = 0
-    for each in range(1, number+1):
+    for each in range(1, number):
         total += each
-    #print(total)
+    print(total)
     return total
 
 
 # amount of points required for multiple stat values
 def cost_of_all_stats(*args):
+
     total = 0
     for each in args:
         print(each)
@@ -69,4 +72,10 @@ def cost_of_all_stats(*args):
     print(total)
 
 
-stat_points_gain_range_calculator(0, 150, 0)
+#(1, 14, 0)
+stat_points_gain_range_calculator(1,99,15)
+cost_of_all_stats(10,99,15,50,40,15)
+
+#stats_points_gain_calculator(1,0)
+
+#cost_of_stat(11)

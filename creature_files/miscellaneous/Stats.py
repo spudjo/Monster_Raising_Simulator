@@ -15,25 +15,33 @@
 #   resistance to disease, mutation (growing extra limbs?), stress (linked to psychology), bleeding, etc...
 # TODO: better way of doing get() methods
 
+import random
+import math
+
+
 class Stats:
 
     def __init__(self, body):
 
         self.config = body.config
+        self.body = body
 
+        self.base_points = 3
         self.base = self.get_base_stats()
+
         self.explore = self.get_explore_stats()
+
         self.resist = self.get_resist_stats()
 
     def get_base_stats(self):
 
         base = {
-            'str': int(self.config['str']) if ('str' in self.config) else 0,
-            'int': int(self.config['int']) if ('int' in self.config) else 0,
-            'end': int(self.config['end']) if ('end' in self.config) else 0,
-            'dex': int(self.config['dex']) if ('dex' in self.config) else 0,
-            'spd': int(self.config['spd']) if ('spd' in self.config) else 0,
-            'luk': int(self.config['luk']) if ('luk' in self.config) else 0
+            'str': int(self.config['str']) if ('str' in self.config) else 1,
+            'int': int(self.config['int']) if ('int' in self.config) else 1,
+            'end': int(self.config['end']) if ('end' in self.config) else 1,
+            'dex': int(self.config['dex']) if ('dex' in self.config) else 1,
+            'spd': int(self.config['spd']) if ('spd' in self.config) else 1,
+            'luk': int(self.config['luk']) if ('luk' in self.config) else 1
         }
         return base
 
@@ -63,10 +71,63 @@ class Stats:
         }
         return resistances
 
-    # add all stats together and returns
-    # used to calculate creature's overall stats on the individual stats of their body parts
-    def combine_stats(self, body_parts):
+    # base_stat is one of the 6 base stats as a string
+    def increase_base_stat(self, creature, base_stat):
+        if self.base_points >= self.base[base_stat]:
+            print(str.capitalize(base_stat) + " Increased!")
+            print(str(self.base[base_stat]) + "->" + str(self.base[base_stat] + 1))
+            self.base_points -= self.base[base_stat]
+            self.base[base_stat] += 1
+        else:
+            print("Insufficient points!")
 
+    # ----------------------------------------------------------------------------------------------------------------------
+    #   Update Functions
+
+    # amount of stat points gained based on current level and luk stat
+    # the amount of stat points gain is equal to the creature's current level plus a bonus value, which starts at 2 and increases by 1 every 10 levels
+    # there is also a 5% chance that creatures will gain 2x their current level in bonus points
+    # this chance increases based on luck/250
+    def update_base_stat_points_on_level(self):
+
+        current_level = self.body.creature.exp.level
+
+        # every 10 levels, bonus_increase increases by 1
+        amount_of_bonus_increases = math.floor(current_level / 10)
+
+        luk = self.base['luk']  # get creature body's luck
+        bonus = 2
+        bonus_increase = 1
+
+        for each in range(0, amount_of_bonus_increases):
+            bonus += 2 + bonus_increase
+            bonus_increase += 1
+
+        stat_gain = current_level    # get creature's level
+
+        # chance for extra bonus points (increase chance based on luck)
+        if random.random() > 0.95 - (luk / 250):
+            stat_gain += current_level + bonus
+        else:
+            stat_gain += bonus
+
+        self.base_points += stat_gain
+        print("Gained " + str(stat_gain) + " stat points!")
+
+    # adds creature's body stats with the stats from all their individual body parts
+    def update_body_stats(self, body_stats, body_parts):
+
+        # copies base stats from body
+        for value in body_stats.base:
+            self.base[value] = body_stats.base[value]
+        # copies explore stats from body
+        for value in body_stats.explore:
+            self.explore[value] = body_stats.explore[value]
+        # copies resist stats from body
+        for value in body_stats.resist:
+            self.resist[value] = body_stats.resist[value]
+
+        # add stats from body parts
         for part in body_parts:
             # add all base stats
             for value in part.stats.base:

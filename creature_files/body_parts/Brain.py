@@ -1,5 +1,6 @@
 # stats are Int, Dex and Luk
 from creature_files.miscellaneous.Stats import Stats
+from creature_files.miscellaneous.Psychology import Psychology
 
 
 class Brain:
@@ -7,12 +8,15 @@ class Brain:
     def __init__(self, body):
 
         self.config = body.creature.config[str.upper(self.__class__.__name__)]
+        self.body = body
 
         self.name = str(body.creature.race) + " Brain"
         self.type = "Brain"
-        self.value = float(self.config['value'])
+        self.value = int(self.config['value'])
         self.weight = float(self.config['weight'])
         self.stats = Stats(self)
+
+        self.psychology = Psychology(self)
 
     # ----------------------------------------------------------------------------------------------------------------------
     #   Update Functions
@@ -34,5 +38,5 @@ class Brain:
         print("B R A I N")
         print("Name: " + str(self.name))
         print("Type: " + str(self.type))
-        print("Value: " + str((round(self.value,2))) + " ¥")
+        print("Value: " + str(int(self.value)) + " ¥")
         print("Weight: " + str(self.weight))

@@ -18,7 +18,7 @@ class Stomach:
         self.name = str(body.creature.race) + " Stomach"
         self.type = "Stomach"
 
-        self.value = float(self.config['value'])
+        self.value = int(self.config['value'])
         self.weight = float(self.config['weight'])
 
         self.stats = Stats(self)
@@ -153,11 +153,13 @@ class Stomach:
         self.display_hunger_values()
         self.display_waste_values()
 
+    # display waste values
     def display_waste_values(self):
 
         print("Urine: " + str(round(self.urine_cur, 0)) + "/" + str(self.urine_max))
         print("Fecal: " + str(round(self.fecal_cur, 0)) + "/" + str(self.fecal_max))
 
+    # display hunger values
     def display_hunger_values(self):
 
         print("Hunger: " + str(round(self.hunger_cur, 0)) + "/" + str(self.hunger_max))
@@ -166,10 +168,11 @@ class Stomach:
         print("Contents: " + str(self.contents))
         print("Digestion Rate: " + str(self.digestion_rate))
 
+    # display stomach values
     def display_values(self):
 
         print("S T O M A C H")
         print("Name: " + str(self.name))
         print("Type: " + str(self.type))
-        print("Value: " + str((round(self.value,2))) + " ¥")
+        print("Value: " + str(int(self.value)) + " ¥")
         print("Weight: " + str(self.weight))

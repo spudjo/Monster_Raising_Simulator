@@ -43,8 +43,8 @@ class World_Movement:
 
         self.hitbox = pygame.Rect(self.x, self.y, self.width, self.height)
 
-        self.movement_speed_x = self.body.stats.base['spd']
-        self.movement_speed_y = self.body.stats.base['spd']
+        self.movement_speed_x = self.body.stats_full.base['spd']
+        self.movement_speed_y = self.body.stats_full.base['spd']
 
         # randomize wandering x direction
         if random.random() > .5:
@@ -166,7 +166,7 @@ class World_Movement:
 
         if len(self.container.food_container) > 0:
             for food in self.container.food_container:
-                if self.get_distance(food) <= self.body.stats.explore.get('vis'):
+                if self.get_distance(food) <= self.body.stats_full.explore.get('vis'):
                     if self.closest_food is None:
                         self.closest_food = food
                     elif self.get_distance(self.closest_food) > self.get_distance(food):
@@ -189,10 +189,18 @@ class World_Movement:
     # ----------------------------------------------------------------------------------------------------------------------
     #   Update Functions
 
+    # update movement speed based on creature body's stats_full value
+    def update_movement_speed(self):
+
+        self.movement_speed_x = self.body.stats_full.base['spd']
+        self.movement_speed_y = self.body.stats_full.base['spd']
+
+    # update hitbox on movement
     def update_hitbox(self):
 
         self.hitbox = pygame.Rect(self.x, self.y, self.width, self.height)
 
+    # change world movement based on activity_level / hunger
     def update_movement(self):
 
         if self.stomach.is_hungry and self.body.resources.stamina.activity_level.name is not 'Sleep':
@@ -205,9 +213,11 @@ class World_Movement:
                 # sets activity mode to idle if hungry, not asleep and no food is found
                 self.body.resources.stamina.activity_level = Activity_Level['Idle']
 
-        else:
+        elif self.body.resources.stamina.activity_level.name is not 'Sleep':
             # commented out as it will cause creatures to wake up immediately after 1 tick when hungry!
-            #self.body.resources.stamina.activity_level = Activity_Level['Idle']
+            self.body.resources.stamina.activity_level = Activity_Level['Idle']
+            self.closest_food = None
+        else:
             self.closest_food = None
 
         if self.body.resources.stamina.activity_level.name == 'Sleep':
@@ -231,8 +241,7 @@ class World_Movement:
             self.idle_animation.play()
             self.idle_animation.blit(self.container.surface, (self.x, self.y))
 
-        # update 4 corners of hitbox, useful for collision detection later on
-
+     # update 4 corners of hitbox, useful for collision detection later on
     def update_coords(self):
 
         self.x2 = self.x + self.width
@@ -249,6 +258,7 @@ class World_Movement:
 
     def update(self):
 
+        self.update_movement_speed()
         self.update_movement()
 
     # ----------------------------------------------------------------------------------------------------------------------
@@ -256,7 +266,7 @@ class World_Movement:
 
     def display_vision_radius(self):
 
-        pygame.draw.circle(self.container.surface, (255, 0, 0), (int(round(self.x_center, 0)), int(round(self.y_center, 0))), self.body.stats.explore.get('vis'), 1)
+        pygame.draw.circle(self.container.surface, (255, 0, 0), (int(round(self.x_center, 0)), int(round(self.y_center, 0))), self.body.stats_full.explore.get('vis'), 1)
 
     def display_closest_food(self):
 

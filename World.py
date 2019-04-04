@@ -144,18 +144,22 @@ while True:  # main game loop
             # spawn red slime
             if event.key == pygame.K_1:
                 World.spawn_red_slime()
+                print("     Spawned Red Slime!")
 
             # spawn blue slime
             if event.key == pygame.K_2:
                 World.spawn_blue_slime()
+                print("     Spawned Blue Slime!")
 
             # spawn yellow slime
             if event.key == pygame.K_3:
                 World.spawn_yellow_slime()
+                print("     Spawned Yellow Slime!")
 
             # spawn eldritch slime
             if event.key == pygame.K_4:
                 World.spawn_eldritch_slime()
+                print("     Spawned Eldritch Slime!")
 
             # spawn berry
             if event.key == pygame.K_9:
@@ -163,6 +167,7 @@ while True:  # main game loop
                 if len(World.food_container) < (3 + (len(World.creature_container) * 3)):
                     berry = Berry(World, x, y)
                     World.food_container.append(berry)
+                    print("     Spawned Berry!")
 
             # spawn drum stick
             if event.key == pygame.K_0:
@@ -170,12 +175,14 @@ while True:  # main game loop
                 if len(World.food_container) < (3 + (len(World.creature_container) * 3)):
                     drum_stick = Drum_Stick(World, x, y)
                     World.food_container.append(drum_stick)
+                    print("     Spawned Drum Stick!")
 
             # spawn book
             if event.key == pygame.K_b:
                 x, y = pygame.mouse.get_pos()
                 book = Book(World, x, y)
                 World.item_container.append(book)
+                print("     Spawned Book!")
 
             # clean waste
             if event.key == pygame.K_c:
@@ -187,7 +194,7 @@ while True:  # main game loop
                     for num1 in range(-click_radius, click_radius):
                         for num2 in range(-click_radius, click_radius):
                             if waste.x == (x + num1) and waste.y == (y + num2) and waste_deleted is False:
-                                print("Waste Cleaned!")
+                                print("     Waste Cleaned!")
                                 World.clean_waste(waste)
                                 waste_deleted = True
                 waste_deleted = False
@@ -205,6 +212,35 @@ while True:  # main game loop
                     World.display_vision = False
                 else:
                     World.display_vision = True
+
+            if event.key == pygame.K_KP1:
+                for each in World.creature_container:
+                    each.body.stats.increase_base_stat(each, 'str')
+
+            if event.key == pygame.K_KP2:
+                for each in World.creature_container:
+                    each.body.stats.increase_base_stat(each, 'int')
+
+            if event.key == pygame.K_KP3:
+                for each in World.creature_container:
+                    each.body.stats.increase_base_stat(each, 'end')
+
+            if event.key == pygame.K_KP4:
+                for each in World.creature_container:
+                    each.body.stats.increase_base_stat(each, 'dex')
+            if event.key == pygame.K_KP5:
+                for each in World.creature_container:
+                    each.body.stats.increase_base_stat(each, 'spd')
+            if event.key == pygame.K_KP6:
+                for each in World.creature_container:
+                    each.body.stats.increase_base_stat(each, 'luk')
+
+            # give experience
+            if event.key == pygame.K_x:
+                for each in World.creature_container:
+                    exp = int(config_world['exp_gain'])
+                    each.exp.update_experience_current(exp)
+                    print("     " + each.name + " gained " + "{:,}".format(exp) + " exp!")
 
             # speed / slow time
             if event.key == pygame.K_z:
@@ -264,10 +300,11 @@ while True:  # main game loop
 
                 for each in World.creature_container:
                     each.display_values()
+
+                print("World Actions:")
+
+
             World.display_counter = 0
-
-
-
 
         pygame.display.update()
         pygame.time.Clock().tick(World.FPS)

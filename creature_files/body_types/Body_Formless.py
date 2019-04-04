@@ -6,7 +6,6 @@ from creature_files.body_parts.Brain import Brain
 from creature_files.body_parts.Heart import Heart
 from creature_files.body_parts.Stomach import Stomach
 from creature_files.body_parts.Lung import Lung
-from creature_files.miscellaneous.Psychology import Psychology
 from creature_files.miscellaneous.Stats import Stats
 from creature_files.behaviour.World_Movement import World_Movement as World_Movement
 import creature_files.miscellaneous.Weight as Weight
@@ -20,20 +19,23 @@ class Body_Formless:
         self.config = creature.config[str.upper(self.__class__.__name__)]
         self.creature = creature
         self.world = world
+        self.name = self.creature.race + " Body"
+        self.type = "Body"
 
         # Body Parts
         self.body_parts = self.generate_body_parts()
 
         # Stats
-        self.stats = Stats(self)  # body base stats
-        self.stats = Stats.combine_stats(self.stats, self.body_parts)   # combine stats from all body parts
+        self.stats = Stats(self)  # body base stats, these are the stats that can increase by leveling up
 
+        self.stats_full = Stats(self)
+        self.stats_full = Stats.update_body_stats(self.stats_full, self.stats, self.body_parts)   # combine stats from all body parts,
+                                                                                                  # these increase through training
         # Resources
         self.resources = Resources(self)
 
         # Behaviours
         self.world_movement = World_Movement(self, world)
-        self.psychology = Psychology()
 
         # Miscellaneous
         self.value = Value.combine_value(float(self.config['value']), self.body_parts)  # combine weight from all body parts
@@ -49,7 +51,9 @@ class Body_Formless:
                 body_parts.append(create_body_part[each[1:]](self))
         return body_parts
 
-    def get_body_part_dict(self):
+    # match each string with function to create body part
+    @staticmethod
+    def get_body_part_dict():
 
         dict = {
             'BRAIN': Brain,
@@ -60,6 +64,7 @@ class Body_Formless:
         }
         return dict
 
+    # return an array of all body parts inside creature matching string (e.g. 'brain' or 'stomach')
     def get_body_parts(self, body_part_name):
 
         body_parts = []
@@ -72,29 +77,61 @@ class Body_Formless:
     # ----------------------------------------------------------------------------------------------------------------------
     #   Display Functions
 
+    # displays list of all body parts
     def display_body_parts(self):
 
         print("B O D Y - P A R T S")
         for part in self.body_parts:
             print(" " + part.type)
 
+    # display name, type, value and weight of each body part
     def display_body_part_values(self):
 
         for part in self.body_parts:
             part.display_values()
             print("")
 
+    # displays name, type, value, weight and stats of each body part
     def display_body_part_values_full(self):
 
         for part in self.body_parts:
             part.display_values_full()
             print("")
 
+    # display creature's full base stats (body + each body part) with body stats in parentheses)
+    def display_body_base_stats(self):
+
+        print("B A S E - S T A T S")
+        for value in self.stats_full.base:
+            print(str.capitalize(value) + ": " + str(self.stats_full.base[value]) + "(" + str(self.stats.base[value]) + ")")
+
+    # display creature's full explore stats (body + each body part) with body stats in parentheses)
+    def display_body_explore_stats(self):
+
+        print("E X P L O R E - S T A T S")
+        for value in self.stats_full.explore:
+            print(str.capitalize(value) + ": " + str(self.stats_full.explore[value]) + "(" + str(self.stats.explore[value]) + ")")
+
+    # display creature's full resist stats (body + each body part) with body stats in parentheses)
+    def display_body_resist_stats(self):
+
+        print("R E S I S T A N C E - S T A T S")
+        for value in self.stats_full.resist:
+            print(str.capitalize(value) + ": " + str(self.stats_full.resist[value]) + "(" + str(self.stats.resist[value]) + ")")
+
+    # display creature's full stats (body + each body part) with body stats in parentheses)
+    def display_body_full_stats(self):
+        self.display_body_base_stats()
+        self.display_body_explore_stats()
+        self.display_body_resist_stats()
+
+    # displays value and weight of body
     def display_miscellaneous_values(self):
 
-        print("Value: " + str((round(self.value,2))) + " ¥")
-        print("Weight: " + str(self.weight))
+        print("Value: " + str(int(self.value)) + " ¥")
+        print("Weight: " + str(self.weight) + " lbs")
 
+    # display functions called on world update
     def display_values(self):
 
         self.display_miscellaneous_values()
@@ -103,19 +140,16 @@ class Body_Formless:
         self.resources.health.display_values()
         self.resources.aether.display_values()
         self.resources.stamina.display_values_full()
-        #self.resources.stamina.display_activity_level()
         print("")
-        #self.display_body_parts()
-        #print("")
-        #print("")
         self.get_body_parts('stomach')[0].display_hunger_values_full()
         print("")
-        #self.world_movement.display_closest_food()
-        #print("")
-        #print("")
-        #self.stats.display_base_values()
+        self.display_body_base_stats()
+        print("Stat Points: " + str(self.stats.base_points))
         print("")
-        #self.stats.display_explore_values()
+        #self.get_body_parts('brain')[0].psychology.display_values_full()
+        self.world_movement.display_coordinates()
+        print("")
+
 
     # ----------------------------------------------------------------------------------------------------------------------
     #   Update Functions
@@ -125,14 +159,17 @@ class Body_Formless:
 
         self.weight = Weight.combine_weight(float(self.config['weight']), self.body_parts)
 
+    # calls update function associated with each body part
     def update_body_parts(self):
 
         for part in self.body_parts:
             part.update()
 
+    # update functions called at each world update
     def update(self):
 
         self.resources.update()
+        self.stats_full = Stats.update_body_stats(self.stats_full, self.stats, self.body_parts)
         self.update_body_parts()
         self.world_movement.update()
         self.update_weight()

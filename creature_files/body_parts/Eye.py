@@ -7,11 +7,12 @@ class Eye:
     def __init__(self, body):
 
         self.config = body.creature.config[str.upper(self.__class__.__name__)]
+        self.body = body
 
         self.name = str(body.creature.race) + " Eye"
         self.type = "Eye"
 
-        self.value = float(self.config['value'])
+        self.value = int(self.config['value'])
         self.weight = float(self.config['weight'])
 
         self.stats = Stats(self)
@@ -36,5 +37,5 @@ class Eye:
         print("E Y E")
         print("Name: " + str(self.name))
         print("Type: " + str(self.type))
-        print("Value: " + str((round(self.value, 2))) + " ¥")
+        print("Value: " + str(int(self.value)) + " ¥")
         print("Weight: " + str(self.weight))

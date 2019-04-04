@@ -11,7 +11,7 @@ class Lung:
         self.name = str(body.creature.race) + " Lung"
         self.type = "Lung"
 
-        self.value = float(self.config['value'])
+        self.value = int(self.config['value'])
         self.weight = float(self.config['weight'])
 
         self.stats = Stats(self)
@@ -36,5 +36,5 @@ class Lung:
         print("L U N G")
         print("Name: " + str(self.name))
         print("Type: " + str(self.type))
-        print("Value: " + str((round(self.value,2))) + " ¥")
+        print("Value: " + str(int(self.value)) + " ¥")
         print("Weight: " + str(self.weight))
