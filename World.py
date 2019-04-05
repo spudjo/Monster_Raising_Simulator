@@ -10,6 +10,7 @@ from items.training.Book import Book
 import time
 import configparser
 import random
+import os
 
 # TODO: world 'cleaning up' (removal of dead creature_files, eaten food, etc) should be controlled by World, current controlled within objects themselves
 
@@ -23,6 +24,7 @@ class World:
 
         pygame.init()  # initiate pygame
         pygame.display.set_caption('Yōkai Ranch')
+        pygame.key.set_repeat(500, 100)
 
         self.FPS = 60
 
@@ -213,24 +215,32 @@ while True:  # main game loop
                 else:
                     World.display_vision = True
 
+            # spend stat points on str
             if event.key == pygame.K_KP1:
                 for each in World.creature_container:
                     each.body.stats.increase_base_stat(each, 'str')
 
+            # spend stat points on int
             if event.key == pygame.K_KP2:
                 for each in World.creature_container:
                     each.body.stats.increase_base_stat(each, 'int')
 
+            # spend stat points on end
             if event.key == pygame.K_KP3:
                 for each in World.creature_container:
                     each.body.stats.increase_base_stat(each, 'end')
 
+            # spend stat points on dex
             if event.key == pygame.K_KP4:
                 for each in World.creature_container:
                     each.body.stats.increase_base_stat(each, 'dex')
+
+            # spend stat points on spd
             if event.key == pygame.K_KP5:
                 for each in World.creature_container:
                     each.body.stats.increase_base_stat(each, 'spd')
+
+            # spend stat points on luk
             if event.key == pygame.K_KP6:
                 for each in World.creature_container:
                     each.body.stats.increase_base_stat(each, 'luk')
@@ -248,6 +258,44 @@ while True:  # main game loop
                     World.update_increment = 10
                 else:
                     World.update_increment = 1
+
+            # cripple a creature's body part, setting its stats to zero
+            if event.key == pygame.K_k:
+                creature = None
+                creature_name = str.capitalize(input("Enter name of creature to cripple: "))
+
+                for each in World.creature_container:
+
+                    if each.name == creature_name:
+                        creature = each
+                        creature_name = each.name
+
+                if creature is None:
+                    print("  Creature not found!")
+                else:
+                    creature.body.display_body_parts()
+
+                    part = input("Enter Body Part to cripple: ")
+                    number_of_parts = len(each.body.get_body_parts(part))
+
+                    if number_of_parts == 0:
+                        print("Body part not found!")
+                    else:
+                        print(creature_name + " has " + str(number_of_parts) + " " + part + "(s)")
+                        part_number = int(input("Which " + str.capitalize(part) + " you want to cripple? (Enter a number): ")) - 1
+
+                        if part_number < 0 or part_number > number_of_parts - 1:
+                            print("Body part not found!")
+                        elif creature.body.get_body_parts(part)[part_number].is_crippled:
+                            print("Part is already crippled!")
+                        else:
+                            creature.body.get_body_parts(part)[part_number].is_crippled = True
+                            print(str.capitalize(part) + " crippled!")
+                time.sleep(2)
+
+
+
+
 
     if not paused:
         World.toggle_hitbox()

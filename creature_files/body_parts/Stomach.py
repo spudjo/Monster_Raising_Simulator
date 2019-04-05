@@ -1,6 +1,7 @@
 # Food / digestion / excretion system, influenced by Endurance stat (not yet implemented)
 # stats are End and Luk
 from creature_files.miscellaneous.Stats import Stats
+from creature_files.miscellaneous.Resources import Resources
 from miscellaneous.Poop import Poop
 from miscellaneous.Urine import Urine
 import random
@@ -21,6 +22,7 @@ class Stomach:
         self.value = int(self.config['value'])
         self.weight = float(self.config['weight'])
 
+        self.health = Resources.Part_Health(self.config, self)
         self.stats = Stats(self)
 
         self.contents = []
@@ -38,6 +40,12 @@ class Stomach:
         self.urine_cur = round(int(self.urine_max / 2) * random.uniform(.75, 1.25), 0)
         self.fecal_max = int(self.config['fecal_max'])
         self.fecal_cur = round(int(self.fecal_max / 2) * random.uniform(.75, 1.25), 0)
+
+        # body part's health reduced to zero, settings it's stats to 1
+        self.is_crippled = False
+
+        # body part completely destroyed, removed from body
+        self.is_destroyed = False
 
     # function to eat food objects, called from World_Movement class on collision with food object when is_hungry equals True
     # food object is added to stomach content, food is_eaten variable is set to True and food's weight is added to stomach weight, which
@@ -124,6 +132,21 @@ class Stomach:
         else:
             self.is_hungry = False
 
+    def update_on_zero_health(self):
+
+        if self.health.cur <= 0:
+            self.is_crippled = True
+
+    def update_on_crippled(self):
+
+        if self.is_crippled:
+            self.stats.set_to_zero()
+
+    def update_on_destroyed(self):
+
+        if self.is_destroyed:
+            self.body.remove_body_part(self)
+
     # increase current hunger every update tick based on hunger_rate
     def update_hunger_cur(self):
 
@@ -134,6 +157,9 @@ class Stomach:
 
     def update(self):
 
+        self.update_on_zero_health()
+        self.update_on_crippled()
+        self.update_on_destroyed()
         self.update_hunger_cur()
         self.update_is_hungry()
         self.update_is_starving()
@@ -142,9 +168,15 @@ class Stomach:
     # ----------------------------------------------------------------------------------------------------------------------
     #   Display Functions
 
+    def display_status_values(self):
+
+        print("Is Crippled: " + str(self.is_crippled))
+        print("Is Destroyed: " + str(self.is_destroyed))
+
     def display_values_full(self):
 
         self.display_values()
+        self.display_status_values()
         self.display_hunger_values_full
         self.stats.display_values()
 
@@ -174,5 +206,6 @@ class Stomach:
         print("S T O M A C H")
         print("Name: " + str(self.name))
         print("Type: " + str(self.type))
+        self.health.display_values()
         print("Value: " + str(int(self.value)) + " ¥")
         print("Weight: " + str(self.weight))

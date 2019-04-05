@@ -73,6 +73,34 @@ class Body_Formless:
                 body_parts.append(part)
         return body_parts
 
+    def remove_body_part(self, part):
+        self.body_parts.remove(part)
+        print("Part removed!")
+
+
+    # ----------------------------------------------------------------------------------------------------------------------
+    #   Update Functions
+
+    # TODO: might make more sense to move this to miscellaneous.Weight module
+    def update_weight(self):
+
+        self.weight = Weight.combine_weight(float(self.config['weight']), self.body_parts)
+
+    # calls update function associated with each body part
+    def update_body_parts(self):
+
+        for part in self.body_parts:
+            part.update()
+
+    # update functions called at each world update
+    def update(self):
+
+        self.update_body_parts()
+        self.stats_full = Stats.update_body_stats(self.stats_full, self.stats, self.body_parts)
+        self.resources.update()
+
+        self.world_movement.update()
+        self.update_weight()
 
     # ----------------------------------------------------------------------------------------------------------------------
     #   Display Functions
@@ -80,7 +108,7 @@ class Body_Formless:
     # displays list of all body parts
     def display_body_parts(self):
 
-        print("B O D Y - P A R T S")
+        print("Body Parts:")
         for part in self.body_parts:
             print(" " + part.type)
 
@@ -139,39 +167,13 @@ class Body_Formless:
         print("R E S O U R C E S")
         self.resources.health.display_values()
         self.resources.aether.display_values()
-        self.resources.stamina.display_values_full()
+        self.resources.stamina.display_values()
+        self.resources.stamina.display_activity_level()
         print("")
         self.get_body_parts('stomach')[0].display_hunger_values_full()
         print("")
         self.display_body_base_stats()
         print("Stat Points: " + str(self.stats.base_points))
         print("")
-        #self.get_body_parts('brain')[0].psychology.display_values_full()
-        self.world_movement.display_coordinates()
-        print("")
-
-
-    # ----------------------------------------------------------------------------------------------------------------------
-    #   Update Functions
-
-    # TODO: might make more sense to move this to miscellaneous.Weight module
-    def update_weight(self):
-
-        self.weight = Weight.combine_weight(float(self.config['weight']), self.body_parts)
-
-    # calls update function associated with each body part
-    def update_body_parts(self):
-
-        for part in self.body_parts:
-            part.update()
-
-    # update functions called at each world update
-    def update(self):
-
-        self.resources.update()
-        self.stats_full = Stats.update_body_stats(self.stats_full, self.stats, self.body_parts)
-        self.update_body_parts()
-        self.world_movement.update()
-        self.update_weight()
 
 

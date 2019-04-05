@@ -15,7 +15,7 @@ class Eldritch_Slime:
         self.name = name
         self.race = config_general['race']
         self.description = config_general['description']
-        self.age = 5000
+        self.age = 1
 
         self.exp = Experience(self)
         self.element = Dark()

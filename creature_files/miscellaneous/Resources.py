@@ -29,7 +29,6 @@ class Resources:
         self.int = body.stats.base['int']
         self.end = body.stats.base['end']
 
-
         self.health = self.Health(self.config_health, body)
         self.aether = self.Aether(self.config_aether, body)
         self.stamina = self.Stamina(self.config_stamina, body)
@@ -43,7 +42,9 @@ class Resources:
             self.stomach = body.get_body_parts('stomach')[0]
             self.level = body.creature.exp.level
 
-            self.max = int(int(self.config['max']) + (10 + (0.5 * self.body.stats.base['end'])) * self.level)
+            self.max = int(0)
+            if self.max > int(self.config['max']):
+                self.max = int(int(self.config['max']) + (10 + (0.5 * self.body.stats_full.base['end'])) * self.level)
             self.cur = self.max
             self.regen = int(config['regen'])
             self.is_regen = False
@@ -58,7 +59,7 @@ class Resources:
                 self.max = 0
             else:
                 self.level = self.body.creature.exp.level
-                self.max = int(int(self.config['max']) + (10 + (0.5 * self.body.stats.base['end'])) * self.level)
+                self.max = int(int(self.config['max']) + (10 + (0.5 * self.body.stats_full.base['end'])) * self.level)
                 self.cur = self.max
 
         def update_on_zero_health(self):
@@ -116,13 +117,10 @@ class Resources:
             self.stomach = body.get_body_parts('stomach')[0]
             self.level = body.creature.exp.level
 
-            self.max = int(int(self.config['max']) + (10 + (0.5 * self.body.stats.base['int'])) * self.level)
+            self.max = int(0)
+            if self.max > int(self.config['max']):
+                self.max = int(int(self.config['max']) + (10 + (0.5 * self.body.stats_full.base['int'])) * self.level)
             self.cur = self.max
-            if int(self.config['max']) == 0:
-                self.cur = 0
-            else:
-                self.cur = self.max
-
             self.regen = int(config['regen'])
             self.is_regen = False
 
@@ -136,7 +134,7 @@ class Resources:
                 self.max = 0
             else:
                 self.level = self.body.creature.exp.level
-                self.max = int(int(self.config['max']) + (10 + (0.5 * self.body.stats.base['int'])) * self.level)
+                self.max = int(int(self.config['max']) + (10 + (0.5 * self.body.stats_full.base['int'])) * self.level)
                 self.cur = self.max
 
         def update_on_sleep(self):
@@ -250,6 +248,19 @@ class Resources:
 
             print("Stamina: " + str(round(self.cur, 2)) + "/" + str(self.max))
             print("Stamina Expenditure: " + str(self.expenditure_current) + " / second")
+
+    class Part_Health:
+
+        def __init__(self, config, part):
+
+            self.config = config
+            self.part = part
+
+            self.max = int(self.config['hp_max'])
+            self.cur = int(self.max)
+
+        def display_values(self):
+            print("Health: " + str(self.cur) + "/" + str(self.max))
 
     def display_values(self):
         print("R E S O U R C E S")

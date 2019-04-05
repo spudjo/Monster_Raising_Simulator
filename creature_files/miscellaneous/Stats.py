@@ -6,9 +6,9 @@
         - increase by training brain
 
     end - influences health resource, stamina, hunger, resistances?
-    dex - influences accuracy...
+    dex - influences accuracy, chance to hit body parts...
     spd - influences attack speed, movement speed, dodging...
-    luk - influences crit attacks, dodging...
+    luk - influences crit attacks, dodging, chance to hit body parts...
 """
 
 # TODO: vision (distance, in dark underwater), swimming speed, climbing speed, etc...
@@ -36,12 +36,12 @@ class Stats:
     def get_base_stats(self):
 
         base = {
-            'str': int(self.config['str']) if ('str' in self.config) else 1,
-            'int': int(self.config['int']) if ('int' in self.config) else 1,
-            'end': int(self.config['end']) if ('end' in self.config) else 1,
-            'dex': int(self.config['dex']) if ('dex' in self.config) else 1,
-            'spd': int(self.config['spd']) if ('spd' in self.config) else 1,
-            'luk': int(self.config['luk']) if ('luk' in self.config) else 1
+            'str': int(self.config['str']) if ('str' in self.config) else 0,
+            'int': int(self.config['int']) if ('int' in self.config) else 0,
+            'end': int(self.config['end']) if ('end' in self.config) else 0,
+            'dex': int(self.config['dex']) if ('dex' in self.config) else 0,
+            'spd': int(self.config['spd']) if ('spd' in self.config) else 0,
+            'luk': int(self.config['luk']) if ('luk' in self.config) else 0
         }
         return base
 
@@ -80,6 +80,16 @@ class Stats:
             self.base[base_stat] += 1
         else:
             print("Insufficient points!")
+
+    def set_to_zero(self):
+        for value in self.base:
+            self.base[value] = 0
+        # copies explore stats from body
+        for value in self.explore:
+            self.explore[value] = 0
+        # copies resist stats from body
+        for value in self.resist:
+            self.resist[value] = 0
 
     # ----------------------------------------------------------------------------------------------------------------------
     #   Update Functions

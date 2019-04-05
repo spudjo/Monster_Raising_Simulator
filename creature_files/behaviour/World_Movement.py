@@ -1,8 +1,6 @@
 # monster location for interaction with World
 # TODO: better way of handling collision detection of creature and walls, look into https://www.pygame.org/docs/ref/rect.html#pygame.Rect.colliderect
 #       speed should be influenced by carrying weight (add max carry_weight, based on str)
-# TODO: not really sure about some of the functions here, specifically those relating to food,
-#       might make more sense to make a separate behaviour class for food related behaviours?
 
 import random
 import pygame
@@ -45,6 +43,8 @@ class World_Movement:
 
         self.movement_speed_x = self.body.stats_full.base['spd']
         self.movement_speed_y = self.body.stats_full.base['spd']
+
+        self.vision = self.body.stats_full.explore.get('vis')
 
         # randomize wandering x direction
         if random.random() > .5:
@@ -166,7 +166,7 @@ class World_Movement:
 
         if len(self.container.food_container) > 0:
             for food in self.container.food_container:
-                if self.get_distance(food) <= self.body.stats_full.explore.get('vis'):
+                if self.get_distance(food) <= self.vision:
                     if self.closest_food is None:
                         self.closest_food = food
                     elif self.get_distance(self.closest_food) > self.get_distance(food):
@@ -189,11 +189,24 @@ class World_Movement:
     # ----------------------------------------------------------------------------------------------------------------------
     #   Update Functions
 
+    def update_vision(self):
+        if self.body.stats_full.explore.get('vis') == 0:
+            self.vision = 30
+        else:
+            self.vision = self.body.stats_full.explore.get('vis')
+
     # update movement speed based on creature body's stats_full value
     def update_movement_speed(self):
 
         self.movement_speed_x = self.body.stats_full.base['spd']
         self.movement_speed_y = self.body.stats_full.base['spd']
+        # randomize wandering x direction
+        if random.random() > .5:
+            self.movement_speed_x *= -1
+
+        # randomize wandering x direction
+        if random.random() > .5:
+            self.movement_speed_y *= -1
 
     # update hitbox on movement
     def update_hitbox(self):
@@ -258,15 +271,16 @@ class World_Movement:
 
     def update(self):
 
-        self.update_movement_speed()
+        self.update_vision()
         self.update_movement()
+        self.update_movement_speed()
 
     # ----------------------------------------------------------------------------------------------------------------------
     #   Display Functions
 
     def display_vision_radius(self):
 
-        pygame.draw.circle(self.container.surface, (255, 0, 0), (int(round(self.x_center, 0)), int(round(self.y_center, 0))), self.body.stats_full.explore.get('vis'), 1)
+        pygame.draw.circle(self.container.surface, (255, 0, 0), (int(round(self.x_center, 0)), int(round(self.y_center, 0))), self.vision, 1)
 
     def display_closest_food(self):
 
