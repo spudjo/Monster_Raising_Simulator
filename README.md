@@ -1,32 +1,43 @@
 # Monster_Raising_Simulator
 
-A monster raising simulator based on Monster Rancher.
+A monster raising simulator taking inspiration from games like Monster Rancher and Dwarf Fortress.
 Currently working on slime creatures as a base for creature functions.
 
-Controls:
+### Requirements
 
-1: Spawns a red slime
+    To run you must install python modules Pygame, Pyganim
+    Run World.py to begin
 
-2: Spawns a blue slime
+### Controls:
 
-3: Spawn a yellow slime
+    1: Spawns a red slime
 
-4: Spawn an eldritch slime
+    2: Spawns a blue slime
 
-9: Spawns Berry (food) at mouse point (max of 3 foods plus an additional 3 per slime spawned (max of 12))
+    3: Spawn a yellow slime
 
-0: Spawns Drum Stick (food) at mouse point (max of 3 foods plus an additional 3 per slime spawned (max of 12))
+    4: Spawn an eldritch slime
 
-SPACE: Pause the game
+    9: Spawns Berry (food) at mouse point (max of 3 foods plus an additional 3 per slime spawned (max of 12))
 
-C: Clean waste at mouse
+    0: Spawns Drum Stick (food) at mouse point (max of 3 foods plus an additional 3 per slime spawned (max of 12))
 
-H: Toggles Creature Hit Boxes
+    SPACE: Pause the game
 
-V: Toggles Creature Vision Ranges
+    C: Clean waste at mouse
 
-X: Gives creature EXP points ('exp_gain' in world_config.ini) (current affects every single creature)
+    H: Toggles Creature Hit Boxes
 
-Z: Toggle world speed increase ( 1x / 10x )
+    V: Toggles Creature Vision Ranges
 
-Numpad Keys 1~6: Spend stat points to increase one of six base stats (current affects every single creature)
+    X: Gives creature EXP points ('exp_gain' in world_config.ini) (current affects every single creature)
+
+    Z: Toggle world speed increase ( 1x / 10x )
+
+    Numpad Keys 1~6: Spend stat points to increase one of six base stats (current affects every single creature)
+    
+### Current Functionality
+
+    Basic hunger system (hunger, feeding, starvation)
+    Basic stamina system (movement, sleep, rest)
+    
